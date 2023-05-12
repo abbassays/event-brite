@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
-import Button from "../UI/Button";
+import Button from "./Button";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -120,7 +120,11 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className={`${menuOpen ? "absolute" : "hidden"} lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg `}>
+      <div
+        className={`${
+          menuOpen ? "absolute" : "hidden"
+        } lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg `}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navbarItems.map((item, index) => (
             <p
@@ -137,7 +141,6 @@ function Navbar() {
           <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
             <Link href="/signup">Sign Up</Link>
           </p>
-          
         </div>
       </div>
     </nav>

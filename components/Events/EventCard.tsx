@@ -16,7 +16,7 @@ const EventCard = (event: EventType) => {
   if (!event) return <div>Event not found</div>;
 
   return (
-    <div className="bg-white shadow-md rounded-md flex flex-col">
+    <div className="bg-white shadow-md rounded-md flex flex-col overflow-hidden">
       <div className="relative h-40">
         <Image src={image} alt={title} fill className="object-cover" />
       </div>
