@@ -7,6 +7,7 @@ const IndexPage = () => {
     <Layout title="Home | Next.js + TypeScript Example">
       <CategoryContainer />
       <FeaturedContainer />
+      
     </Layout>
   );
 };
