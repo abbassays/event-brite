@@ -29,5 +29,4 @@ export const getCategoryIcon = (category: string) => {
     default:
       return null;
   }
-  
 };
