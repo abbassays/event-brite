@@ -21,7 +21,7 @@ function Navbar() {
     },
     {
       name: "Events",
-      link: "/",
+      link: "/events",
     },
     {
       name: "Cart",

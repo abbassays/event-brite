@@ -7,6 +7,7 @@ import Button from "../UI/Button";
 
 import { getCategoryIcon } from "../../utils/getCategoryIcon";
 import { EventType } from "../../types";
+import Link from "next/link";
 
 const EventCard = (event: EventType) => {
   const { title, description, category, date, location, image } = event;
@@ -44,7 +45,9 @@ const EventCard = (event: EventType) => {
 
         <div>
           <Button className="mx-auto" variant="primary">
-            Learn More
+            <Link href={`/event/${event.id}`}>
+              Learn More
+            </Link>
           </Button>
         </div>
       </div>

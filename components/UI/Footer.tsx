@@ -70,7 +70,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-slate-200 mt-10">
+    <footer
+      className="bg-slate-200 mt-10"
+      style={{
+        boxShadow: "0px 5px 10px #888, 0px -5px 10px #888",
+      }}
+    >
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -94,10 +99,7 @@ const Footer = () => {
                 <ul className="text-gray-600 font-medium">
                   {subItems.map(({ title, link }) => (
                     <li className="mb-4">
-                      <a
-                        href="https://flowbite.com/"
-                        className="hover:underline"
-                      >
+                      <a href={link} className="hover:underline">
                         {title}
                       </a>
                     </li>
@@ -110,11 +112,8 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center">
-            © 2023{" "}
-            <a href="https://flowbite.com/" className="hover:underline">
-              Flowbite™
-            </a>
-            . All Rights Reserved.
+            © 2023 <p className="hover:underline inline">Event Brite</p>. All
+            Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             {socialIcons.map(({ Icon, link }) => (

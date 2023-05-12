@@ -4,10 +4,9 @@ import FeaturedContainer from "../components/Events/FeaturedContainer";
 
 const IndexPage = () => {
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
+    <Layout title="Home">
       <CategoryContainer />
       <FeaturedContainer />
-      
     </Layout>
   );
 };

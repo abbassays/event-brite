@@ -24,14 +24,14 @@ const Button: React.FC<ButtonProps> = ({
     activeStyle = "active:bg-blue-700";
   } else if (variant === "secondary") {
     buttonStyle =
-      "border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white focus:border-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75";
+      "border border-blue-500 bg-white hover:bg-blue-500 text-blue-500 hover:text-white focus:border-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75";
     hoverStyle = "hover:bg-blue-500 hover:text-white";
     focusStyle = "focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75";
     activeStyle = "active:bg-blue-700";
   }
 
   const buttonClasses = classNames(
-    "rounded-lg transition-colors inline-block h-min my-auto px-4 py-1.5 font-bold",
+    "rounded-lg transition-colors inline-block mx-auto h-min my-auto px-4 py-1.5 font-bold shadow-md",
     buttonStyle,
     hoverStyle,
     focusStyle,
