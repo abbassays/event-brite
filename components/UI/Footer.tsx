@@ -97,8 +97,8 @@ const Footer = () => {
                   {title}
                 </h2>
                 <ul className="text-gray-600 font-medium">
-                  {subItems.map(({ title, link }) => (
-                    <li key={link} className="mb-4">
+                  {subItems.map(({ title, link }, index) => (
+                    <li key={index} className="mb-4">
                       <a href={link} className="hover:underline">
                         {title}
                       </a>
@@ -116,8 +116,12 @@ const Footer = () => {
             Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            {socialIcons.map(({ Icon, link }) => (
-              <Link href={link} className="text-gray-500 hover:text-gray-900">
+            {socialIcons.map(({ Icon, link }, index) => (
+              <Link
+                key={index}
+                href={link}
+                className="text-gray-500 hover:text-gray-900"
+              >
                 <Icon className="w-5 h-5" />
               </Link>
             ))}

@@ -29,8 +29,6 @@ const SearchBar = () => {
     }
   };
 
-  console.log(resultsFound);
-
   return (
     <div className="flex flex-col w-full">
       <div onSubmit={null} className="flex w-full">
