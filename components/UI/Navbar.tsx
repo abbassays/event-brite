@@ -84,7 +84,7 @@ function Navbar() {
             {navbarItems.map((item, index) => (
               <p
                 key={index}
-                className="px-3 py-2 text-gray-500 hover:text-gray-700"
+                className="px-6 py-2 text-lg text-blue-500 hover:[text-shadow:_0_2px_4px_#93c5fd] transition-colors"
               >
                 <Link href={item.link}>{item.name}</Link>
               </p>
