@@ -55,21 +55,18 @@ const SearchBar = () => {
     <div className="flex flex-col w-full" ref={searchBarRef}>
       <div onSubmit={null} className="flex w-full">
         <form className="w-full flex flex-col relative">
-          <div className="flex">
+          <div className="flex border rounded-lg overflow-hidden">
             <input
-              className="border rounded-l-lg p-2 w-full text-gray-500 font-medium leading-tight focus:outline-none focus:shadow-outline"
+              className="p-2 w-full text-gray-500 font-medium leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               placeholder="Search"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 handleSearchChange(e)
               }
             />
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-lg focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
+            <div className="text-blue-500 bg-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
               <FaSearch />
-            </button>
+            </div>
           </div>
 
           {resultsFound === false && (
