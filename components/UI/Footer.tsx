@@ -92,13 +92,13 @@ const Footer = () => {
 
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             {footerItems.map(({ title, subItems }) => (
-              <div>
+              <div key={title}>
                 <h2 className="mb-6 text-base font-semibold text-gray-900 uppercase">
                   {title}
                 </h2>
                 <ul className="text-gray-600 font-medium">
                   {subItems.map(({ title, link }) => (
-                    <li className="mb-4">
+                    <li key={link} className="mb-4">
                       <a href={link} className="hover:underline">
                         {title}
                       </a>
