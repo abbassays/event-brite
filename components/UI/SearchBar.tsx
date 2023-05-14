@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoLocationSharp, IoCalendar } from "react-icons/io5";
 
@@ -10,6 +10,7 @@ import Link from "next/link";
 const SearchBar = () => {
   const [matchedEvents, setMatchedEvents] = useState<EventType[] | []>([]);
   const [resultsFound, setResultsFound] = useState<boolean | null>(null);
+  const searchBarRef = useRef<HTMLDivElement>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searched = e.target.value;
@@ -29,8 +30,29 @@ const SearchBar = () => {
     }
   };
 
+  const handleClickOutside = (e: MouseEvent) => {
+    if (
+      searchBarRef.current &&
+      !searchBarRef.current.contains(e.target as Node)
+    ) {
+      // Clicked outside of SearchBar, clear matchedEvents
+      setMatchedEvents([]);
+      setResultsFound(null);
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener for clicks on window
+    window.addEventListener("click", handleClickOutside);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full" ref={searchBarRef}>
       <div onSubmit={null} className="flex w-full">
         <form className="w-full flex flex-col relative">
           <div className="flex">
