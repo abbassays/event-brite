@@ -5,8 +5,7 @@ import events from "../../utils/all_events.json";
 import { EventType } from "../../types";
 
 import Layout from "../../components/UI/Layout";
-import Container from "../../components/UI/Container";
-import EventCard from "../../components/Events/EventCard";
+import EventsContainer from "../../components/Events/EventsContainer";
 import EventDetails from "../../components/Events/EventDetails";
 
 const Event = () => {
@@ -22,22 +21,11 @@ const Event = () => {
     }
   }, [id]);
 
-  if (!event) return <div>Event not found</div>;
+  if (!event) return <div>Loading...</div>;
 
-  const similarGrid = events
-    .filter((_event) => _event.category === event.category)
-    .map((event) => (
-      <EventCard
-        key={event.id}
-        name={event.name}
-        description={event.description}
-        category={event.category}
-        date={event.date}
-        location={event.location}
-        image={event.image}
-        id={event.id}
-      />
-    ));
+  const similarGrid = events.filter(
+    (_event) => _event.category === event.category
+  );
 
   return (
     <Layout title={event.name}>
@@ -51,11 +39,10 @@ const Event = () => {
         image={event.image}
       />
 
-      <Container
+      <EventsContainer
+        events={similarGrid}
         title="Similar Events"
         description="Here are some events that you might be interested in"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 place-items-stretch"
-        gridItems={similarGrid}
       />
     </Layout>
   );

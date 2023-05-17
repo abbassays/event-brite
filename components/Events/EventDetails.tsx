@@ -14,20 +14,14 @@ const EventDetails = ({
   date,
   location,
   image,
-  id
+  id,
 }: EventType) => {
-
   const Icon = getCategoryIcon(category || null);
 
   return (
     <Container>
       <div className="w-full relative overflow-hidden h-[550px]">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-        />
+        <Image src={image} alt={name} fill className="object-cover" />
       </div>
 
       <div className="flex flex-col justify-between space-y-6 my-10">
@@ -35,9 +29,7 @@ const EventDetails = ({
           {name}
         </h1>
 
-        <p className="text-gray-500 text-base md:text-xl">
-          {description}
-        </p>
+        <p className="text-gray-500 text-base md:text-xl">{description}</p>
       </div>
 
       <div>
