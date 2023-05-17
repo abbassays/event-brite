@@ -7,7 +7,7 @@ export type CategoryType = {
 
 export type EventType = {
   id: string;
-  title: string;
+  name: string;
   description: string;
   category: string;
   /* can be only: 

@@ -10,7 +10,7 @@ import { EventType } from "../../types";
 import Link from "next/link";
 
 const EventCard = (event: EventType) => {
-  const { title, description, category, date, location, image } = event;
+  const { name, description, category, date, location, image } = event;
   const dateString = new Date(date).toDateString();
   const Icon = getCategoryIcon(category);
 
@@ -19,11 +19,11 @@ const EventCard = (event: EventType) => {
   return (
     <div className="bg-white shadow-md rounded-md flex flex-col overflow-hidden">
       <div className="relative h-40">
-        <Image src={image} alt={title} fill className="object-cover" />
+        <Image src={image} alt={name} fill className="object-cover" />
       </div>
 
       <div className="flex justify-between flex-col p-4 flex-1">
-        <h3 className="text-lg font-medium mb-2">{title}</h3>
+        <h3 className="text-lg font-medium mb-2">{name}</h3>
         <p className="text-gray-600 text-sm mb-2">{description}</p>
 
         <div className="my-4 space-y-2">

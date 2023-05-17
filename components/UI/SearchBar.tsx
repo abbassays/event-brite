@@ -18,7 +18,7 @@ const SearchBar = () => {
     if (searched.length > 2) {
       const matchedEvents = events.filter(
         (event) =>
-          event.title.toLowerCase().includes(searched.toLowerCase()) ||
+          event.name.toLowerCase().includes(searched.toLowerCase()) ||
           event.location.toLowerCase().includes(searched.toLowerCase()) ||
           event.category.toLowerCase().includes(searched.toLowerCase())
       );
@@ -83,14 +83,14 @@ const SearchBar = () => {
                     <div className="w-20 h-20 relative">
                       <Image
                         src={event.image}
-                        alt={event.title}
+                        alt={event.name}
                         fill
                         className="object-cover"
                       />
                     </div>
 
                     <div className="text-slate-600 flex flex-col space-y-1 flex-1">
-                      <h3 className="text-xl font-medium">{event.title}</h3>
+                      <h3 className="text-xl font-medium">{event.name}</h3>
 
                       <div className="flex flex-col md:flex-row w-full text-xs md:space-x-3">
                         <div className="md:w-1/2">

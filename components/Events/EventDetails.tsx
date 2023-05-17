@@ -8,7 +8,7 @@ import { getCategoryIcon } from "../../utils/getCategoryIcon";
 import Container from "../UI/Container";
 
 const EventDetails = ({
-  title,
+  name,
   description,
   category,
   date,
@@ -24,7 +24,7 @@ const EventDetails = ({
       <div className="w-full relative overflow-hidden h-[550px]">
         <Image
           src={image}
-          alt={title}
+          alt={name}
           fill
           className="object-cover"
         />
@@ -32,7 +32,7 @@ const EventDetails = ({
 
       <div className="flex flex-col justify-between space-y-6 my-10">
         <h1 className="text-3xl md:text-5xl xl:text-7xl font-medium ">
-          {title}
+          {name}
         </h1>
 
         <p className="text-gray-500 text-base md:text-xl">

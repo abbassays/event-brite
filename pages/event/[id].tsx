@@ -29,7 +29,7 @@ const Event = () => {
     .map((event) => (
       <EventCard
         key={event.id}
-        title={event.title}
+        name={event.name}
         description={event.description}
         category={event.category}
         date={event.date}
@@ -40,10 +40,10 @@ const Event = () => {
     ));
 
   return (
-    <Layout title={event.title}>
+    <Layout title={event.name}>
       <EventDetails
         id={event.id}
-        title={event.title}
+        name={event.name}
         description={event.description}
         category={event.category}
         date={event.date}
