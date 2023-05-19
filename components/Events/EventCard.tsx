@@ -19,7 +19,7 @@ const EventCard = (event: EventType) => {
   return (
     <div className="bg-white shadow-md rounded-md flex flex-col overflow-hidden">
       <div className="relative h-40">
-        <Image src={image} alt={name} fill className="object-cover" />
+        <Image src={image} alt={name} fill className="object-cover border" />
       </div>
 
       <div className="flex justify-between flex-col p-4 flex-1">

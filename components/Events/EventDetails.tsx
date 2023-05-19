@@ -21,7 +21,7 @@ const EventDetails = ({
   return (
     <Container>
       <div className="w-full relative overflow-hidden h-[550px]">
-        <Image src={image} alt={name} fill className="object-cover" />
+        <Image src={image} alt={name} fill className="object-cover border" />
       </div>
 
       <div className="flex flex-col justify-between space-y-6 my-10">

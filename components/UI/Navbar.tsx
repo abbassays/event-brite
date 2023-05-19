@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaSearch } from "react-icons/fa";
+import { useRouter } from "next/router";
+
 import Button from "./Button";
 import SearchBar from "./SearchBar";
 
 function Navbar() {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const isAdminRoute = () => {
+    return router.pathname.startsWith("/admin");
+  };
+
+  useEffect(() => {
+    if (router.isReady) {
+      setIsLoggedIn(isAdminRoute());
+    }
+  }, [router]);
 
   const navbarItems = [
     {
@@ -23,6 +36,18 @@ function Navbar() {
     },
   ];
 
+  const handleLogin = () => {
+    console.log("login");
+  };
+
+  const handleLogout = () => {
+    console.log("logout");
+  };
+
+  const handleSignUp = () => {
+    console.log("signup");
+  };
+
   return (
     <nav className="bg-white shadow">
       <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -30,14 +55,14 @@ function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <a href="/">
               <Image
-                className="block lg:hidden h-8 w-auto"
+                className="block lg:hidden h-8 w-auto "
                 src="/images/logo.png"
                 alt="Logo"
                 width={32}
                 height={32}
               />
               <Image
-                className="hidden lg:block h-8 w-auto"
+                className="hidden lg:block h-8 w-auto "
                 src="/images/logo.png"
                 alt="Logo"
                 width={48}
@@ -92,9 +117,21 @@ function Navbar() {
           </div>
 
           <div className=" lg:flex justify-between space-x-4 hidden ">
-            <Button variant="primary">Login</Button>
+            {isLoggedIn ? (
+              <Button variant="secondary" onClick={handleLogout}>
+                Logout
+              </Button>
+            ) : (
+              <>
+                <Button variant="primary" onClick={handleLogin}>
+                  Login
+                </Button>
 
-            <Button variant="secondary">Sign Up</Button>
+                <Button variant="secondary" onClick={handleSignUp}>
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -112,13 +149,21 @@ function Navbar() {
               <Link href={item.link}>{item.name}</Link>
             </p>
           ))}
-          <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
-            <Link href="/login">Login</Link>
-          </p>
+          {isLoggedIn ? (
+            <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+              Logout
+            </p>
+          ) : (
+            <>
+              <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                Login
+              </p>
 
-          <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
-            <Link href="/signup">Sign Up</Link>
-          </p>
+              <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                Sign Up
+              </p>
+            </>
+          )}
         </div>
       </div>
     </nav>

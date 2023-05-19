@@ -85,7 +85,7 @@ const SearchBar = () => {
                         src={event.image}
                         alt={event.name}
                         fill
-                        className="object-cover"
+                        className="object-cover border"
                       />
                     </div>
 
