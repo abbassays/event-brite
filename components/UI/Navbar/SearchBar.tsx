@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import events from "../../utils/all_events.json";
-import { EventType } from "../../types";
+import events from "../../../utils/all_events.json";
+import { EventType } from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import Button from "./Button";
+import Button from "../Button";
 import SearchBar from "./SearchBar";
+import AdminDropDown from "./AdminDropDown";
 
 function Navbar() {
   const router = useRouter();
@@ -109,11 +110,12 @@ function Navbar() {
             {navbarItems.map((item, index) => (
               <p
                 key={index}
-                className="px-6 py-2 text-lg text-blue-500 hover:[text-shadow:_0_2px_4px_#93c5fd'''''] transition-colors"
+                className="px-6 py-2 text-lg text-blue-500 hover:text-blue-900 transition-colors"
               >
                 <Link href={item.link}>{item.name}</Link>
               </p>
             ))}
+            <AdminDropDown />
           </div>
 
           <div className=" lg:flex justify-between space-x-4 hidden ">
@@ -138,7 +140,7 @@ function Navbar() {
       <div
         className={`${
           menuOpen ? "absolute" : "hidden"
-        } lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg `}
+        } lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-20`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navbarItems.map((item, index) => (
@@ -150,9 +152,12 @@ function Navbar() {
             </p>
           ))}
           {isLoggedIn ? (
-            <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
-              Logout
-            </p>
+            <>
+              <AdminDropDown />
+              <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                Logout
+              </p>
+            </>
           ) : (
             <>
               <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
