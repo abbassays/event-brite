@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
-import { IoLocationSharp, IoCalendar } from "react-icons/io5";
 
 import events from "../../utils/all_events.json";
 import { EventType } from "../../types";
@@ -70,13 +69,13 @@ const SearchBar = () => {
           </div>
 
           {resultsFound === false && (
-            <div className="flex h-20 justify-center items-center text-lg text-gray-500 font-medium w-full absolute top-[51px] z-10 bg-white shadow-md rounded-lg shadow-gray-600">
+            <div className="flex h-20 justify-center items-center text-lg text-gray-500 font-medium w-full absolute top-[51px] z-20 bg-white shadow-md rounded-lg shadow-gray-600">
               <p>No Results Found</p>
             </div>
           )}
 
           {matchedEvents.length > 0 && (
-            <div className="flex flex-col w-full absolute top-[51px] border border-b-0 z-10 bg-white shadow-lg shadow-gray-600">
+            <div className="flex flex-col w-full absolute top-[51px] border border-b-0 z-20 bg-white shadow-lg shadow-gray-600">
               {matchedEvents.slice(0, 5).map((event: EventType) => (
                 <Link key={event.id} href={`/event/${event.id}`}>
                   <div className="flex w-full overflow-hidden space-x-4 items-center hover:bg-blue-100 transition-colors border-b p-2">

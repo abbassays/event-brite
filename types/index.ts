@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type CategoryType = {
   category: string;
   count: number;
@@ -19,4 +21,17 @@ export type EventType = {
    */
   location: string;
   image: string;
+};
+
+export type OrganiserType = {
+  name: string;
+  description: string;
+  image: string;
+};
+
+export type TicketType = {
+  id: string;
+  price: number;
+  type: string;
+  eventId?: string;
 };

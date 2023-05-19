@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary"; // Add tertiary variant
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (variant === "primary") {
     buttonStyle =
-      "border border-blue-500 hover:border-blue-600 bg-blue-500 hover:bg-blue-600 focus:border-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-white";
+      "border border-blue-500 hover:border-blue-600 bg-blue-500 hover:bg-blue-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-white";
     hoverStyle = "hover:bg-blue-600";
     focusStyle = "focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75";
     activeStyle = "active:bg-blue-700";
@@ -28,6 +28,12 @@ const Button: React.FC<ButtonProps> = ({
     hoverStyle = "hover:bg-blue-500 hover:text-white";
     focusStyle = "focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75";
     activeStyle = "active:bg-blue-700";
+  } else if (variant === "tertiary") { // Tertiary style
+    buttonStyle =
+      "border border-transparent bg-transparent text-blue-500 hover:text-blue-600 focus:text-blue-600 active:text-blue-700";
+    hoverStyle = "hover:bg-transparent hover:text-blue-600";
+    focusStyle = "focus:text-blue-600";
+    activeStyle = "active:text-blue-700";
   }
 
   const buttonClasses = classNames(

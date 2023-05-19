@@ -6,6 +6,7 @@ import { EventType } from "../../types";
 import { getCategoryIcon } from "../../utils/getCategoryIcon";
 
 import Container from "../UI/Container";
+import ImageContainer from "../UI/ImageContainer";
 
 const EventDetails = ({
   name,
@@ -14,15 +15,22 @@ const EventDetails = ({
   date,
   location,
   image,
-  id,
 }: EventType) => {
   const Icon = getCategoryIcon(category || null);
 
+  const dateObject = new Date(date);
+  const dateString = dateObject.toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+
   return (
     <Container>
-      <div className="w-full relative overflow-hidden h-[550px]">
-        <Image src={image} alt={name} fill className="object-cover border" />
-      </div>
+      <ImageContainer link={image} alt={name} />
 
       <div className="flex flex-col justify-between space-y-6 my-10">
         <h1 className="text-3xl md:text-5xl xl:text-7xl font-medium ">
@@ -34,14 +42,14 @@ const EventDetails = ({
 
       <div>
         <h2 className="text-2xl md:text-3xl font-medium">Event Details</h2>
-        <div className="grid grid-cols-2 gap-4 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
           <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
             <div className="bg-slate-200 rounded-lg p-3 h-fit">
               <IoCalendar className="text-blue-600" />
             </div>
             <div className="flex flex-col">
               <h3 className="text-xl font-medium text-black">Date</h3>
-              <p className="text-sm">{date}</p>
+              <p className="text-sm">{dateString}</p>
             </div>
           </div>
 
