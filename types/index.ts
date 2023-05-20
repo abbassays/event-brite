@@ -31,7 +31,13 @@ export type OrganiserType = {
 
 export type TicketType = {
   id: string;
+  name: string;
+  description: string;
   price: number;
-  type: string;
+  quantity: number;
+  location: string;
+  image: string;
+  startDate: Date;
+  endDate: Date;
   eventId?: string;
 };

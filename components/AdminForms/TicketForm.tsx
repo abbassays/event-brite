@@ -10,7 +10,6 @@ import Button from "../UI/Button";
 import Select from "../UI/Select";
 
 const TicketForm: React.FC = () => {
-  const ticketTypes = ["Standard", "VIP", "Early Bird", "Group"];
   const [events, setEvents] = useState<EventType[] | []>([]);
   const {
     register,
@@ -34,26 +33,89 @@ const TicketForm: React.FC = () => {
 
   const formItems = (
     <>
-      <Select
-        label="Ticket Type"
-        name="Type"
+      <Input
+        type="text"
+        label="Name"
+        placeholder="Ticket Name"
+        name="Name"
         register={register}
         errors={errors}
-        rules={{ required: "Ticket type is required" }}
-        placeholder="Select an option"
-        options={ticketTypes.map((ticket) => {
-          return { id: ticket, name: ticket };
-        })}
+        rules={{ required: "Ticket Name is required" }}
       />
+
+      <Input
+        type="text"
+        label="Description"
+        placeholder="Ticket Description"
+        name="Description"
+        register={register}
+        errors={errors}
+        rules={{ required: "Ticket Description is required" }}
+      />
+
       <Input
         type="number"
         label="Price ($)"
         placeholder="Ticket Price"
-        name="Ticket"
+        name="Price"
         register={register}
         errors={errors}
         rules={{ required: "Ticket Price is required" }}
       />
+
+      <Input
+        type="number"
+        label="Max Quantity"
+        placeholder="Ticket Max Quantity"
+        name="MaxQuantity"
+        register={register}
+        errors={errors}
+        rules={{ required: "Ticket Max Quantity is required" }}
+      />
+
+      <Input
+        type="text"
+        label="Location"
+        placeholder="Ticket Location"
+        name="Location"
+        register={register}
+        errors={errors}
+        rules={{ required: "Ticket Location is required" }}
+      />
+
+      <Input
+        type="datetime-local"
+        label="Start Date & Time"
+        placeholder="Date & Time"
+        name="StartDate"
+        register={register}
+        errors={errors}
+        rules={{ required: "Start Date is required" }}
+      />
+
+      <Input
+        type="datetime-local"
+        label="End Date & Time"
+        placeholder="Date & Time"
+        name="EndDate"
+        register={register}
+        errors={errors}
+        rules={{ required: "End Date is required" }}
+      />
+
+      <Input
+        type="file"
+        label={"Upload Image"}
+        placeholder={"Upload Image"}
+        name="Image"
+        register={register}
+        errors={errors}
+        rules={{ required: "Ticket Image is Required" }}
+        aria-describedby="file_input_help"
+        isFile={true}
+        accept="image/*"
+      />
+
       <Select
         label="Event"
         name="EventId"

@@ -64,7 +64,7 @@ const EventForm: React.FC = () => {
       <Input
         type="datetime-local"
         label="Date & Time"
-        placeholder="Date & Event Time"
+        placeholder="Date & Time"
         name="Date"
         register={register}
         errors={errors}

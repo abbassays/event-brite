@@ -40,7 +40,9 @@ const Select: React.FC<SelectProps> = ({
           </option>
         ))}
       </select>
-      {errors[name] && <p className="text-red-500">{errors[name].message}</p>}
+      <div className="h-6">
+        {errors[name] && <p className="text-red-500">{errors[name].message}</p>}
+      </div>
     </div>
   );
 };
