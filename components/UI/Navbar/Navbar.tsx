@@ -154,13 +154,13 @@ function Navbar() {
           {isLoggedIn ? (
             <>
               <AdminDropDown />
-              <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+              <p className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
                 Logout
               </p>
             </>
           ) : (
             <>
-              <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+              <p className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
                 Login
               </p>
 

@@ -52,7 +52,7 @@ const AdminDropDown = () => {
         </div>
       </div>
       {/* For small screens */}
-      <div className=" border-t border-b lg:hidden">
+      <div className=" border-t lg:hidden">
         {createItems.map((item, index) => (
           <p
             className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50"
