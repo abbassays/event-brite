@@ -6,6 +6,8 @@ import { EventType } from "../types";
 import Layout from "../components/UI/Layout";
 import EventsContainer from "../components/Events/EventsContainer";
 import Pagination from "../components/UI/Pagination";
+import Filter from "../components/Events/Filter";
+import Container from "../components/UI/Container";
 
 const Events = () => {
   const itemsPerPage = 12;
@@ -26,19 +28,26 @@ const Events = () => {
     fetchEvents();
   }, [allEvents, currentPage]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [events]);
+
   return (
     <Layout title="Events">
-      <EventsContainer
-        events={events}
-        title="All Events"
-        description="Upcoming events you might be interested in."
-      />
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalItems={allEvents.length}
-        itemsPerPage={itemsPerPage}
-      />
+      <Container>
+        <Filter events={events} allEvents={allEvents} setEvents={setEvents} />
+        <EventsContainer
+          events={events}
+          title="All Events"
+          description="Upcoming events you might be interested in."
+        />
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalItems={events.length}
+          itemsPerPage={itemsPerPage}
+        />
+      </Container>
     </Layout>
   );
 };

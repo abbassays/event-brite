@@ -66,7 +66,7 @@ const downloadData = () => {
   document.body.removeChild(link);
 };
 
-const DataGenerator = () => {
+const EventData = () => {
   return (
     <div>
       <button onClick={downloadData}>Generate Data</button>
@@ -74,4 +74,4 @@ const DataGenerator = () => {
   );
 };
 
-export default DataGenerator;
+export default EventData;

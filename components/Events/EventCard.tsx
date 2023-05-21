@@ -11,7 +11,14 @@ import Link from "next/link";
 
 const EventCard = (event: EventType) => {
   const { name, description, category, date, location, image } = event;
-  const dateString = new Date(date).toDateString();
+  const dateString = new Date(date).toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
   const Icon = getCategoryIcon(category);
 
   if (!event) return <div>Event not found</div>;
@@ -45,9 +52,7 @@ const EventCard = (event: EventType) => {
 
         <div>
           <Button className="mx-auto" variant="primary">
-            <Link href={`/event/${event.id}`}>
-              Learn More
-            </Link>
+            <Link href={`/event/${event.id}`}>Learn More</Link>
           </Button>
         </div>
       </div>

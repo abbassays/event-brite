@@ -1,13 +1,13 @@
 import { type } from "os";
 
-export type CategoryType = {
+export interface CategoryType {
   category: string;
   count: number;
   onClick?: () => void;
   Icon: React.ElementType;
-};
+}
 
-export type EventType = {
+export interface EventType {
   id: string;
   name: string;
   description: string;
@@ -21,15 +21,15 @@ export type EventType = {
    */
   location: string;
   image: string;
-};
+}
 
-export type OrganiserType = {
+export interface OrganiserType {
   name: string;
   description: string;
   image: string;
-};
+}
 
-export type TicketType = {
+export interface TicketType {
   id: string;
   name: string;
   description: string;
@@ -40,4 +40,21 @@ export type TicketType = {
   startDate: Date;
   endDate: Date;
   eventId?: string;
-};
+}
+
+export interface ItemType {
+  id: string;
+
+  eventName: string;
+  eventDate: string;
+  eventLocation: string;
+  eventCategory: string;
+
+  ticketName: string;
+
+  ticketPrice: number;
+  ticketQuantity: number;
+
+  image: string;
+}
+

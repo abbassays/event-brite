@@ -16,7 +16,7 @@ const Container = ({
   gridItems,
 }: ContainerProps) => {
   return (
-    <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl max-w-md mx-auto p-4 mt-10">
+    <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl max-w-md mx-auto mt-10 px-4">
       {title && <h2 className="text-2xl md:text-3xl font-medium">{title}</h2>}
       {description && (
         <p className="text-gray-500 text-base md:text-xl md:mt-2">

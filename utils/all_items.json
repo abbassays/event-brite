@@ -1,0 +1,46 @@
+[
+  {
+    "id": "e4e975bb-3c97-4425-953f-cd93877014de",
+    "eventName": "Event 1",
+    "eventDate": "2023-01-28T06:40:24.923Z",
+    "eventLocation": "Location 1",
+    "eventCategory": "Holiday",
+    "ticketName": "Ticket 1",
+    "ticketPrice": 31,
+    "ticketQuantity": 1,
+    "image": "http://dummyimage.com/170x287.png/f5e0e3/000000"
+  },
+  {
+    "id": "7266a935-653b-480a-bb96-4645c3cbc777",
+    "eventName": "Event 2",
+    "eventDate": "2023-07-09T17:59:26.400Z",
+    "eventLocation": "Location 2",
+    "eventCategory": "Performing & Arts",
+    "ticketName": "Ticket 2",
+    "ticketPrice": 97,
+    "ticketQuantity": 4,
+    "image": "http://dummyimage.com/472x309.png/35c37a/000000"
+  },
+  {
+    "id": "26a98df7-a56c-4c03-a538-23de438989f4",
+    "eventName": "Event 3",
+    "eventDate": "2023-01-06T12:45:12.064Z",
+    "eventLocation": "Location 3",
+    "eventCategory": "Food & Drink",
+    "ticketName": "Ticket 3",
+    "ticketPrice": 30,
+    "ticketQuantity": 3,
+    "image": "http://dummyimage.com/447x170.png/76f7/000000"
+  },
+  {
+    "id": "b756b683-1a57-4a84-8e90-33f3086eb256",
+    "eventName": "Event 4",
+    "eventDate": "2023-05-25T10:31:35.667Z",
+    "eventLocation": "Location 4",
+    "eventCategory": "Health",
+    "ticketName": "Ticket 4",
+    "ticketPrice": 50,
+    "ticketQuantity": 1,
+    "image": "http://dummyimage.com/521x181.png/87ecd1/000000"
+  }
+]
