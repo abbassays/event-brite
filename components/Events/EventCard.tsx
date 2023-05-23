@@ -8,17 +8,12 @@ import Button from "../UI/Button";
 import { getCategoryIcon } from "../../utils/getCategoryIcon";
 import { EventType } from "../../types";
 import Link from "next/link";
+import getDateString from "../../utils/getDateString";
 
 const EventCard = (event: EventType) => {
-  const { name, description, category, date, location, image } = event;
-  const dateString = new Date(date).toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+  const { name, description, category, startDate, endDate, location, image } =
+    event;
+
   const Icon = getCategoryIcon(category);
 
   if (!event) return <div>Event not found</div>;
@@ -36,7 +31,10 @@ const EventCard = (event: EventType) => {
         <div className="my-4 space-y-2">
           <div className="flex items-center">
             <FaCalendarAlt size={16} className="text-gray-600 mr-2" />
-            <p className="text-gray-600 text-sm">{dateString}</p>
+            <p className="text-gray-600 text-sm">
+              <span className="block">{getDateString(startDate)} to</span>
+              <span className="block">{" " + getDateString(endDate)}</span>
+            </p>
           </div>
 
           <div className="flex items-center">

@@ -17,7 +17,7 @@ const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
 
     const selectedEvents = events.filter(
       (event) =>
-        new Date(event.date).toDateString() ===
+        new Date(event.startDate).toDateString() ===
         new Date(e.target.value).toDateString()
     );
     setEvents(selectedEvents);
@@ -26,12 +26,12 @@ const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
   const handleSorting = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.target.value === "latest") {
       const sortedEvents = [...events].sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
       );
       setEvents(sortedEvents);
     } else if (e.target.value === "oldest") {
       const sortedEvents = [...events].sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
       );
       setEvents(sortedEvents);
     } else {

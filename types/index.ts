@@ -12,13 +12,8 @@ export interface EventType {
   name: string;
   description: string;
   category: string;
-  /* can be only: 
-   Music, Sports & Fitness, Health, Food & Drink, Business, Performing & Arts, Holiday, Hobbies
-  */
-  date: string;
-  /* 
-    ISO string with time as well
-   */
+  startDate: string;
+  endDate: string;
   location: string;
   image: string;
 }
@@ -57,4 +52,3 @@ export interface ItemType {
 
   image: string;
 }
-

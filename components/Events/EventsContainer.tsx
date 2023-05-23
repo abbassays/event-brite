@@ -14,18 +14,7 @@ const EventsContainer = ({
   title: string;
   description?: string;
 }) => {
-  const eventsGrid = events.map((event) => (
-    <EventCard
-      key={event.id}
-      name={event.name}
-      description={event.description}
-      category={event.category}
-      date={event.date}
-      location={event.location}
-      image={event.image}
-      id={event.id}
-    />
-  ));
+  const eventsGrid = events.map((event) => <EventCard {...event} />);
 
   return (
     <Container

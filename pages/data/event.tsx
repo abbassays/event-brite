@@ -19,8 +19,8 @@ const generateRandomData = () => {
   };
 
   const getRandomDate = () => {
-    const start = new Date(2023, 0, 1); // Start date
-    const end = new Date(2023, 11, 31); // End date
+    const start = new Date(2023, 4, 1); // Start date
+    const end = new Date(2023, 4, 30); // End date
     const randomDate = new Date(
       start.getTime() + Math.random() * (end.getTime() - start.getTime())
     );
@@ -32,7 +32,8 @@ const generateRandomData = () => {
     const height = Math.floor(Math.random() * 300) + 100; // Random height between 100 and 400
     const bgColor = Math.floor(Math.random() * 16777215).toString(16); // Random hexadecimal color code
     const fgColor = "000000"; // Fixed foreground color
-    return `http://dummyimage.com/${width}x${height}.png/${bgColor}/${fgColor}`;
+    // return `http://dummyimage.com/${width}x${height}.png/${bgColor}/${fgColor}`;
+    return `https://picsum.photos/${width}/${height}`;
   };
 
   const data = [];
@@ -41,9 +42,14 @@ const generateRandomData = () => {
     const event = {
       id: uuidv4(),
       name: `Event ${i + 1}`,
-      description: `Description for Event ${i + 1}. Description for Event ${i + 1}. Description for Event ${i + 1}. Description for Event ${i + 1}. Description for Event ${i + 1}. `,
+      description: `Description for Event ${i + 1}. Description for Event ${
+        i + 1
+      }. Description for Event ${i + 1}. Description for Event ${
+        i + 1
+      }. Description for Event ${i + 1}. `,
       category: getRandomCategory(),
-      date: getRandomDate(),
+      startDate: getRandomDate(),
+      endDate: getRandomDate(),
       location: `Location ${i + 1}`,
       image: getRandomImageLink(),
     };

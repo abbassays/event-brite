@@ -7,26 +7,18 @@ import { getCategoryIcon } from "../../utils/getCategoryIcon";
 
 import Container from "../UI/Container";
 import ImageContainer from "../UI/ImageContainer";
+import getDateString from "../../utils/getDateString";
 
 const EventDetails = ({
   name,
   description,
   category,
-  date,
+  startDate,
+  endDate,
   location,
   image,
 }: EventType) => {
   const Icon = getCategoryIcon(category || null);
-
-  const dateObject = new Date(date);
-  const dateString = dateObject.toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
 
   return (
     <Container>
@@ -49,7 +41,10 @@ const EventDetails = ({
             </div>
             <div className="flex flex-col">
               <h3 className="text-xl font-medium text-black">Date</h3>
-              <p className="text-sm">{dateString}</p>
+              <p className="text-gray-600 text-sm">
+                <span className="block">{getDateString(startDate)} to</span>
+                <span className="block">{" " + getDateString(endDate)}</span>
+              </p>
             </div>
           </div>
 

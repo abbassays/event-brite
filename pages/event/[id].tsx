@@ -24,20 +24,12 @@ const Event = () => {
   if (!event) return <div>Loading...</div>;
 
   const similarGrid = events.filter(
-    (_event) => _event.category === event.category
+    (_event) => _event.category === event.category && _event.id !== event.id
   );
 
   return (
     <Layout title={event.name}>
-      <EventDetails
-        id={event.id}
-        name={event.name}
-        description={event.description}
-        category={event.category}
-        date={event.date}
-        location={event.location}
-        image={event.image}
-      />
+      <EventDetails {...event} />
 
       <EventsContainer
         events={similarGrid}

@@ -20,7 +20,11 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div>
-      <label className="block mb-1 font-medium text-gray-900">{label}</label>
+      <label className="block mb-1 font-medium text-gray-900">
+        {label}
+
+        {rules?.required && <span className="text-red-400"> *</span>}
+      </label>
       <input
         {...register(name, rules)}
         className={`

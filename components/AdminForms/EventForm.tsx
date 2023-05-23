@@ -20,6 +20,9 @@ const EventForm: React.FC = () => {
     console.log("Submitting data", data, "\nErrors are", errors);
     /* Create Event on backend */
   };
+  const handleTickets = () => {
+    console.log("Errors are", errors);
+  };
 
   const formItems = (
     <>
@@ -39,7 +42,6 @@ const EventForm: React.FC = () => {
         name="Description"
         register={register}
         errors={errors}
-        rules={{ required: "Description is required" }}
       />
       <Input
         type="text"
@@ -63,12 +65,21 @@ const EventForm: React.FC = () => {
       />
       <Input
         type="datetime-local"
-        label="Date & Time"
+        label="Event Starts at"
         placeholder="Date & Time"
-        name="Date"
+        name="StartDate"
         register={register}
         errors={errors}
-        rules={{ required: "Date is required" }}
+        rules={{ required: "Start Date is required" }}
+      />
+      <Input
+        type="datetime-local"
+        label="Event Ends at"
+        placeholder="Date & Time"
+        name="EndDate"
+        register={register}
+        errors={errors}
+        rules={{ required: "End Date is required" }}
       />
       <Input
         type="file"
@@ -82,6 +93,11 @@ const EventForm: React.FC = () => {
         isFile={true}
         accept="image/*"
       />
+      <div className="my-auto">
+        <Button onClick={handleTickets} type="button" variant="secondary">
+          Create Tickets
+        </Button>
+      </div>
     </>
   );
 
@@ -93,7 +109,7 @@ const EventForm: React.FC = () => {
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <div className="mt-10">
+        <div className="mt-10 space-x-6">
           <Button type="submit" variant="primary">
             Create Event
           </Button>
