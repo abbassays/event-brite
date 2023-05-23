@@ -6,6 +6,7 @@ import { OrganiserType } from "../../types";
 import Container from "../UI/Container";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
+import Textarea from "../UI/Textarea";
 
 const OrganiserForm: React.FC = () => {
   const {
@@ -30,15 +31,16 @@ const OrganiserForm: React.FC = () => {
         errors={errors}
         rules={{ required: "Name is required" }}
       />
-      <Input
-        type="text"
-        label="Description"
-        placeholder="Organiser Description"
-        name="description"
-        register={register}
-        errors={errors}
-        rules={{ required: "Description is required" }}
-      />
+      <div className="row-span-2">
+        <Textarea
+          label="Description"
+          placeholder="Organiser Description"
+          name="description"
+          register={register}
+          errors={errors}
+          rules={{ required: "Description is required" }}
+        />
+      </div>
       <Input
         type="file"
         label={"Upload Image"}

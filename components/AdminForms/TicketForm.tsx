@@ -8,6 +8,7 @@ import Container from "../UI/Container";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Select from "../UI/Select";
+import Textarea from "../UI/Textarea";
 
 interface TicketFormProps {
   event?: EventType | undefined;
@@ -65,15 +66,16 @@ const TicketForm = ({ event }: TicketFormProps) => {
         size={1}
         options={ticketOptions}
       />
-
-      <Input
-        type="text"
-        label="Description"
-        placeholder="Ticket Description"
-        name="description"
-        register={register}
-        errors={errors}
-      />
+      <div className="row-span-2">
+        <Textarea
+          label="Description"
+          placeholder="Organiser Description"
+          name="description"
+          register={register}
+          errors={errors}
+          rules={{ required: "Description is required" }}
+        />
+      </div>
 
       <Input
         type="number"

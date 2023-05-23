@@ -8,6 +8,7 @@ import Container from "../UI/Container";
 import Input from "../UI/Input";
 import Select from "../UI/Select";
 import Button from "../UI/Button";
+import Textarea from "../UI/Textarea";
 
 const EventForm: React.FC = () => {
   const {
@@ -35,14 +36,15 @@ const EventForm: React.FC = () => {
         errors={errors}
         rules={{ required: "Name is required" }}
       />
-      <Input
-        type="text"
-        label="Description"
-        placeholder="Event Description"
-        name="Description"
-        register={register}
-        errors={errors}
-      />
+      <div className="row-span-2">
+        <Textarea
+          label="Description"
+          placeholder="Event Description"
+          name="Description"
+          register={register}
+          errors={errors}
+        />
+      </div>
       <Input
         type="text"
         label="Location"
