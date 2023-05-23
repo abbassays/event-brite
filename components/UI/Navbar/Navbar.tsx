@@ -115,7 +115,7 @@ function Navbar() {
                 <Link href={item.link}>{item.name}</Link>
               </p>
             ))}
-            <AdminDropDown />
+            {isLoggedIn && <AdminDropDown />}
           </div>
 
           <div className=" lg:flex justify-between space-x-4 hidden ">
