@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { ItemType, CartType, BoughtTicketType } from "../../types";
+import { CartType, BoughtTicketType, ItemType } from "../../types";
 import allTickets from "../../utils/all_tickets.json";
 
 import Container from "../UI/Container";
@@ -14,27 +14,24 @@ const CartContainer = ({
   cart,
 }: {
   setSelected?: (selected: string) => void;
-  cart?: CartType;
+  cart: CartType;
 }) => {
   const router = useRouter();
   const isCheckout = router.pathname.includes("checkout");
   const shipping = 100;
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [items, setItems] = useState<ItemType[]>([]);
   const [tickets, setTickets] = useState<BoughtTicketType[]>();
 
   const fetchTickets = () => {
     /* Replace this code with your code to fetch tickets */
     let fetchedTickets: BoughtTicketType[] = [];
-    cart?.items.forEach((item) => {
+    cart.items.forEach((cartTicket: ItemType) => {
       const foundTicket = allTickets.find(
-        (ticket) => ticket.id === item.ticketId
+        (ticket) => ticket.id === cartTicket?.ticketId
       );
-      fetchedTickets.push({ ...foundTicket, boughtQuantity: item.quantity });
+      fetchedTickets.push({ ...foundTicket, boughtQuantity: cartTicket?.quantity });
     });
     setTickets(fetchedTickets);
-
-    console.log("2. Fetched Tickets", fetchedTickets);
 
     let totalPrice = 0;
     fetchedTickets.forEach((ticket) => {
@@ -112,7 +109,13 @@ const CartContainer = ({
                     <span>{(totalPrice + shipping).toFixed(2)}</span>
                   </span>
                 </div>
-                <Button onClick={() => setSelected("Billing & Payment")}>
+                <Button
+                  onClick={() => {
+                    isCheckout
+                      ? router.push("/confirmation")
+                      : setSelected("Billing & Payment");
+                  }}
+                >
                   Checkout
                 </Button>
               </div>

@@ -93,7 +93,7 @@ const SearchBar = () => {
 
                       <div className="flex flex-col md:flex-row w-full text-xs md:space-x-3">
                         <div className="md:w-1/2">
-                          <p>{new Date(event.date).toDateString()}</p>
+                          <p>{new Date(event.startDate).toDateString()}</p>
                           <p>{event.location}</p>
                         </div>
                         <div className="md:w-1/2">

@@ -33,7 +33,7 @@ function Navbar() {
     },
     {
       name: "Cart",
-      link: "/",
+      link: "/cart",
     },
   ];
 
@@ -110,7 +110,13 @@ function Navbar() {
             {navbarItems.map((item, index) => (
               <p
                 key={index}
-                className="px-6 py-2 text-lg text-blue-500 hover:text-blue-900 transition-colors"
+                className={`px-6 py-2 text-lg transition-colors
+                  ${
+                    router.pathname === item.link
+                      ? "text-blue-700 font-bold"
+                      : "text-blue-500 hover:text-blue-700"
+                  }
+                `}
               >
                 <Link href={item.link}>{item.name}</Link>
               </p>

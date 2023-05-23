@@ -1,15 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+
+import countryList from "../../utils/countryList";
 
 import Container from "../UI/Container";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
+import Select from "../UI/Select";
 
 const BillingPaymentForm = ({
   setSelected,
 }: {
   setSelected?: (selected: string) => void;
 }) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -18,6 +23,9 @@ const BillingPaymentForm = ({
 
   const onSubmit = (data: any) => {
     console.log("Submitting data", data, "\nErrors are", errors);
+    /* Replace this code with your code to submit form to backend */
+
+    router.push("/checkout");
     /* Create Event on backend */
   };
 
@@ -58,14 +66,18 @@ const BillingPaymentForm = ({
           rules={{ required: "Address is required" }}
         />
 
-        <Input
-          type="text"
+        <Select
           label="Country"
-          placeholder="Your Country"
-          name="Country"
+          name="country"
           register={register}
           errors={errors}
           rules={{ required: "Country is required" }}
+          placeholder="Select an option"
+          size={1}
+          options={countryList.map((country) => ({
+            id: country,
+            name: country,
+          }))}
         />
 
         <Input

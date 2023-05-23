@@ -23,7 +23,6 @@ const cart = () => {
     fetchCart();
   }, [allCarts]);
 
-  console.log("1. Cart is ", cart);
 
   return (
     <Layout title="Cart">

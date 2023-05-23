@@ -1,5 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import allTickets from "../../utils/all_tickets.json";
 import allEvents from "../../utils/all_events.json";
@@ -16,6 +17,7 @@ type ModalProps = {
 };
 
 const TicketModal = ({ eventId, isOpen, setIsOpen }: ModalProps) => {
+  const router = useRouter();
   const [tickets, setTickets] = useState<TicketType[]>();
   const [event, setEvent] = useState<EventType>();
   //   Cart will also be fetched from user details
@@ -103,7 +105,15 @@ const TicketModal = ({ eventId, isOpen, setIsOpen }: ModalProps) => {
                     ))
                   }
                 </div>
-                <div className="flex justify-end">
+                <div className="flex justify-end sm:space-x-4 sm:flex-row flex-col space-y-4 items-end sm:items-center sm:space-y-0">
+                  <div>
+                    <Button
+                      variant="tertiary"
+                      onClick={() => router.push("/cart")}
+                    >
+                      Go to Cart
+                    </Button>
+                  </div>
                   <div>
                     <Button onClick={handleAddToCart}>Add to Cart</Button>
                   </div>

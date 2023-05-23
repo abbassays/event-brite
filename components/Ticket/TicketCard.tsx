@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 
-import { CartType, TicketType } from "../../types";
+import { CartType, ItemType, TicketType } from "../../types";
 
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { getDateString } from "../../utils/DateFunctions";
@@ -26,7 +26,9 @@ const TicketCard = ({
   const [boughtQuantity, setBoughtQuantity] = useState<number>(0);
 
   const addToCart = () => {
-    const ticketIndex = cart.items.findIndex((item) => item.ticketId === id);
+    const ticketIndex = cart.items.findIndex(
+      (item: ItemType) => item.ticketId === id
+    );
     if (boughtQuantity < 10) {
       if (ticketIndex !== -1) {
         // Ticket is already in the cart, update quantity
@@ -46,7 +48,9 @@ const TicketCard = ({
 
   const removeFromCart = () => {
     if (boughtQuantity > 0) {
-      const ticketIndex = cart.items.findIndex((item) => item.ticketId === id);
+      const ticketIndex = cart.items.findIndex(
+        (item: ItemType) => item.ticketId === id
+      );
       if (ticketIndex !== -1) {
         // Ticket is already in the cart, update quantity
         const updatedItems = [...cart.items];
@@ -58,7 +62,7 @@ const TicketCard = ({
   };
 
   return (
-    <div className="flex flex-col border py-2 p-6 rounded-lg">
+    <div className="flex flex-col border py-2 px-2 sm:px-6 rounded-lg">
       <div className="flex justify-between items-center">
         <p className="font-medium text-lg">
           {name}
@@ -67,7 +71,7 @@ const TicketCard = ({
         <div className="flex justify-between items-center text-center space-x-2">
           <button
             className={`
-                rounded p-2 transition-all
+                rounded p-1 transition-all text-sm sm:p-2 sm:text-base
                 ${
                   boughtQuantity > 0
                     ? "bg-blue-600 text-white"
@@ -81,7 +85,7 @@ const TicketCard = ({
           <div className="w-4">{boughtQuantity}</div>
           <button
             className={`
-                rounded p-2 transition-all
+                rounded p-1 transition-all text-sm sm:p-2 sm:text-base
                 ${
                   boughtQuantity < 10
                     ? "bg-blue-600 text-white"

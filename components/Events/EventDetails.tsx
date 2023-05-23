@@ -22,7 +22,6 @@ const EventDetails = ({
 }: EventType) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  console.log(isOpen);
   return (
     <Container>
       <TicketModal eventId={id} isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -37,7 +36,7 @@ const EventDetails = ({
       </div>
 
       <div className="flex flex-col sm:flex-row w-full mt-4">
-        <div className="flex flex-col space-y-10 w-3/5">
+        <div className="flex flex-col space-y-10 sm:w-3/5">
           <h2 className="text-2xl md:text-3xl font-medium">Event Details</h2>
           <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
             <div className="bg-slate-200 rounded-lg p-3 h-fit">
@@ -77,7 +76,7 @@ const EventDetails = ({
           </div>
         </div>
 
-        <div className="w-2/5">
+        <div className="sm:w-2/5 sm:mt-0 mt-6">
           <div className="rounded-xl border border-slate-300 shadow p-10 space-y-6 flex flex-col items-center">
             <p className="font-medium text-xl text-gray-600">
               See exciting ticket options here

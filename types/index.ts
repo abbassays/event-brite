@@ -36,19 +36,8 @@ export interface TicketType {
 }
 
 export interface ItemType {
-  id: string;
-
-  eventName: string;
-  eventDate: string;
-  eventLocation: string;
-  eventCategory: string;
-
-  ticketName: string;
-
-  ticketPrice: number;
-  ticketQuantity: number;
-
-  image: string;
+  ticketId: string;
+  quantity: number;
 }
 
 export interface CartType {

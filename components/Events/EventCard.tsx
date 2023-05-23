@@ -17,7 +17,7 @@ const EventCard = (event: EventType) => {
   if (!event) return <div>Event not found</div>;
 
   return (
-    <div className="bg-white shadow-md rounded-md flex flex-col overflow-hidden">
+    <div className="bg-white shadow-md rounded-md flex flex-col overflow-hidden max-w-sm sm:max-w-xs md:max-w-sm lg:max-w-none">
       <div className="relative h-40">
         <Image src={image} alt={name} fill className="object-cover border" />
       </div>
@@ -50,7 +50,7 @@ const EventCard = (event: EventType) => {
 
         <div>
           <Button className="mx-auto" variant="primary">
-            <Link href={`/event/${event.id}`}>Learn More</Link>
+            <Link href={`/event/${event.id}`}>See Details</Link>
           </Button>
         </div>
       </div>

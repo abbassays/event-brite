@@ -28,14 +28,16 @@ const Events = () => {
     fetchEvents();
   }, [allEvents, currentPage]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [events]);
+  console.log(
+    "events",events
+  );
 
   return (
     <Layout title="Events">
       <Container>
-        <Filter events={events} allEvents={allEvents} setEvents={setEvents} />
+        <Filter events={events} allEvents={allEvents} setEvents={setEvents}
+          setCurrentPage={setCurrentPage}
+        />
         <EventsContainer
           events={events}
           title="All Events"
@@ -44,7 +46,7 @@ const Events = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          totalItems={events.length}
+          totalItems={allEvents.length}
           itemsPerPage={itemsPerPage}
         />
       </Container>

@@ -34,7 +34,7 @@ const ItemCard = ({
   return (
     <div className="relative flex flex-wrap items-center xl:justify-between -mx-4 mb-8 pb-8 border-b border-gray-400 border-opacity-40">
       <div className="relative w-32 aspect-square px-4 mb-6 xl:mb-0 border mx-auto lg:mx-0">
-        <Image className="object-cover" src={image} alt="" fill />
+        <Image className="object-cover" src={event?.image} alt="" fill />
       </div>
       <div className="w-full md:w-auto px-4 mb-6 xl:mb-0">
         <p className="block mb-2 text-xl font-heading font-medium hover:underline">

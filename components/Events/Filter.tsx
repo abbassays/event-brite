@@ -1,21 +1,28 @@
 import React from "react";
 
 import { EventType } from "../../types";
+import { setegid } from "process";
 
 type FilterProps = {
   events: EventType[];
   allEvents: EventType[];
   setEvents: React.Dispatch<React.SetStateAction<EventType[]>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
+const Filter = ({
+  events,
+  allEvents,
+  setEvents,
+  setCurrentPage,
+}: FilterProps) => {
   const handleFilterByDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
-      setEvents(allEvents);
+      const resetEvents = allEvents;
+      setEvents(resetEvents.slice(0, 12));
       return;
     }
-
-    console.log("Date: ", e.target.value);
+    setCurrentPage(1);
 
     const selectedEvents = allEvents.filter(
       (event) =>
@@ -39,8 +46,8 @@ const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
       );
       setEvents(sortedEvents);
     } else {
-      console.log("here");
-      setEvents(allEvents);
+      const resetEvents = allEvents;
+      setEvents(resetEvents.slice(0, 12));
     }
   };
 
