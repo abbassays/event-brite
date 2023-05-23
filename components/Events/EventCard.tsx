@@ -5,16 +5,14 @@ import { IoLocationSharp } from "react-icons/io5";
 
 import Button from "../UI/Button";
 
-import { getCategoryIcon } from "../../utils/getCategoryIcon";
 import { EventType } from "../../types";
 import Link from "next/link";
 import { getDateTimeString } from "../../utils/DateFunctions";
+import CategoryIcon from "../../utils/CategoryIcon";
 
 const EventCard = (event: EventType) => {
   const { name, description, category, startDate, endDate, location, image } =
     event;
-
-  const Icon = getCategoryIcon(category);
 
   if (!event) return <div>Event not found</div>;
 
@@ -38,7 +36,9 @@ const EventCard = (event: EventType) => {
           </div>
 
           <div className="flex items-center">
-            <Icon size={16} className="text-gray-600 mr-2" />
+            <p className="text-gray-600 mr-2">
+              <CategoryIcon category={category} />
+            </p>
             <p className="text-gray-600 text-sm capitalize">{category}</p>
           </div>
 

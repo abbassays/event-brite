@@ -4,7 +4,6 @@ export interface CategoryType {
   category: string;
   count: number;
   onClick?: () => void;
-  Icon: React.ElementType;
 }
 
 export interface EventType {
@@ -60,4 +59,8 @@ export interface CartType {
         quantity: number;
       }[]
     | [];
+}
+
+export interface BoughtTicketType extends TicketType {
+  boughtQuantity: number;
 }

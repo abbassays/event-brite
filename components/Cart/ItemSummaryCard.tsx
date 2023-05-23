@@ -1,31 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { ItemType } from "../../types";
-import { FaCalendarAlt } from "react-icons/fa";
-import { IoLocationSharp } from "react-icons/io5";
-import { getCategoryIcon } from "../../utils/getCategoryIcon";
+import { BoughtTicketType, EventType } from "../../types";
+import allEvents from "../../utils/all_events.json";
 
 const ItemSummaryCard = ({
-  id,
-  eventCategory,
-  eventDate,
-  eventLocation,
-  eventName,
-  ticketName,
-  ticketPrice,
-  ticketQuantity,
   image,
-}: ItemType) => {
-  const Icon = getCategoryIcon(eventCategory);
-  const dateString = new Date(eventDate).toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+  boughtQuantity,
+  type,
+  eventId,
+}: BoughtTicketType) => {
+  const [event, setEvent] = useState<EventType>();
+
+  const fetchEvent = () => {
+    /* Replace this code with your code to fetch event */
+    const fetchedEvent = allEvents.find((event) => event.id === eventId);
+    setEvent(fetchedEvent);
+  };
+
+  useEffect(() => {
+    fetchEvent();
+  }, [eventId]);
 
   return (
     <div className="relative flex flex-wrap items-center space-x-10 -mx-4 border-b border-gray-400 border-opacity-40">
@@ -35,12 +30,11 @@ const ItemSummaryCard = ({
 
       <div className="w-full md:w-auto px-4 mb-6 xl:mb-0">
         <p className="block mb-2 text-xl font-heading font-medium hover:underline">
-          {eventName} -{" "}
-          <span className="text-lg text-gray-700">{ticketName}</span>
+          {event?.name} - <span className="text-lg text-gray-700">{type}</span>
         </p>
         <div className="flex items-center text-sm">
           <span className="font-medium mr-1">Qty:</span>
-          {ticketQuantity}
+          {boughtQuantity}
         </div>
       </div>
     </div>

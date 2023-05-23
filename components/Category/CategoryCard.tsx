@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 
 import { CategoryType } from "../../types";
+import CategoryIcon from "../../utils/CategoryIcon";
 
-const CategoryCard = ({ category, count, onClick, Icon }: CategoryType) => {
+const CategoryCard = ({ category, count, onClick }: CategoryType) => {
   return (
     <Link
       href={`/events?category=${category}`}
@@ -11,7 +12,9 @@ const CategoryCard = ({ category, count, onClick, Icon }: CategoryType) => {
     >
       <div className="flex flex-row items-center justify-between md:space-x-4 w-full p-6 bg-white border border-gray-200 rounded-lg shadow">
         <div className="mb-4">
-          <Icon size={32} className="text-blue-500" />
+          <p className="text-blue-500">
+            <CategoryIcon category={category} />
+          </p>
         </div>
 
         <div className="w-full text-center items-center">

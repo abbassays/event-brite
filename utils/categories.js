@@ -1,5 +1,4 @@
 import events from "./all_events.json";
-import { getCategoryIcon } from "./getCategoryIcon";
 
 const categoriesObject = {};
 events.forEach((item) => {
@@ -14,7 +13,6 @@ const categories = Object.entries(categoriesObject).map(
   ([category, count]) => ({
     category,
     count,
-    Icon: getCategoryIcon(category),
   })
 );
 

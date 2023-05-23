@@ -3,9 +3,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 
 import allItems from "../utils/all_items.json";
 import Container from "../components/UI/Container";
-import ItemCard from "../components/Cart/ItemCard";
 import { ItemType } from "../types";
-import ItemSummaryCard from "../components/Cart/ItemSummaryCard";
 import Image from "next/image";
 import Button from "../components/UI/Button";
 

@@ -1,57 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-
-import { ItemType } from "../../types";
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaQuestion } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
-import { getCategoryIcon } from "../../utils/getCategoryIcon";
+
+import { BoughtTicketType, EventType } from "../../types";
+import allEvents from "../../utils/all_events.json";
+import { getDateString } from "../../utils/DateFunctions";
+import CategoryIcon from "../../utils/CategoryIcon";
 
 const ItemCard = ({
-  id,
-  eventCategory,
-  eventDate,
-  eventLocation,
-  eventName,
-  ticketName,
-  ticketPrice,
-  ticketQuantity,
   image,
-}: ItemType) => {
-  const Icon = getCategoryIcon(eventCategory);
-  const dateString = new Date(eventDate).toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+  boughtQuantity,
+  description,
+  endDate,
+  id,
+  price,
+  startDate,
+  type,
+  eventId,
+}: BoughtTicketType) => {
+  const [event, setEvent] = useState<EventType>();
+
+  const fetchEvent = () => {
+    /* Replace this code with your code to fetch event */
+    const fetchedEvent = allEvents.find((event) => event.id === eventId);
+    setEvent(fetchedEvent);
+  };
+
+  useEffect(() => {
+    fetchEvent();
+  }, [eventId]);
 
   return (
     <div className="relative flex flex-wrap items-center xl:justify-between -mx-4 mb-8 pb-8 border-b border-gray-400 border-opacity-40">
       <div className="relative w-32 aspect-square px-4 mb-6 xl:mb-0 border mx-auto lg:mx-0">
         <Image className="object-cover" src={image} alt="" fill />
       </div>
-
       <div className="w-full md:w-auto px-4 mb-6 xl:mb-0">
         <p className="block mb-2 text-xl font-heading font-medium hover:underline">
-          {eventName} -{" "}
-          <span className="text-lg text-gray-700">{ticketName}</span>
+          {event?.name} - <span className="text-lg text-gray-700">{type}</span>
         </p>
         <div className="flex flex-col flex-wrap font-medium text-gray-700">
           <div className="flex items-center">
             <FaCalendarAlt size={16} className="mr-2 text-blue-500" />
-            <p>{dateString}</p>
+            <p>{"Starts " + getDateString(startDate)}</p>
           </div>
 
           <div className="flex items-center">
-            <Icon size={16} className="mr-2 text-blue-500" />
-            <p className=" capitalize">{eventCategory}</p>
+            <p className="mr-2 text-blue-500">
+              <CategoryIcon category={event?.category} />
+            </p>
+            <p className=" capitalize">{event?.category}</p>
           </div>
 
           <div className="flex items-center">
             <IoLocationSharp size={16} className="mr-2 text-blue-500" />
-            <p>{eventLocation}</p>
+            <p>{event?.location}</p>
           </div>
         </div>
       </div>
@@ -60,14 +64,14 @@ const ItemCard = ({
           <div className="flex items-center">
             <h4 className="mr-4 font-heading font-medium">Qty:</h4>
             <div className="w-16 px-3 py-2 text-center placeholder-gray-400 text-gray-400 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl">
-              {ticketQuantity}
+              {boughtQuantity}
             </div>
           </div>
         </div>
         <div className="w-full xl:w-auto px-4">
           <span className="text-xl font-heading font-medium text-blue-500">
             <span className="text-sm">$</span>
-            <span>{ticketPrice.toFixed(2)}</span>
+            <span>{price.toFixed(2)}</span>
           </span>
         </div>
       </div>

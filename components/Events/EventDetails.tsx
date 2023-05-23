@@ -3,12 +3,12 @@ import Image from "next/image";
 import { IoLocationSharp, IoCalendar } from "react-icons/io5";
 
 import { EventType } from "../../types";
-import { getCategoryIcon } from "../../utils/getCategoryIcon";
 
 import Container from "../UI/Container";
 import ImageContainer from "../UI/ImageContainer";
 import { getDateTimeString } from "../../utils/DateFunctions";
 import TicketModal from "../Ticket/TicketModal";
+import CategoryIcon from "../../utils/CategoryIcon";
 
 const EventDetails = ({
   id,
@@ -21,7 +21,6 @@ const EventDetails = ({
   image,
 }: EventType) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const Icon = getCategoryIcon(category || null);
 
   console.log(isOpen);
   return (
@@ -57,7 +56,9 @@ const EventDetails = ({
 
           <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
             <div className="bg-slate-200 rounded-lg p-3 h-fit">
-              {Icon && <Icon className="text-blue-600" />}
+              <p className="text-blue-600">
+                <CategoryIcon category={category} />
+              </p>
             </div>
             <div className="flex flex-col">
               <h3 className="text-xl font-medium text-black">Category</h3>

@@ -31,7 +31,7 @@ const generateRandomData = () => {
         type: ticketType,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, quam libero ultricies nunc",
-        price: ticketType == "Paid" ? 0 : Math.random() * 100 + 1,
+        price: ticketType !== "Paid" ? 0 : Math.random() * 100 + 1,
         quantity: Math.floor(Math.random() * 5) + 1,
         image: getRandomImageLink(),
         startDate: getRandomDate().toISOString(),

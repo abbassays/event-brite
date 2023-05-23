@@ -12,7 +12,6 @@ const CategoryContainer = () => {
       key={category.category}
       category={category.category}
       count={category.count}
-      Icon={category.Icon}
     />
   ));
 

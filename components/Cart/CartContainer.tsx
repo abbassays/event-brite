@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { ItemType } from "../../types";
-import allItems from "../../utils/all_items.json";
+import { ItemType, CartType, BoughtTicketType } from "../../types";
+import allTickets from "../../utils/all_tickets.json";
 
 import Container from "../UI/Container";
 import Button from "../UI/Button";
@@ -11,29 +11,41 @@ import ItemSummaryCard from "./ItemSummaryCard";
 
 const CartContainer = ({
   setSelected,
+  cart,
 }: {
   setSelected?: (selected: string) => void;
+  cart?: CartType;
 }) => {
   const router = useRouter();
   const isCheckout = router.pathname.includes("checkout");
   const shipping = 100;
-  const [total, setTotal] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const [items, setItems] = useState<ItemType[]>([]);
+  const [tickets, setTickets] = useState<BoughtTicketType[]>();
 
-  const fetchOrder = () => {
-    /* Replace this code with your code to fetch order */
-    setItems(allItems);
+  const fetchTickets = () => {
+    /* Replace this code with your code to fetch tickets */
+    let fetchedTickets: BoughtTicketType[] = [];
+    cart?.items.forEach((item) => {
+      const foundTicket = allTickets.find(
+        (ticket) => ticket.id === item.ticketId
+      );
+      fetchedTickets.push({ ...foundTicket, boughtQuantity: item.quantity });
+    });
+    setTickets(fetchedTickets);
+
+    console.log("2. Fetched Tickets", fetchedTickets);
+
+    let totalPrice = 0;
+    fetchedTickets.forEach((ticket) => {
+      totalPrice += ticket.price * ticket.boughtQuantity;
+    });
+    setTotalPrice(totalPrice);
   };
 
   useEffect(() => {
-    fetchOrder();
-    setTotal(
-      allItems.reduce(
-        (acc, item) => acc + item.ticketPrice * item.ticketQuantity,
-        0
-      )
-    );
-  }, [allItems]);
+    if (allTickets && cart) fetchTickets();
+  }, [allTickets, cart]);
 
   return (
     <Container title="Your Cart" description="Items that you have bought">
@@ -47,22 +59,21 @@ const CartContainer = ({
             >
               <div className="py-12 px-8 md:px-12 bg-white rounded-3xl">
                 <span className="inline-block mb-16 text-darkBlueGray-300 font-medium">
-                  {items.length > 0
-                    ? `You have ${items.reduce(
-                        (acc, item) => acc + item.ticketQuantity,
-                        0
-                      )} items in your cart`
+                  {tickets?.length > 0
+                    ? `You have ${tickets?.reduce((acc, cur) => {
+                        return acc + cur.boughtQuantity;
+                      }, 0)} tickets in your cart`
                     : `Your cart is empty`}
                 </span>
 
                 {/* container start */}
                 <div className={`${isCheckout ? "xl:px-4" : "xl:px-10"}`}>
-                  {items.map((item) => (
-                    <React.Fragment key={item.id}>
+                  {tickets?.map((ticket) => (
+                    <React.Fragment key={ticket.id}>
                       {isCheckout ? (
-                        <ItemSummaryCard {...item} />
+                        <ItemSummaryCard {...ticket} key={ticket.eventId} />
                       ) : (
-                        <ItemCard {...item} />
+                        <ItemCard {...ticket} key={ticket.eventId} />
                       )}
                     </React.Fragment>
                   ))}
@@ -84,7 +95,7 @@ const CartContainer = ({
                   <span>Subtotal</span>
                   <span className="flex items-center text-xl">
                     <span className="mr-2 text-base">$</span>
-                    <span>{total.toFixed(2)}</span>
+                    <span>{totalPrice.toFixed(2)}</span>
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-4 px-10 mb-3 leading-8 bg-white bg-opacity-50 font-heading font-medium rounded-lg">
@@ -98,7 +109,7 @@ const CartContainer = ({
                   <span>Total</span>
                   <span className="flex items-center text-xl text-blue-500">
                     <span className="mr-2 text-base">$</span>
-                    <span>{(total + shipping).toFixed(2)}</span>
+                    <span>{(totalPrice + shipping).toFixed(2)}</span>
                   </span>
                 </div>
                 <Button onClick={() => setSelected("Billing & Payment")}>
