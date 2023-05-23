@@ -22,7 +22,6 @@ const Input: React.FC<InputProps> = ({
     <div>
       <label className="block mb-1 font-medium text-gray-900">
         {label}
-
         {rules?.required && <span className="text-red-400"> *</span>}
       </label>
       <input

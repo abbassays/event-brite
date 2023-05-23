@@ -112,8 +112,8 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center">
-            © 2023 <p className="hover:underline inline">Event Brite</p>. All
-            Rights Reserved.
+            © 2023 <p className="hover:underline inline">Website</p>. All Rights
+            Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             {socialIcons.map(({ Icon, link }, index) => (

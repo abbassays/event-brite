@@ -26,14 +26,14 @@ export interface OrganiserType {
 
 export interface TicketType {
   id: string;
-  name: string;
+  type: string;
   description: string;
   price: number;
   quantity: number;
   location: string;
   image: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   eventId?: string;
 }
 

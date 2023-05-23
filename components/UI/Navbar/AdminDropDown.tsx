@@ -43,7 +43,7 @@ const AdminDropDown = () => {
         >
           {createItems.map((item, index) => (
             <p
-              className="w-full px-3 pr-10 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-blue-100"
+              className="w-full px-3 pr-10 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-blue-50"
               key={index}
             >
               <Link href={item.link}>{item.name}</Link>

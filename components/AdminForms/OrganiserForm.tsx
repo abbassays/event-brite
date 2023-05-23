@@ -25,7 +25,7 @@ const OrganiserForm: React.FC = () => {
         type="text"
         label="Name"
         placeholder="Organiser Name"
-        name="Name"
+        name="name"
         register={register}
         errors={errors}
         rules={{ required: "Name is required" }}
@@ -34,7 +34,7 @@ const OrganiserForm: React.FC = () => {
         type="text"
         label="Description"
         placeholder="Organiser Description"
-        name="Description"
+        name="description"
         register={register}
         errors={errors}
         rules={{ required: "Description is required" }}
@@ -42,7 +42,7 @@ const OrganiserForm: React.FC = () => {
       <Input
         type="file"
         label={"Upload Image"}
-        name="Image"
+        name="image"
         register={register}
         errors={errors}
         rules={{ required: "Image is Required" }}

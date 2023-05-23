@@ -9,13 +9,35 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Select from "../UI/Select";
 
-const TicketForm: React.FC = () => {
+interface TicketFormProps {
+  event?: EventType | undefined;
+}
+
+const TicketForm = ({ event }: TicketFormProps) => {
   const [events, setEvents] = useState<EventType[] | []>([]);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<TicketType>();
+
+  const ticketOptions = ["Free", "Paid", "Donation"].map((option) => ({
+    id: option,
+    name: option,
+  }));
+
+  const numberRules = {
+    min: {
+      value: 0,
+      message: "Must be greater than 0",
+    },
+    pattern: {
+      value: /^[0-9]+(\.[0-9]{1,2})?$/,
+    },
+  };
+
+  const selectedType = watch("type");
 
   const onSubmit = (data: TicketType) => {
     console.log("Submitting data", data, "\nErrors are", errors);
@@ -33,81 +55,78 @@ const TicketForm: React.FC = () => {
 
   const formItems = (
     <>
-      <Input
-        type="text"
-        label="Name"
-        placeholder="Ticket Name"
-        name="Name"
+      <Select
+        label="Ticket Type"
+        name="type"
         register={register}
         errors={errors}
-        rules={{ required: "Ticket Name is required" }}
+        rules={{ required: "Ticekt Type is required" }}
+        placeholder="Select an option"
+        size={1}
+        options={ticketOptions}
       />
 
       <Input
         type="text"
         label="Description"
         placeholder="Ticket Description"
-        name="Description"
+        name="description"
         register={register}
         errors={errors}
-        rules={{ required: "Ticket Description is required" }}
       />
 
       <Input
         type="number"
         label="Price ($)"
         placeholder="Ticket Price"
-        name="Price"
+        name="price"
         register={register}
         errors={errors}
-        rules={{ required: "Ticket Price is required" }}
+        rules={
+          selectedType === "Paid"
+            ? {
+                required: "Ticket Price is required",
+                ...numberRules,
+              }
+            : {}
+        }
       />
 
       <Input
         type="number"
         label="Max Quantity"
         placeholder="Ticket Max Quantity"
-        name="MaxQuantity"
+        name="quantity"
         register={register}
         errors={errors}
-        rules={{ required: "Ticket Max Quantity is required" }}
-      />
-
-      <Input
-        type="text"
-        label="Location"
-        placeholder="Ticket Location"
-        name="Location"
-        register={register}
-        errors={errors}
-        rules={{ required: "Ticket Location is required" }}
+        rules={{ required: "Ticket Max Quantity is required", ...numberRules }}
       />
 
       <Input
         type="datetime-local"
-        label="Start Date & Time"
+        label="Sale Starts at"
         placeholder="Date & Time"
-        name="StartDate"
+        name="startDate"
         register={register}
         errors={errors}
-        rules={{ required: "Start Date is required" }}
+        rules={{ required: "Sale Starts Date is required" }}
       />
 
       <Input
         type="datetime-local"
-        label="End Date & Time"
+        label="Sale Ends at"
         placeholder="Date & Time"
-        name="EndDate"
+        name="endDate"
         register={register}
         errors={errors}
-        rules={{ required: "End Date is required" }}
+        rules={{ required: "Sale End Date is required" }}
       />
 
       <Input
         type="file"
         label={"Upload Image"}
         placeholder={"Upload Image"}
-        name="Image"
+        name="image"
         register={register}
         errors={errors}
         rules={{ required: "Ticket Image is Required" }}
@@ -115,26 +134,15 @@ const TicketForm: React.FC = () => {
         isFile={true}
         accept="image/*"
       />
-
-      <Select
-        label="Event"
-        name="EventId"
-        register={register}
-        errors={errors}
-        rules={{ required: "Event is required" }}
-        placeholder="Select an option"
-        size={1}
-        options={events.map((event: EventType) => {
-          return { id: event.id, name: event.name };
-        })}
-      />
     </>
   );
+
+  console.log(register);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container
-        title="Create Ticket"
+        title={`Create Ticket for ${event?.name}`}
         description="Create a new ticket"
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
