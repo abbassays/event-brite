@@ -33,8 +33,8 @@ const Home = () => {
         description="Check out some of our featured events."
         events={featuredEvents}
       />
-      <div className="flex">
-        <Button className="mx-auto my-8" variant="secondary">
+      <div className="flex my-8">
+        <Button className="mx-auto" variant="secondary">
           <Link href="/events">See More</Link>
         </Button>
       </div>

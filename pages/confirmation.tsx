@@ -7,6 +7,7 @@ import ItemCard from "../components/Cart/ItemCard";
 import { ItemType } from "../types";
 import ItemSummaryCard from "../components/Cart/ItemSummaryCard";
 import Image from "next/image";
+import Button from "../components/UI/Button";
 
 const Confirmation = () => {
   const shipping = 110;
@@ -30,23 +31,23 @@ const Confirmation = () => {
 
   return (
     <Container>
-      <div className="relative py-24 2xl:pb-44 bg-blueGray-100 rounded-b-9xl overflow-hidden">
-        <div className="relative container px-4 mx-auto z-10">
-          <BsFillCheckCircleFill className="bg-white rounded-full xl:mb-10 mx-auto text-green-500 text-7xl" />
-          <h2 className="mb-5 xl:mb-10 text-7xl xl:text-10xl leading-normal font-heading font-medium text-center">
+      <div className="relative py-12 2xl:pb-20 bg-blueGray-100 rounded-b-9xl overflow-hidden">
+        <div className="relative container sm:px-4 mx-auto z-10">
+          <BsFillCheckCircleFill className="bg-white mb-8 rounded-full mx-auto text-green-500 text-7xl" />
+          <h2 className="mb-4 xl:mb-8 text-4xl md:text-5xl xl:text-7xl font-heading font-medium text-center">
             Thanks for your order
           </h2>
-          <p className="mb-14 xl:mb-20 text-lg text-darkBlueGray-400 font-heading text-center">
+          <p className="mb-8 xl:mb-14 md:text-lg text-darkBlueGray-400 font-heading text-center">
             We hope you enjoyed shopping with us.
           </p>
           <div className="mx-auto max-w-2xl">
-            <h3 className="mb-6 text-xl font-heading font-medium">
+            <h3 className="md:mb-3 md:text-xl font-heading font-medium">
               What you ordered:
             </h3>
 
             {/* map start here */}
             {items.map((item) => (
-              <div className="flex space-x-10 items-center rounded-xl bg-white my-1 px-6 py-2 shadow">
+              <div className="flex space-x-3 sm:space-x-10 items-center rounded-xl bg-white my-1 pr-2 sm:pr-6 sm:px-6 sm:py-2 shadow">
                 <div className="relative h-16 aspect-square">
                   <Image
                     src={item.image}
@@ -79,26 +80,27 @@ const Confirmation = () => {
                 <span className="mr-16">Subtotal</span>
                 <span className="flex items-center">
                   <span className="mr-2 text-sm">$</span>
-                  <span className="text-xl">{total.toFixed(2)}</span>
+                  <span className="text-base sm:text-xl">
+                    {total.toFixed(2)}
+                  </span>
                 </span>
               </p>
               <p className="flex items-center justify-between font-heading font-medium">
                 <span className="mr-16">Total</span>
                 <span className="flex items-center">
                   <span className="mr-2 text-sm text-blue-500">$</span>
-                  <span className="text-3xl text-blue-500">
+                  <span className="text-xl sm:text-3xl text-blue-500">
                     {(total + shipping).toFixed(2)}
                   </span>
                 </span>
               </p>
             </div>
+
+            <div className="mt-8 sm:mt-0">
+              <Button variant="tertiary">Back to Home</Button>
+            </div>
           </div>
         </div>
-        <img
-          className="hidden sm:block absolute bottom-0 right-0 -mr-12 lg:-mr-24"
-          src="uinel-assets/images/ecommerce-order/bg.png"
-          alt=""
-        />
       </div>
     </Container>
   );

@@ -38,8 +38,6 @@ const Pagination = ({
     currentPage === 1 ? null : setCurrentPage(currentPage - 1);
   };
 
-  console.log(pageNumbers);
-
   return (
     <div className="flex flex-col items-center mt-10">
       <span className="text-sm text-gray-700">

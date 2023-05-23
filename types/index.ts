@@ -30,7 +30,6 @@ export interface TicketType {
   description: string;
   price: number;
   quantity: number;
-  location: string;
   image: string;
   startDate: string;
   endDate: string;
@@ -51,4 +50,14 @@ export interface ItemType {
   ticketQuantity: number;
 
   image: string;
+}
+
+export interface CartType {
+  id: string;
+  items:
+    | {
+        ticketId: string;
+        quantity: number;
+      }[]
+    | [];
 }

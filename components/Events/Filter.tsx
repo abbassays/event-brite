@@ -15,7 +15,9 @@ const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
       return;
     }
 
-    const selectedEvents = events.filter(
+    console.log("Date: ", e.target.value);
+
+    const selectedEvents = allEvents.filter(
       (event) =>
         new Date(event.startDate).toDateString() ===
         new Date(e.target.value).toDateString()
@@ -26,12 +28,14 @@ const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
   const handleSorting = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.target.value === "latest") {
       const sortedEvents = [...events].sort(
-        (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+        (a, b) =>
+          new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
       );
       setEvents(sortedEvents);
     } else if (e.target.value === "oldest") {
       const sortedEvents = [...events].sort(
-        (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+        (a, b) =>
+          new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
       );
       setEvents(sortedEvents);
     } else {
@@ -41,7 +45,7 @@ const Filter = ({ events, allEvents, setEvents }: FilterProps) => {
   };
 
   return (
-    <div className="flex space-x-10 justify-end font-medium text-gray-700 bg-blue-100 p-2 rounded-lg">
+    <div className="flex space-x-10 justify-end font-medium text-gray-700 bg-slate-200 p-2 rounded-lg">
       <div className="flex items-center space-x-6 w-fit">
         <label htmlFor="date" className="">
           Date

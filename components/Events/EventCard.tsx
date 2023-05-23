@@ -8,7 +8,7 @@ import Button from "../UI/Button";
 import { getCategoryIcon } from "../../utils/getCategoryIcon";
 import { EventType } from "../../types";
 import Link from "next/link";
-import getDateString from "../../utils/getDateString";
+import { getDateTimeString } from "../../utils/DateFunctions";
 
 const EventCard = (event: EventType) => {
   const { name, description, category, startDate, endDate, location, image } =
@@ -32,8 +32,8 @@ const EventCard = (event: EventType) => {
           <div className="flex items-center">
             <FaCalendarAlt size={16} className="text-gray-600 mr-2" />
             <p className="text-gray-600 text-sm">
-              <span className="block">{getDateString(startDate)} to</span>
-              <span className="block">{" " + getDateString(endDate)}</span>
+              <span className="block">{getDateTimeString(startDate)} to</span>
+              <span className="block">{" " + getDateTimeString(endDate)}</span>
             </p>
           </div>
 
