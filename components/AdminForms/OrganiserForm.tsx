@@ -38,7 +38,6 @@ const OrganiserForm: React.FC = () => {
           name="description"
           register={register}
           errors={errors}
-          rules={{ required: "Description is required" }}
         />
       </div>
       <Input

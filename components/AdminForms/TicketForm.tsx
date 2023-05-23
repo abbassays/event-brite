@@ -66,6 +66,7 @@ const TicketForm = ({ event }: TicketFormProps) => {
         size={1}
         options={ticketOptions}
       />
+      
       <div className="row-span-2">
         <Textarea
           label="Description"
@@ -73,7 +74,6 @@ const TicketForm = ({ event }: TicketFormProps) => {
           name="description"
           register={register}
           errors={errors}
-          rules={{ required: "Description is required" }}
         />
       </div>
 
