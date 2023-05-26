@@ -95,11 +95,6 @@ const EventForm: React.FC = () => {
         isFile={true}
         accept="image/*"
       />
-      <div className="my-auto">
-        <Button onClick={handleTickets} type="button" variant="secondary">
-          Create Tickets
-        </Button>
-      </div>
     </>
   );
 

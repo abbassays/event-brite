@@ -113,8 +113,8 @@ function Navbar() {
                 className={`px-6 py-2 text-lg transition-colors
                   ${
                     router.pathname === item.link
-                      ? "text-blue-700 font-bold"
-                      : "text-blue-500 hover:text-blue-700"
+                      ? "text-blue-600 font-bold underline underline-offset-4"
+                      : "text-blue-500 hover:text-blue-600"
                   }
                 `}
               >
@@ -146,7 +146,7 @@ function Navbar() {
       <div
         className={`${
           menuOpen ? "absolute" : "hidden"
-        } lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-20`}
+        } lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-40`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navbarItems.map((item, index) => (

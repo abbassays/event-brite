@@ -10,7 +10,6 @@ import ItemSummary from "./ItemSummary";
 
 const ConfirmationContainer = ({ cart }: { cart: CartType }) => {
   const router = useRouter();
-  const shipping = 110;
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [tickets, setTickets] = useState<BoughtTicketType[]>();
 
@@ -68,21 +67,12 @@ const ConfirmationContainer = ({ cart }: { cart: CartType }) => {
           {/* map end here */}
 
           <div className="sm:max-w-max sm:ml-auto mt-10">
-            <p className="flex items-center justify-between pb-1 mb-1 font-heading font-medium border-b border-black border-opacity-10">
-              <span className="mr-16">Subtotal</span>
-              <span className="flex items-center">
-                <span className="mr-2 text-sm">$</span>
-                <span className="text-base sm:text-xl">
-                  {totalPrice.toFixed(2)}
-                </span>
-              </span>
-            </p>
-            <p className="flex items-center justify-between font-heading font-medium">
+            <p className="flex items-center justify-between font-heading font-medium border-t border-black border-opacity-10">
               <span className="mr-16">Total</span>
               <span className="flex items-center">
                 <span className="mr-2 text-sm text-blue-500">$</span>
                 <span className="text-xl sm:text-3xl text-blue-500">
-                  {(totalPrice + shipping).toFixed(2)}
+                  {(totalPrice).toFixed(2)}
                 </span>
               </span>
             </p>

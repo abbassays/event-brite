@@ -46,6 +46,7 @@ const TicketForm = ({ event }: TicketFormProps) => {
   };
 
   const fetchEvents = () => {
+
     /* fetch events from backend here to map in dropdown */
     setEvents(allEvents);
   };
@@ -66,7 +67,7 @@ const TicketForm = ({ event }: TicketFormProps) => {
         size={1}
         options={ticketOptions}
       />
-      
+
       <div className="row-span-2">
         <Textarea
           label="Description"
@@ -124,6 +125,17 @@ const TicketForm = ({ event }: TicketFormProps) => {
         rules={{ required: "Sale End Date is required" }}
       />
 
+      <Select
+        label="Event"
+        name="eventId"
+        register={register}
+        errors={errors}
+        rules={{ required: "Event is required" }}
+        placeholder="Select an option"
+        size={1}
+        options={events}
+      />
+
       <Input
         type="file"
         label={"Upload Image"}
@@ -131,15 +143,12 @@ const TicketForm = ({ event }: TicketFormProps) => {
         name="image"
         register={register}
         errors={errors}
-        rules={{ required: "Ticket Image is Required" }}
         aria-describedby="file_input_help"
         isFile={true}
         accept="image/*"
       />
     </>
   );
-
-  console.log(register);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

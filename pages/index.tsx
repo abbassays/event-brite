@@ -8,6 +8,8 @@ import Layout from "../components/UI/Layout";
 import CategoryContainer from "../components/Category/CategoryContainer";
 import EventsContainer from "../components/Events/EventsContainer";
 import Button from "../components/UI/Button";
+import ImageContainer from "../components/UI/ImageContainer";
+import Banner from "../components/UI/Banner";
 
 const Home = () => {
   const [featuredEvents, setFeaturedEvents] = useState<EventType[]>([]);
@@ -27,6 +29,8 @@ const Home = () => {
 
   return (
     <Layout title="Home">
+      <Banner link="/images/banner.jpeg" alt="banner" />
+
       <CategoryContainer />
       <EventsContainer
         title="Featured Events"

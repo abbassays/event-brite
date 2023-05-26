@@ -75,7 +75,7 @@ const SearchBar = () => {
           )}
 
           {matchedEvents.length > 0 && (
-            <div className="flex flex-col w-full absolute top-[51px] border border-b-0 z-20 bg-white shadow-lg shadow-gray-600">
+            <div className="flex flex-col w-full absolute top-[51px] border border-b-0 z-40 bg-white shadow-lg shadow-gray-600">
               {matchedEvents.slice(0, 5).map((event: EventType) => (
                 <Link key={event.id} href={`/event/${event.id}`}>
                   <div className="flex w-full overflow-hidden space-x-4 items-center hover:bg-blue-100 transition-colors border-b p-2">

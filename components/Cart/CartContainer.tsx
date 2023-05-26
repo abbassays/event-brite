@@ -18,7 +18,6 @@ const CartContainer = ({
 }) => {
   const router = useRouter();
   const isCheckout = router.pathname.includes("checkout");
-  const shipping = 100;
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [tickets, setTickets] = useState<BoughtTicketType[]>();
 
@@ -88,25 +87,11 @@ const CartContainer = ({
                 <h2 className="mb-7 md:mt-6 text-3xl font-heading font-medium">
                   Cart totals
                 </h2>
-                <div className="flex items-center justify-between py-4 px-10 mb-3 leading-8 bg-white bg-opacity-50 font-heading font-medium rounded-lg">
-                  <span>Subtotal</span>
-                  <span className="flex items-center text-xl">
-                    <span className="mr-2 text-base">$</span>
-                    <span>{totalPrice.toFixed(2)}</span>
-                  </span>
-                </div>
-                <div className="flex items-center justify-between py-4 px-10 mb-3 leading-8 bg-white bg-opacity-50 font-heading font-medium rounded-lg">
-                  <span>Shipping</span>
-                  <span className="flex items-center text-xl">
-                    <span className="mr-2 text-base">$</span>
-                    <span>{shipping.toFixed(2)}</span>
-                  </span>
-                </div>
-                <div className="flex items-center justify-between py-4 px-10 mb-6 leading-8 bg-white font-heading font-medium rounded-lg">
+                <div className="flex text-xl items-center justify-between py-4 px-10 mb-6 leading-8 bg-white font-heading font-medium rounded-lg">
                   <span>Total</span>
                   <span className="flex items-center text-xl text-blue-500">
                     <span className="mr-2 text-base">$</span>
-                    <span>{(totalPrice + shipping).toFixed(2)}</span>
+                    <span>{(totalPrice).toFixed(2)}</span>
                   </span>
                 </div>
                 <Button
