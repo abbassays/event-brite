@@ -38,7 +38,7 @@ function Navbar() {
   ];
 
   const handleLogin = () => {
-    console.log("login");
+    router.push("/login");
   };
 
   const handleLogout = () => {
@@ -46,7 +46,7 @@ function Navbar() {
   };
 
   const handleSignUp = () => {
-    console.log("signup");
+    router.push("/signup");
   };
 
   return (
@@ -166,11 +166,17 @@ function Navbar() {
             </>
           ) : (
             <>
-              <p className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+              <p
+                onClick={handleLogin}
+                className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50"
+              >
                 Login
               </p>
 
-              <p className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
+              <p
+                onClick={handleSignUp}
+                className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50"
+              >
                 Sign Up
               </p>
             </>
