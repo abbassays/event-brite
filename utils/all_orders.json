@@ -1,0 +1,86 @@
+[
+  {
+    "id": "6b0ab3af-865a-4326-b36f-4ae09471c989",
+    "items": [
+      {
+        "ticketId": "0754f233-2b98-4418-bb1a-f75a63825cdf",
+        "quantity": 3
+      },
+      {
+        "ticketId": "f3a305ac-6ebe-4440-9df2-b48dc4532ffb",
+        "quantity": 3
+      },
+      {
+        "ticketId": "248c4e3b-0aee-49ad-a670-bda00596b200",
+        "quantity": 5
+      },
+      {
+        "ticketId": "79b7502e-bb81-42ae-ac74-43c4780ee830",
+        "quantity": 3
+      },
+      {
+        "ticketId": "7277949c-7edb-420f-bdbe-299a1bece2be",
+        "quantity": 2
+      }
+    ],
+    "billingAddress": "Some Address here.",
+    "paymentMethod": "Credit Card",
+    "date": "2023-01-22T22:34:19.199Z"
+  },
+  {
+    "id": "9837ab7a-2303-43ef-853b-0f6797d4fa7f",
+    "items": [
+      {
+        "ticketId": "f571eff5-7eaa-448e-8db4-5e6903437ad9",
+        "quantity": 5
+      },
+      {
+        "ticketId": "a51bd0e9-4721-4cfb-b398-75f152e4d4a8",
+        "quantity": 3
+      },
+      {
+        "ticketId": "95c434c1-b8fb-404d-953a-7cacf99e2fc4",
+        "quantity": 1
+      },
+      {
+        "ticketId": "587bbe1b-b418-44d9-b275-24924c5822d2",
+        "quantity": 5
+      },
+      {
+        "ticketId": "8a1fde3a-3211-425a-a304-bb8debc20783",
+        "quantity": 5
+      }
+    ],
+    "billingAddress": "Some Address here.",
+    "paymentMethod": "Credit Card",
+    "date": "2023-01-22T22:34:19.199Z"
+  },
+  {
+    "id": "9edcae86-ea80-4c14-82df-9dd159fb2c6a",
+    "items": [
+      {
+        "ticketId": "42fad134-f47f-430c-a630-fd66eadcd686",
+        "quantity": 3
+      },
+      {
+        "ticketId": "0df45632-7658-4b59-9f5d-30384d5e8cdb",
+        "quantity": 5
+      },
+      {
+        "ticketId": "08ba327d-f932-4a4c-87e2-915cdc361ccb",
+        "quantity": 5
+      },
+      {
+        "ticketId": "c8a5d4be-8993-4b9a-852e-7a49f5737cfe",
+        "quantity": 2
+      },
+      {
+        "ticketId": "8c218c80-fa25-49e4-ad4a-5118f418d964",
+        "quantity": 1
+      }
+    ],
+    "billingAddress": "Some Address here.",
+    "paymentMethod": "Credit Card",
+    "date": "2023-01-22T22:34:19.199Z"
+  }
+]

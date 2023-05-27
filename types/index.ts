@@ -53,3 +53,32 @@ export interface CartType {
 export interface BoughtTicketType extends TicketType {
   boughtQuantity: number;
 }
+
+export interface UserType {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  avatar: string;
+}
+
+export interface ChangePasswordType {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+export interface BillingAddressType {
+  name?: string;
+  username?: string;
+  address: string;
+  state: string;
+  country: string;
+  postalCode: string;
+}
+
+export interface OrderType extends CartType {
+  billingAddress: string;
+  paymentMethod: string;
+  date: string;
+}

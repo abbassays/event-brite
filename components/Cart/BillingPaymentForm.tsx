@@ -2,12 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-import countryList from "../../utils/countryList";
-
 import Container from "../UI/Container";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
-import Select from "../UI/Select";
+import BillingForm from "./BillingForm";
 
 const BillingPaymentForm = ({
   setSelected,
@@ -28,80 +26,6 @@ const BillingPaymentForm = ({
     router.push("/checkout");
     /* Create Event on backend */
   };
-
-  const billingForm = (
-    <div className="">
-      <div>
-        <h1 className="text-2xl text-gray-500">Billing Info</h1>
-      </div>
-      <hr />
-      <div className="grid mt-6">
-        <Input
-          type="text"
-          label="Name"
-          placeholder="Your Name"
-          name="Name"
-          register={register}
-          errors={errors}
-          rules={{ required: "Name is required" }}
-        />
-
-        <Input
-          type="text"
-          label="Username"
-          placeholder="Your Username"
-          name="Username"
-          register={register}
-          errors={errors}
-          rules={{ required: "Username is required" }}
-        />
-
-        <Input
-          type="text"
-          label="Address"
-          placeholder="Your Address"
-          name="Address"
-          register={register}
-          errors={errors}
-          rules={{ required: "Address is required" }}
-        />
-
-        <Select
-          label="Country"
-          name="country"
-          register={register}
-          errors={errors}
-          rules={{ required: "Country is required" }}
-          placeholder="Select an option"
-          size={1}
-          options={countryList.map((country) => ({
-            id: country,
-            name: country,
-          }))}
-        />
-
-        <Input
-          type="text"
-          label="State"
-          placeholder="Your State"
-          name="State"
-          register={register}
-          errors={errors}
-          rules={{ required: "State is required" }}
-        />
-
-        <Input
-          type="text"
-          label="Postal Code"
-          placeholder="Your Postal Code"
-          name="Postal Code"
-          register={register}
-          errors={errors}
-          rules={{ required: "Postal Code is required" }}
-        />
-      </div>
-    </div>
-  );
 
   const paymentForm = (
     <div>
@@ -180,7 +104,11 @@ const BillingPaymentForm = ({
 
   const forms = (
     <>
-      {billingForm}
+      <div>
+        <h1 className="text-2xl text-gray-500">Billing Address</h1>
+      </div>
+      <hr className="mb-6" />
+      <BillingForm register={register} errors={errors} />
       {paymentForm}
     </>
   );

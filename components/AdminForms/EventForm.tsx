@@ -106,7 +106,7 @@ const EventForm: React.FC = () => {
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <div className="mt-10 space-x-6">
+        <div className="mt-10">
           <Button type="submit" variant="primary">
             Create Event
           </Button>
