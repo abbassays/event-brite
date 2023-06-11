@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MdEdit, MdDelete } from "react-icons/md";
 
 import { EventType } from "../../types";
-import allEvents from "../../utils/all_events.json";
 
 import CategoryIcon from "../../utils/CategoryIcon";
 import DeleteModal from "../UI/DeleteModal";
@@ -58,11 +58,10 @@ const EventCard = ({
         </div>
 
         <div className="w-full sm:w-fit flex space-x-2">
-          <p
-            className="text-xl sm:text-blue-500 sm:hover:bg-blue-500 sm:p-1 sm:bg-transparent rounded sm:hover:text-white cursor-pointer transition-colors 
-              bg-blue-500 w-full text-white py-1 hover:bg-blue-600"
-          >
-            <MdEdit className="mx-auto" />
+          <p className="text-xl sm:text-blue-500 sm:hover:bg-blue-500 sm:p-1 sm:bg-transparent rounded sm:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white py-1 hover:bg-blue-600">
+            <Link href={`/admin/events/${id}`}>
+              <MdEdit className="mx-auto" />
+            </Link>
           </p>
           <p
             onClick={() => setIsOpen(true)}

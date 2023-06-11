@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import categories from "../../utils/categories";
 import { EventType } from "../../types";
+import allEvents from "../../utils/all_events.json";
 
 import Container from "../UI/Container";
 import Input from "../UI/Input";
@@ -10,7 +11,8 @@ import Select from "../UI/Select";
 import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
 
-const EventForm: React.FC = () => {
+const EventForm = ({ eventId }: { eventId?: string }) => {
+  const [event, setEvent] = useState<EventType>();
   const {
     register,
     handleSubmit,
@@ -21,9 +23,18 @@ const EventForm: React.FC = () => {
     console.log("Submitting data", data, "\nErrors are", errors);
     /* Create Event on backend */
   };
-  const handleTickets = () => {
-    console.log("Errors are", errors);
+
+  const fetchEvent = () => {
+    /* This will be a dynamic route with event id, event will be fetched here from event id */
+    const fetchedEvent = allEvents.find((event) => event.id === eventId);
+    setEvent(fetchedEvent);
   };
+
+  useEffect(() => {
+    fetchEvent();
+  }, [eventId]);
+
+  console.log("Event is", event);
 
   const formItems = (
     <>
@@ -35,6 +46,7 @@ const EventForm: React.FC = () => {
         register={register}
         errors={errors}
         rules={{ required: "Name is required" }}
+        defaultValue={event?.name}
       />
       <div className="row-span-2">
         <Textarea
@@ -43,6 +55,7 @@ const EventForm: React.FC = () => {
           name="Description"
           register={register}
           errors={errors}
+          defaultValue={event?.description}
         />
       </div>
       <Input
@@ -53,6 +66,7 @@ const EventForm: React.FC = () => {
         register={register}
         errors={errors}
         rules={{ required: "Location is required" }}
+        defaultValue={event?.location}
       />
       <Select
         label="Category"
@@ -62,7 +76,11 @@ const EventForm: React.FC = () => {
         rules={{ required: "Category is required" }}
         placeholder="Select an option"
         options={categories.map((item) => {
-          return { id: item.category, name: item.category };
+          return {
+            id: item.category,
+            name: item.category,
+            selected: item.category === event?.category,
+          };
         })}
       />
       <Input
@@ -73,6 +91,7 @@ const EventForm: React.FC = () => {
         register={register}
         errors={errors}
         rules={{ required: "Start Date is required" }}
+        defaultValue={event?.startDate ? event.startDate.slice(0, 16) : ""}
       />
       <Input
         type="datetime-local"
@@ -82,6 +101,7 @@ const EventForm: React.FC = () => {
         register={register}
         errors={errors}
         rules={{ required: "End Date is required" }}
+        defaultValue={event?.endDate ? event.endDate.slice(0, 16) : ""}
       />
       <Input
         type="file"
@@ -94,6 +114,7 @@ const EventForm: React.FC = () => {
         aria-describedby="file_input_help"
         isFile={true}
         accept="image/*"
+        defaultValue={event?.image}
       />
     </>
   );
@@ -108,7 +129,8 @@ const EventForm: React.FC = () => {
       >
         <div className="mt-10">
           <Button type="submit" variant="primary">
-            Create Event
+            {event ? "Edit " : "Create "}
+            Event
           </Button>
         </div>
       </Container>
