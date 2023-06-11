@@ -7,6 +7,36 @@ import Button from "../Button";
 import SearchBar from "./SearchBar";
 import AdminDropDown from "./AdminDropDown";
 
+const createItems = [
+  {
+    name: "Event",
+    link: "/admin/create-event",
+  },
+  {
+    name: "Organiser",
+    link: "/admin/create-organiser",
+  },
+  {
+    name: "Ticket",
+    link: "/admin/create-ticket",
+  },
+];
+
+const listItems = [
+  {
+    name: "Event",
+    link: "/admin/all-events",
+  },
+  {
+    name: "Organiser",
+    link: "/admin/all-organisers",
+  },
+  {
+    name: "Ticket",
+    link: "/admin/all-tickets",
+  },
+];
+
 function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -121,7 +151,8 @@ function Navbar() {
                 <Link href={item.link}>{item.name}</Link>
               </p>
             ))}
-            {isLoggedIn && <AdminDropDown />}
+            {isLoggedIn && <AdminDropDown items={createItems} name="Create" />}
+            {isLoggedIn && <AdminDropDown items={listItems} name="View" />}
           </div>
 
           <div className=" lg:flex justify-between space-x-4 hidden ">
@@ -159,7 +190,8 @@ function Navbar() {
           ))}
           {isLoggedIn ? (
             <>
-              <AdminDropDown />
+              <AdminDropDown items={createItems} name="Create" />
+              <AdminDropDown items={listItems} name="View" />
               <p className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
                 Logout
               </p>
