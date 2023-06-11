@@ -10,30 +10,30 @@ import AdminDropDown from "./AdminDropDown";
 const createItems = [
   {
     name: "Event",
-    link: "/admin/create-event",
+    link: "/admin/event/create",
   },
   {
     name: "Organiser",
-    link: "/admin/create-organiser",
+    link: "/admin/organiser/create",
   },
   {
     name: "Ticket",
-    link: "/admin/create-ticket",
+    link: "/admin/ticket/create",
   },
 ];
 
 const listItems = [
   {
     name: "Event",
-    link: "/admin/all-events",
+    link: "/admin/events",
   },
   {
     name: "Organiser",
-    link: "/admin/all-organisers",
+    link: "/admin/organisers",
   },
   {
     name: "Ticket",
-    link: "/admin/all-tickets",
+    link: "/admin/tickets",
   },
 ];
 

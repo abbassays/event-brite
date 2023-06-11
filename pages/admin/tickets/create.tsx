@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import allEvents from "../../utils/all_events.json";
-import { EventType } from "../../types";
+import allEvents from "../../../utils/all_events.json";
+import { EventType } from "../../../types";
 
-import Layout from "../../components/UI/Layout";
-import TicketForm from "../../components/AdminForms/TicketForm";
+import Layout from "../../../components/UI/Layout";
+import TicketForm from "../../../components/AdminForms/TicketForm";
 
 const CreateEvent = () => {
   const [event, setEvent] = useState<EventType>();
