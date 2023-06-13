@@ -8,7 +8,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: {
     id: string;
     name: string;
-    selected: boolean;
+    selected?: boolean;
   }[]; // Array of options
   rules?: Record<string, any>;
 }

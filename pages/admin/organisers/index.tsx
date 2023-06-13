@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
-type Props = {}
+import allOrganisers from "../../../utils/all_organisers.json";
+import { OrganiserType } from "../../../types";
 
-const AllOrganisersPage = (props: Props) => {
+import Layout from "../../../components/UI/Layout";
+import Container from "../../../components/UI/Container";
+import OrganiserCard from "../../../components/ListCards/OrganiserCard";
+
+const AllOrganisersPage = () => {
+  const [organisers, setOrganisers] = useState<OrganiserType[]>();
+
+  const fetchOrganisers = () => {
+    setOrganisers(allOrganisers);
+  };
+
+  useEffect(() => {
+    fetchOrganisers();
+  }, [allOrganisers]);
+
+  const organisersList = organisers?.map((organiser) => (
+    <OrganiserCard key={organiser.id} {...organiser} />
+  ));
+
   return (
-    <div>AllOrganisersPage</div>
-  )
-}
+    <Layout title="All Organisers">
+      <Container
+        title="All Organisers"
+        className="grid grid-cols-1"
+        gridItems={organisersList}
+      ></Container>
+    </Layout>
+  );
+};
 
-export default AllOrganisersPage
+export default AllOrganisersPage;

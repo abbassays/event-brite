@@ -18,6 +18,7 @@ export interface EventType {
 }
 
 export interface OrganiserType {
+  id: string;
   name: string;
   description: string;
   image: string;

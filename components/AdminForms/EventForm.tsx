@@ -10,6 +10,7 @@ import Input from "../UI/Input";
 import Select from "../UI/Select";
 import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
+import Image from "next/image";
 
 const EventForm = ({ eventId }: { eventId?: string }) => {
   const [event, setEvent] = useState<EventType>();
@@ -83,6 +84,11 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
           };
         })}
       />
+      {/* <div className="w-full p-4 row-span-4 bg-white rounded-lg border my-6">
+        <div className="relative w-full h-full">
+          {event && <Image src={event?.image} alt={event?.name} fill />}
+        </div>
+      </div> */}
       <Input
         type="datetime-local"
         label="Event Starts at"
@@ -103,6 +109,7 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         rules={{ required: "End Date is required" }}
         defaultValue={event?.endDate ? event.endDate.slice(0, 16) : ""}
       />
+
       <Input
         type="file"
         label={"Upload Image"}
@@ -110,11 +117,9 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         name="Image"
         register={register}
         errors={errors}
-        rules={{ required: "Image is Required" }}
         aria-describedby="file_input_help"
         isFile={true}
         accept="image/*"
-        defaultValue={event?.image}
       />
     </>
   );
@@ -122,8 +127,8 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container
-        title="Create Event"
-        description="Create a new event"
+        title={`${event ? "Edit" : "Create"} Event`}
+        description={`${event ? "Edit details of a" : "Create a new"} event`}
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
       >

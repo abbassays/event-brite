@@ -9,7 +9,7 @@ const EditEventPage = () => {
   const { id } = router.query;
 
   return (
-    <Layout title="Create Event">
+    <Layout title="Edit Event">
       <EventForm eventId={id as string} />
     </Layout>
   );
