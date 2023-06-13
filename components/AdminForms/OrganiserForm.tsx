@@ -10,7 +10,7 @@ import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
 import ImagePreview from "../UI/ImagePreview";
 
-const OrganiserForm = ({ organiserId }: { organiserId: string }) => {
+const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
   const [organiser, setOrganiser] = useState<OrganiserType>();
   const [uploadedImage, setUploadedImage] = useState<string>();
   const {
