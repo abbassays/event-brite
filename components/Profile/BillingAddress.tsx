@@ -23,11 +23,11 @@ const BillingAddress = ({ userId }: { userId: string }) => {
   return (
     <ComponentContainer title="Change Billing Address">
       <form onSubmit={handleSubmit(handleBillingAddress)}>
-        <BillingForm register={register} errors={errors} isUser />
+        <BillingForm register={register} errors={errors} userId={userId} />
 
         <div className="mt-6 ">
           <Button type="submit" variant="primary">
-            Change Password
+            Change Address
           </Button>
         </div>
       </form>

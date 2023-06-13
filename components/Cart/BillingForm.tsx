@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../UI/Input";
 import Select from "../UI/Select";
 
+import allUsers from "../../utils/all_users.json";
 import countryList from "../../utils/countryList";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { BillingAddressType } from "../../types";
+import { BillingAddressType, UserType } from "../../types";
+type ProfileType = BillingAddressType & UserType;
 
 type BillingFormProps = {
-  isUser?: boolean;
+  userId?: string;
   register: any;
   errors: any;
 };
 
-const BillingForm = ({
-  isUser = false,
-  register,
-  errors,
-}: BillingFormProps) => {
+const BillingForm = ({ userId, register, errors }: BillingFormProps) => {
+  const [user, setUser] = useState<ProfileType>();
+
+  const fetchUser = () => {
+    /* function to fetch user details */
+    const user = allUsers.find((user) => user.id === userId);
+    setUser(user);
+  };
+
+  useEffect(() => {
+    if (userId) fetchUser();
+  }, [allUsers, userId]);
+
   return (
     <div className="">
       <div className="grid">
-        {!isUser && (
+        {!userId && (
           <>
             <Input
               type="text"
@@ -52,6 +62,7 @@ const BillingForm = ({
           register={register}
           errors={errors}
           rules={{ required: "Address is required" }}
+          defaultValue={user?.address}
         />
 
         <Select
@@ -65,6 +76,7 @@ const BillingForm = ({
           options={countryList.map((country) => ({
             id: country,
             name: country,
+            selected: country === user?.country,
           }))}
         />
 
@@ -76,6 +88,7 @@ const BillingForm = ({
           register={register}
           errors={errors}
           rules={{ required: "State is required" }}
+          defaultValue={user?.state}
         />
 
         <Input
@@ -86,6 +99,7 @@ const BillingForm = ({
           register={register}
           errors={errors}
           rules={{ required: "Postal Code is required" }}
+          defaultValue={user?.postalCode}
         />
       </div>
     </div>

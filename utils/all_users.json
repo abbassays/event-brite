@@ -1,0 +1,13 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "email": "john.doe@email.com",
+    "phone": "+1 1000 1234",
+    "avatar": "/images/avatar.png",
+    "address": "123 Main St, New York, NY 10030",
+    "state": "New York",
+    "country": "United States of America (the)",
+    "postalCode": "10030"
+  }
+]
