@@ -24,15 +24,15 @@ const createItems = [
 
 const listItems = [
   {
-    name: "Event",
+    name: "Events",
     link: "/admin/events",
   },
   {
-    name: "Organiser",
+    name: "Organisers",
     link: "/admin/organisers",
   },
   {
-    name: "Ticket",
+    name: "Tickets",
     link: "/admin/tickets",
   },
 ];

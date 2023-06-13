@@ -2,13 +2,15 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
 export default function DeleteModal({
+  selectedId,
   isOpen,
   setIsOpen,
   handleDelete,
 }: {
+  selectedId: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  handleDelete: () => void;
+  handleDelete: (selectedId: string) => void;
 }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -65,7 +67,7 @@ export default function DeleteModal({
                   <button
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200"
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(selectedId)}
                   >
                     Delete
                   </button>

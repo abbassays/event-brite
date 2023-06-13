@@ -6,7 +6,10 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import { EventType, TicketType } from "../../types";
 import allEvents from "../../utils/all_events.json";
 
-import DeleteModal from "../UI/DeleteModal";
+interface TicketCardProps extends TicketType {
+  setSelectedId: React.Dispatch<React.SetStateAction<string>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const TicketCard = ({
   id,
@@ -18,8 +21,9 @@ const TicketCard = ({
   type,
   startDate,
   endDate,
-}: TicketType) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  setSelectedId,
+  setIsOpen,
+}: TicketCardProps) => {
   const [event, setEvent] = useState<EventType>();
 
   const fetchEvent = () => {
@@ -28,9 +32,10 @@ const TicketCard = ({
     setEvent(event);
   };
 
-  const handleDelete = () => {
-    // Delete event from DB
-    console.log("Deleting event with name: " + name + " and id: " + id);
+  const openModal = () => {
+    setIsOpen(true);
+    setSelectedId(id);
+    console.log("Opening modal for: ", id, type);
   };
 
   useEffect(() => {
@@ -40,7 +45,13 @@ const TicketCard = ({
   return (
     <div className="flex space-x-3 md:space-x-10 items-center rounded md:rounded-xl bg-white my-2 pr-2 md:pr-6 md:px-6 py-2 shadow">
       <div className="relative h-16 aspect-square hidden md:block">
-        <Image src={image} alt={id} fill className="object-cover z-10" />
+        <Image
+          src={image}
+          alt={id}
+          fill
+          className="object-cover z-10"
+          sizes="99vw"
+        />
       </div>
 
       <div className="flex justify-between items-center w-full md:flex-row flex-col">
@@ -78,18 +89,13 @@ const TicketCard = ({
             </Link>
           </p>
           <p
-            onClick={() => setIsOpen(true)}
+            onClick={openModal}
             className="text-xl md:text-red-500 md:hover:bg-red-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-red-500 w-full text-white py-1 hover:bg-red-600"
           >
             <MdDelete className="mx-auto" />
           </p>
         </div>
       </div>
-      <DeleteModal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        handleDelete={handleDelete}
-      />
     </div>
   );
 };

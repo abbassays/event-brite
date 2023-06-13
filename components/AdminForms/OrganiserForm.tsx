@@ -10,6 +10,13 @@ import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
 import ImagePreview from "../UI/ImagePreview";
 
+/* 
+  in my react typescript app there is a container component that maps some cards, each card is a component, inside each card there is a delete modal, 
+  when a delete button on a card is clicked, the modal of the card opens asking for confirmation, the problem is that there are many modals.
+  I want to remodel this in a way that there is one single modal inside the container componenent, and when delete button is pressed on a card, the modal opens and it gets card's id via which it deletes a specific card.
+  how can this be done?
+ */
+
 const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
   const [organiser, setOrganiser] = useState<OrganiserType>();
   const [uploadedImage, setUploadedImage] = useState<string>();
