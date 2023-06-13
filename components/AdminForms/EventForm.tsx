@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 
 import categories from "../../utils/categories";
@@ -11,9 +11,12 @@ import Select from "../UI/Select";
 import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
 import Image from "next/image";
+import ImagePreview from "../UI/ImagePreview";
 
 const EventForm = ({ eventId }: { eventId?: string }) => {
   const [event, setEvent] = useState<EventType>();
+  const [uploadedImage, setUploadedImage] = useState<string | undefined>();
+
   const {
     register,
     handleSubmit,
@@ -43,7 +46,7 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         type="text"
         label="Name"
         placeholder="Event Name"
-        name="Name"
+        name="name"
         register={register}
         errors={errors}
         rules={{ required: "Name is required" }}
@@ -53,7 +56,7 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         <Textarea
           label="Description"
           placeholder="Event Description"
-          name="Description"
+          name="description"
           register={register}
           errors={errors}
           defaultValue={event?.description}
@@ -63,7 +66,7 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         type="text"
         label="Location"
         placeholder="Event Location"
-        name="Location"
+        name="location"
         register={register}
         errors={errors}
         rules={{ required: "Location is required" }}
@@ -71,7 +74,7 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
       />
       <Select
         label="Category"
-        name="Categories"
+        name="category"
         register={register}
         errors={errors}
         rules={{ required: "Category is required" }}
@@ -84,16 +87,28 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
           };
         })}
       />
-      {/* <div className="w-full p-4 row-span-4 bg-white rounded-lg border my-6">
-        <div className="relative w-full h-full">
-          {event && <Image src={event?.image} alt={event?.name} fill />}
+
+      <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
+        <label className="block mb-1 font-medium text-gray-900">
+          Event Image
+        </label>
+        <div className="bg-white border rounded-lg overflow-hidden p-2">
+          <ImagePreview
+            name="image"
+            link={event?.image}
+            register={register}
+            errors={errors}
+            uploadedImage={uploadedImage}
+            setUploadedImage={setUploadedImage}
+          />
         </div>
-      </div> */}
+      </div>
+
       <Input
         type="datetime-local"
         label="Event Starts at"
         placeholder="Date & Time"
-        name="StartDate"
+        name="startDate"
         register={register}
         errors={errors}
         rules={{ required: "Start Date is required" }}
@@ -103,23 +118,11 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         type="datetime-local"
         label="Event Ends at"
         placeholder="Date & Time"
-        name="EndDate"
+        name="endDate"
         register={register}
         errors={errors}
         rules={{ required: "End Date is required" }}
         defaultValue={event?.endDate ? event.endDate.slice(0, 16) : ""}
-      />
-
-      <Input
-        type="file"
-        label={"Upload Image"}
-        placeholder={"Upload ImageEvent "}
-        name="Image"
-        register={register}
-        errors={errors}
-        aria-describedby="file_input_help"
-        isFile={true}
-        accept="image/*"
       />
     </>
   );

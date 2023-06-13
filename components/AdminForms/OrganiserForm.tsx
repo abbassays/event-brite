@@ -8,9 +8,11 @@ import Container from "../UI/Container";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
+import ImagePreview from "../UI/ImagePreview";
 
 const OrganiserForm = ({ organiserId }: { organiserId: string }) => {
   const [organiser, setOrganiser] = useState<OrganiserType>();
+  const [uploadedImage, setUploadedImage] = useState<string>();
   const {
     register,
     handleSubmit,
@@ -46,6 +48,22 @@ const OrganiserForm = ({ organiserId }: { organiserId: string }) => {
         rules={{ required: "Name is required" }}
         defaultValue={organiser?.name}
       />
+      <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
+        <label className="block mb-1 font-medium text-gray-900">
+          Organiser Image
+        </label>
+        <div className="bg-white border rounded-lg overflow-hidden p-2">
+          <ImagePreview
+            name="image"
+            link={organiser?.image}
+            register={register}
+            errors={errors}
+            uploadedImage={uploadedImage}
+            setUploadedImage={setUploadedImage}
+          />
+        </div>
+      </div>
+
       <div className="row-span-2">
         <Textarea
           label="Description"
@@ -56,16 +74,6 @@ const OrganiserForm = ({ organiserId }: { organiserId: string }) => {
           defaultValue={organiser?.description}
         />
       </div>
-      <Input
-        type="file"
-        label={"Upload Image"}
-        name="image"
-        register={register}
-        errors={errors}
-        aria-describedby="file_input_help"
-        isFile={true}
-        accept="image/*"
-      />
     </>
   );
 

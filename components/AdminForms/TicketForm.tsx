@@ -10,6 +10,7 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Select from "../UI/Select";
 import Textarea from "../UI/Textarea";
+import ImagePreview from "../UI/ImagePreview";
 
 interface TicketFormProps {
   ticketId?: string | undefined;
@@ -18,6 +19,7 @@ interface TicketFormProps {
 const TicketForm = ({ ticketId }: TicketFormProps) => {
   const [events, setEvents] = useState<EventType[] | []>([]);
   const [ticket, setTicket] = useState<TicketType | undefined>();
+  const [uploadedImage, setUploadedImage] = useState<string | undefined>();
   const {
     register,
     handleSubmit,
@@ -87,7 +89,7 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
       <div className="row-span-2">
         <Textarea
           label="Description"
-          placeholder="Organiser Description"
+          placeholder="Ticket Description"
           name="description"
           register={register}
           errors={errors}
@@ -123,6 +125,22 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         defaultValue={ticket?.quantity}
         rules={{ required: "Ticket Max Quantity is required", ...numberRules }}
       />
+
+      <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
+        <label className="block mb-1 font-medium text-gray-900">
+          Ticket Image
+        </label>
+        <div className="bg-white border rounded-lg overflow-hidden p-2">
+          <ImagePreview
+            name="image"
+            link={ticket?.image}
+            register={register}
+            errors={errors}
+            uploadedImage={uploadedImage}
+            setUploadedImage={setUploadedImage}
+          />
+        </div>
+      </div>
 
       <Input
         type="datetime-local"
@@ -164,18 +182,6 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
                 return event;
               })
         }
-      />
-
-      <Input
-        type="file"
-        label={"Upload Image"}
-        placeholder={"Upload Image"}
-        name="image"
-        register={register}
-        errors={errors}
-        aria-describedby="file_input_help"
-        isFile={true}
-        accept="image/*"
       />
     </>
   );

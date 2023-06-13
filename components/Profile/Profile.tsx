@@ -9,6 +9,7 @@ type ProfileType = BillingAddressType & UserType;
 import ComponentContainer from "./ComponentContainer";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
+import ImagePreview from "../UI/ImagePreview";
 
 const Profile = ({ userId }: { userId: string }) => {
   const [user, setUser] = useState<ProfileType>();
@@ -110,32 +111,14 @@ const Profile = ({ userId }: { userId: string }) => {
         </form>
 
         <div className="order-1 sm:order-2 m-4 sm:m-6 bg-white border rounded-lg overflow-hidden p-2 aspect-square">
-          <div className="max-w-md mx-auto w-full aspect-square relative rounded-lg overflow-hidden cursor-pointer">
-            <label htmlFor="avatar-upload">
-              {uploadedImage || user?.avatar ? (
-                <Image
-                  src={uploadedImage || user?.avatar}
-                  alt={user?.name}
-                  fill
-                />
-              ) : (
-                <div className="flex flex-col items-center justify-center h-full text-gray-400">
-                  Upload Image{" "}
-                </div>
-              )}
-              <Input
-                className="hidden"
-                type="file"
-                id="avatar-upload"
-                label=""
-                register={register}
-                errors={errors}
-                name="avatar"
-                onChange={handleImageUpload}
-                accept="image/*"
-              />
-            </label>
-          </div>
+          <ImagePreview
+            link={user?.avatar}
+            name="avatar"
+            register={register}
+            errors={errors}
+            uploadedImage={uploadedImage}
+            setUploadedImage={setUploadedImage}
+          />
         </div>
       </div>
     </ComponentContainer>
