@@ -40,7 +40,7 @@ const listItems = [
 function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const isAdminRoute = () => {
     return router.pathname.startsWith("/admin");
@@ -48,7 +48,7 @@ function Navbar() {
 
   useEffect(() => {
     if (router.isReady) {
-      setIsLoggedIn(isAdminRoute());
+      setIsAdmin(isAdminRoute());
     }
   }, [router]);
 
@@ -56,6 +56,11 @@ function Navbar() {
     {
       name: "Home",
       link: "/",
+    },
+    // This will be shown if the user is logged in
+    {
+      name: "Profile",
+      link: "/profile",
     },
     {
       name: "Events",
@@ -137,26 +142,47 @@ function Navbar() {
           </div>
 
           <div className="hidden lg:ml-6 lg:flex lg:items-center">
-            {navbarItems.map((item, index) => (
-              <p
-                key={index}
-                className={`px-6 py-2 text-lg transition-colors
+            {isAdmin
+              ? navbarItems
+                  .filter(
+                    (item) => item.name !== "Events" && item.name !== "Cart"
+                  )
+                  .map((item, index) => (
+                    <p
+                      key={index}
+                      className={`px-6 py-2 text-lg transition-colors
                   ${
                     router.pathname === item.link
                       ? "text-blue-600 font-bold underline underline-offset-4"
                       : "text-blue-500 hover:text-blue-600"
                   }
                 `}
-              >
-                <Link href={item.link}>{item.name}</Link>
-              </p>
-            ))}
-            {isLoggedIn && <AdminDropDown items={createItems} name="Create" />}
-            {isLoggedIn && <AdminDropDown items={listItems} name="View" />}
+                    >
+                      <Link href={item.link}>{item.name}</Link>
+                    </p>
+                  ))
+              : navbarItems
+                  .filter((item) => item.name !== "Profile")
+                  .map((item, index) => (
+                    <p
+                      key={index}
+                      className={`px-6 py-2 text-lg transition-colors
+                  ${
+                    router.pathname === item.link
+                      ? "text-blue-600 font-bold underline underline-offset-4"
+                      : "text-blue-500 hover:text-blue-600"
+                  }
+                `}
+                    >
+                      <Link href={item.link}>{item.name}</Link>
+                    </p>
+                  ))}
+            {isAdmin && <AdminDropDown items={createItems} name="Create" />}
+            {isAdmin && <AdminDropDown items={listItems} name="View" />}
           </div>
 
           <div className=" lg:flex justify-between space-x-4 hidden ">
-            {isLoggedIn ? (
+            {isAdmin ? (
               <Button variant="secondary" onClick={handleLogout}>
                 Logout
               </Button>
@@ -188,7 +214,7 @@ function Navbar() {
               <Link href={item.link}>{item.name}</Link>
             </p>
           ))}
-          {isLoggedIn ? (
+          {isAdmin ? (
             <>
               <AdminDropDown items={createItems} name="Create" />
               <AdminDropDown items={listItems} name="View" />
