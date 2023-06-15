@@ -7,19 +7,27 @@ import Layout from "../../../components/UI/Layout";
 import Container from "../../../components/UI/Container";
 import OrganiserCard from "../../../components/ListCards/OrganiserCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
+import Pagination from "../../../components/UI/Pagination";
 
 const AllOrganisersPage = () => {
+  const itemsPerPage = 10;
   const [organisers, setOrganisers] = useState<OrganiserType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const fetchOrganisers = () => {
-    setOrganisers(allOrganisers);
+    /* Replace this code with your code to fetch organisers */
+    const selectedOrganisers = allOrganisers.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+    setOrganisers(selectedOrganisers);
   };
 
   useEffect(() => {
     fetchOrganisers();
-  }, [allOrganisers]);
+  }, [allOrganisers, currentPage]);
 
   const handleDelete = (eventId: string) => {
     // Delete organiser from DB
@@ -47,7 +55,14 @@ const AllOrganisersPage = () => {
         title="All Organisers"
         className="grid grid-cols-1"
         gridItems={organisersList}
-      ></Container>
+      >
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalItems={allOrganisers.length}
+          itemsPerPage={itemsPerPage}
+        />
+      </Container>
     </Layout>
   );
 };

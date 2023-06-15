@@ -7,19 +7,27 @@ import Layout from "../../../components/UI/Layout";
 import Container from "../../../components/UI/Container";
 import EventCard from "../../../components/ListCards/EventCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
+import Pagination from "../../../components/UI/Pagination";
 
 const AllEventsPage = () => {
+  const itemsPerPage = 10;
   const [events, setEvents] = useState<EventType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const fetchEvents = () => {
-    setEvents(allEvents);
+    /* Replace this code with your code to fetch events */
+    const selectedEvents = allEvents.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+    setEvents(selectedEvents);
   };
 
   useEffect(() => {
     fetchEvents();
-  }, [allEvents]);
+  }, [allEvents, currentPage]);
 
   const handleDelete = (eventId: string) => {
     // Delete event from DB
@@ -47,7 +55,14 @@ const AllEventsPage = () => {
         title="All Events"
         className="grid grid-cols-1"
         gridItems={eventsList}
-      ></Container>
+      >
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalItems={allEvents.length}
+          itemsPerPage={itemsPerPage}
+        />
+      </Container>
     </Layout>
   );
 };

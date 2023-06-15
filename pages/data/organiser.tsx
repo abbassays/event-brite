@@ -9,7 +9,7 @@ const generateRandomData = () => {
 
   const data = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     const event = {
       id: uuidv4(),
       name: `Organiser ${i + 1}`,

@@ -7,19 +7,27 @@ import Layout from "../../../components/UI/Layout";
 import Container from "../../../components/UI/Container";
 import TicketCard from "../../../components/ListCards/TicketCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
+import Pagination from "../../../components/UI/Pagination";
 
 const AllTicketsPage = () => {
+  const itemsPerPage = 12;
   const [tickets, setTickets] = useState<TicketType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const fetchTickets = () => {
-    setTickets(allTickets);
+    /* Replace this code with your code to fetch tickets */
+    const selectedTickets = allTickets.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+    setTickets(selectedTickets);
   };
 
   useEffect(() => {
     fetchTickets();
-  }, [allTickets]);
+  }, [allTickets, currentPage]);
 
   const handleDelete = (ticketId: string) => {
     // Delete ticket from DB
@@ -47,7 +55,14 @@ const AllTicketsPage = () => {
         title="All Tickets"
         className="grid grid-cols-1"
         gridItems={ticketsList}
-      ></Container>
+      >
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalItems={allTickets.length}
+          itemsPerPage={itemsPerPage}
+        />
+      </Container>
     </Layout>
   );
 };

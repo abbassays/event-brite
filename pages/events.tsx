@@ -20,7 +20,6 @@ const Events = () => {
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
     );
-
     setEvents(selectedEvents);
   };
 
