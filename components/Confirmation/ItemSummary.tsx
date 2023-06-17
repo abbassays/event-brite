@@ -6,8 +6,8 @@ import { BoughtTicketType, EventType, QRCodeTicketType } from "../../types";
 import allEvents from "../../utils/all_events.json";
 
 interface ItemSummaryProps extends BoughtTicketType {
-  setIsOpen: (isOpen: boolean) => void;
-  setSelectedTicket: (selectedTicket: QRCodeTicketType) => void;
+  setIsOpen?: (isOpen: boolean) => void;
+  setSelectedTicket?: (selectedTicket: QRCodeTicketType) => void;
 }
 
 const ItemSummary = ({
