@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { ImCross } from "react-icons/im";
 
 import Button from "../Button";
 import SearchBar from "./SearchBar";
@@ -91,30 +93,7 @@ function Navbar() {
               className="inline-flex items-center justify-center ml-4 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                {menuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
+              {menuOpen ? <ImCross /> : <GiHamburgerMenu />}
             </button>
           </div>
 
@@ -178,7 +157,7 @@ function Navbar() {
       <div
         className={`${
           menuOpen ? "absolute" : "hidden"
-        } xl:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-40`}
+        } xl:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-40 shadow-lg`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navbarItems.map((item, index) => (
