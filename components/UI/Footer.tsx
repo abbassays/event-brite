@@ -59,11 +59,11 @@ const Footer = () => {
       subItems: [
         {
           title: "Privacy Policy",
-          link: "",
+          link: "/privacy-policy",
         },
         {
           title: "Terms & Conditions",
-          link: "",
+          link: "/terms-and-conditions",
         },
       ],
     },
