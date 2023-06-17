@@ -39,6 +39,14 @@ function Navbar() {
       name: "Cart",
       link: "/cart",
     },
+    {
+      name: "About",
+      link: "/about",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+    },
   ];
 
   const handleLogin = () => {
@@ -55,19 +63,19 @@ function Navbar() {
 
   return (
     <nav className="bg-white shadow">
-      <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl mx-auto px-2 sm:px-6 xl:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <a href="/">
               <Image
-                className="block lg:hidden h-8 w-auto "
+                className="block xl:hidden h-8 w-auto "
                 src="/images/logo.png"
                 alt="Logo"
                 width={32}
                 height={32}
               />
               <Image
-                className="hidden lg:block h-8 w-auto "
+                className="hidden xl:block h-8 w-auto "
                 src="/images/logo.png"
                 alt="Logo"
                 width={48}
@@ -80,7 +88,7 @@ function Navbar() {
             <SearchBar />
 
             <button
-              className="inline-flex items-center justify-center ml-4 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 lg:hidden"
+              className="inline-flex items-center justify-center ml-4 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <svg
@@ -110,7 +118,7 @@ function Navbar() {
             </button>
           </div>
 
-          <div className="hidden lg:ml-6 lg:flex lg:items-center">
+          <div className="hidden xl:ml-6 xl:flex xl:items-center">
             {isAdmin
               ? navbarItems
                   .filter(
@@ -148,7 +156,7 @@ function Navbar() {
                   ))}
           </div>
 
-          <div className=" lg:flex justify-between space-x-4 hidden ">
+          <div className=" xl:flex justify-between space-x-4 hidden ">
             {isAdmin ? (
               <Button variant="secondary" onClick={handleLogout}>
                 Logout
@@ -170,7 +178,7 @@ function Navbar() {
       <div
         className={`${
           menuOpen ? "absolute" : "hidden"
-        } lg:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-40`}
+        } xl:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-40`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navbarItems.map((item, index) => (

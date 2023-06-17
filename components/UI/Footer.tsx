@@ -29,28 +29,28 @@ const Footer = () => {
       subItems: [
         {
           title: "Home",
-          link: "",
+          link: "/",
         },
         {
           title: "Events",
-          link: "",
+          link: "/events",
+        },
+        {
+          title: "Cart",
+          link: "/cart",
         },
       ],
     },
     {
-      title: "Create",
+      title: "More",
       subItems: [
         {
-          title: "Events",
-          link: "",
+          title: "About Us",
+          link: "/about",
         },
         {
-          title: "Tickets",
-          link: "",
-        },
-        {
-          title: "Organisers",
-          link: "",
+          title: "Contact Us",
+          link: "/contact",
         },
       ],
     },
