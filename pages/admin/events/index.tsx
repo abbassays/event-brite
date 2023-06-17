@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import allEvents from "../../../utils/all_events.json";
 import { EventType } from "../../../types";
 
-import Layout from "../../../components/UI/Layout";
+import AdminLayout from "../../../components/UI/AdminLayout";
 import Container from "../../../components/UI/Container";
 import EventCard from "../../../components/ListCards/EventCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
@@ -55,7 +55,7 @@ const AllEventsPage = () => {
   );
 
   return (
-    <Layout title="All Events">
+    <AdminLayout title="All Events">
       <DeleteModal
         selectedId={selectedId}
         isOpen={isOpen}
@@ -75,7 +75,7 @@ const AllEventsPage = () => {
           itemsPerPage={itemsPerPage}
         />
       </Container>
-    </Layout>
+    </AdminLayout>
   );
 };
 

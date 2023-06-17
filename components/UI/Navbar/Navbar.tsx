@@ -5,37 +5,6 @@ import { useRouter } from "next/router";
 
 import Button from "../Button";
 import SearchBar from "./SearchBar";
-import AdminDropDown from "./AdminDropDown";
-
-const createItems = [
-  {
-    name: "Event",
-    link: "/admin/events/create",
-  },
-  {
-    name: "Organiser",
-    link: "/admin/organisers/create",
-  },
-  {
-    name: "Ticket",
-    link: "/admin/tickets/create",
-  },
-];
-
-const listItems = [
-  {
-    name: "Events",
-    link: "/admin/events",
-  },
-  {
-    name: "Organisers",
-    link: "/admin/organisers",
-  },
-  {
-    name: "Tickets",
-    link: "/admin/tickets",
-  },
-];
 
 function Navbar() {
   const router = useRouter();
@@ -177,8 +146,6 @@ function Navbar() {
                       <Link href={item.link}>{item.name}</Link>
                     </p>
                   ))}
-            {isAdmin && <AdminDropDown items={createItems} name="Create" />}
-            {isAdmin && <AdminDropDown items={listItems} name="View" />}
           </div>
 
           <div className=" lg:flex justify-between space-x-4 hidden ">
@@ -216,8 +183,6 @@ function Navbar() {
           ))}
           {isAdmin ? (
             <>
-              <AdminDropDown items={createItems} name="Create" />
-              <AdminDropDown items={listItems} name="View" />
               <p className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
                 Logout
               </p>

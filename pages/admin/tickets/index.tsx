@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import allTickets from "../../../utils/all_tickets.json";
 import { TicketType } from "../../../types";
 
-import Layout from "../../../components/UI/Layout";
+import AdminLayout from "../../../components/UI/AdminLayout";
 import Container from "../../../components/UI/Container";
 import TicketCard from "../../../components/ListCards/TicketCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
@@ -55,7 +55,7 @@ const AllTicketsPage = () => {
   );
 
   return (
-    <Layout title="All Tickets">
+    <AdminLayout title="All Tickets">
       <DeleteModal
         selectedId={selectedId}
         isOpen={isOpen}
@@ -75,7 +75,7 @@ const AllTicketsPage = () => {
           itemsPerPage={itemsPerPage}
         />
       </Container>
-    </Layout>
+    </AdminLayout>
   );
 };
 

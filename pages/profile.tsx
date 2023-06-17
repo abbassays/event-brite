@@ -5,7 +5,7 @@ import Profile from "../components/Profile/Profile";
 import ChangePassword from "../components/Profile/ChangePassword";
 import BillingAddress from "../components/Profile/BillingAddress";
 import OrdersList from "../components/Profile/OrdersList";
-import Sidebar from "../components/Profile/Sidebar";
+import Sidebar from "../components/UI/Sidebar";
 
 const ProfilePage = () => {
   /* fetch user id from session */

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import allOrganisers from "../../../utils/all_organisers.json";
 import { OrganiserType } from "../../../types";
 
-import Layout from "../../../components/UI/Layout";
+import AdminLayout from "../../../components/UI/AdminLayout";
 import Container from "../../../components/UI/Container";
 import OrganiserCard from "../../../components/ListCards/OrganiserCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
@@ -55,7 +55,7 @@ const AllOrganisersPage = () => {
   );
 
   return (
-    <Layout title="All Organisers">
+    <AdminLayout title="All Organisers">
       <DeleteModal
         selectedId={selectedId}
         isOpen={isOpen}
@@ -75,7 +75,7 @@ const AllOrganisersPage = () => {
           itemsPerPage={itemsPerPage}
         />
       </Container>
-    </Layout>
+    </AdminLayout>
   );
 };
 
