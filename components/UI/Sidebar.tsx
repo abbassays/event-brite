@@ -12,7 +12,7 @@ const Sidebar = ({ items, selected, setselected }: SideBarProps) => {
   return (
     <div
       id="default-sidebar"
-      className="z-40 w-fit sm:w-64 transition-transform h-screen"
+      className="w-fit sm:w-64 transition-transform h-screen"
       aria-label="Sidebar"
     >
       <div className="h-full py-4 overflow-y-auto bg-slate-200">

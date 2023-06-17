@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { MdQrCodeScanner } from "react-icons/md";
 
-import { BoughtTicketType, EventType } from "../../types";
+import { BoughtTicketType, EventType, QRCodeTicketType } from "../../types";
 import allEvents from "../../utils/all_events.json";
+
+interface ItemSummaryProps extends BoughtTicketType {
+  setIsOpen: (isOpen: boolean) => void;
+  setSelectedTicket: (selectedTicket: QRCodeTicketType) => void;
+}
 
 const ItemSummary = ({
   boughtQuantity,
   eventId,
   type,
   price,
-}: BoughtTicketType) => {
+  description,
+  endDate,
+  id,
+  image,
+  quantity,
+  startDate,
+  setIsOpen,
+  setSelectedTicket,
+}: ItemSummaryProps) => {
   const [event, setEvent] = useState<EventType>();
 
   const fetchEvent = () => {
@@ -21,6 +35,25 @@ const ItemSummary = ({
   useEffect(() => {
     fetchEvent();
   }, [eventId]);
+
+  const openModal = () => {
+    setIsOpen(true);
+    setSelectedTicket({
+      boughtQuantity,
+      description,
+      endDate,
+      id: id,
+      image,
+      price,
+      quantity,
+      startDate,
+      type,
+      eventId,
+      category: event.category,
+      location: event.location,
+      name: event.name,
+    });
+  };
 
   return (
     <div className="flex space-x-3 sm:space-x-10 items-center rounded sm:rounded-xl bg-slate-100 my-1  pr-2 sm:pr-6 sm:px-6 py-2 shadow">
@@ -49,6 +82,9 @@ const ItemSummary = ({
             </span>
           </p>
         </div>
+        <p className="text-3xl p-2 hover:bg-gray-800 hover:text-white transition-colors rounded cursor-pointer">
+          <MdQrCodeScanner onClick={openModal} />
+        </p>
       </div>
     </div>
   );

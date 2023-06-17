@@ -83,3 +83,5 @@ export interface OrderType extends CartType {
   paymentMethod: string;
   date: string;
 }
+
+export type QRCodeTicketType = BoughtTicketType & EventType;
