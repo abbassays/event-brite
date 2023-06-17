@@ -73,6 +73,7 @@ export default function QrCodeModal({
                   </div>
                   <div className="flex justify-center my-6">
                     <QRCode
+                      // change the value variable with whatever you want to see on scan
                       value={selectedTicket?.id}
                       size={256}
                       fgColor="rgb(23,37,84)"
