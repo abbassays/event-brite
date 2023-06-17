@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import allEvents from "../../../utils/all_events.json";
 import { EventType } from "../../../types";
@@ -8,8 +9,10 @@ import Container from "../../../components/UI/Container";
 import EventCard from "../../../components/ListCards/EventCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
 import Pagination from "../../../components/UI/Pagination";
+import Button from "../../../components/UI/Button";
 
 const AllEventsPage = () => {
+  const router = useRouter();
   const itemsPerPage = 10;
   const [events, setEvents] = useState<EventType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -43,6 +46,14 @@ const AllEventsPage = () => {
     />
   ));
 
+  const createButton = (
+    <div>
+      <Button onClick={() => router.push("/admin/events/create")}>
+        Create Event
+      </Button>
+    </div>
+  );
+
   return (
     <Layout title="All Events">
       <DeleteModal
@@ -55,6 +66,7 @@ const AllEventsPage = () => {
         title="All Events"
         className="grid grid-cols-1"
         gridItems={eventsList}
+        actionButton={createButton}
       >
         <Pagination
           currentPage={currentPage}

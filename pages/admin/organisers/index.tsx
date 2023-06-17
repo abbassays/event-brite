@@ -8,8 +8,11 @@ import Container from "../../../components/UI/Container";
 import OrganiserCard from "../../../components/ListCards/OrganiserCard";
 import DeleteModal from "../../../components/UI/DeleteModal";
 import Pagination from "../../../components/UI/Pagination";
+import { useRouter } from "next/router";
+import Button from "../../../components/UI/Button";
 
 const AllOrganisersPage = () => {
+  const router = useRouter();
   const itemsPerPage = 10;
   const [organisers, setOrganisers] = useState<OrganiserType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -43,6 +46,14 @@ const AllOrganisersPage = () => {
     />
   ));
 
+  const createButton = (
+    <div>
+      <Button onClick={() => router.push("/admin/organisers/create")}>
+        Create Organiser
+      </Button>
+    </div>
+  );
+
   return (
     <Layout title="All Organisers">
       <DeleteModal
@@ -55,6 +66,7 @@ const AllOrganisersPage = () => {
         title="All Organisers"
         className="grid grid-cols-1"
         gridItems={organisersList}
+        actionButton={createButton}
       >
         <Pagination
           currentPage={currentPage}

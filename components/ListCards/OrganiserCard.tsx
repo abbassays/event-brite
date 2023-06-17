@@ -6,8 +6,8 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import { EventType, OrganiserType, TicketType } from "../../types";
 
 interface OrganiserCardProps extends OrganiserType {
-  setSelectedId: React.Dispatch<React.SetStateAction<string>>;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const OrganiserCard = ({

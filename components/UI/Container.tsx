@@ -6,6 +6,7 @@ type ContainerProps = {
   children?: React.ReactNode;
   className?: string;
   gridItems?: React.ReactNode;
+  actionButton?: React.ReactNode;
 };
 
 const Container = ({
@@ -14,10 +15,16 @@ const Container = ({
   children,
   className,
   gridItems,
+  actionButton,
 }: ContainerProps) => {
   return (
     <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl max-w-md mx-auto mt-10 px-4 w-full">
-      {title && <h2 className="text-2xl md:text-3xl font-medium">{title}</h2>}
+      <div className="flex justify-between">
+        {title && (
+          <h2 className="text-2xl md:text-3xl font-medium ">{title}</h2>
+        )}
+        {actionButton ? actionButton : null}
+      </div>
       {description && (
         <p className="text-gray-500 text-base md:text-xl md:mt-2">
           {description}

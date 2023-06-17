@@ -7,8 +7,8 @@ import { EventType, TicketType } from "../../types";
 import allEvents from "../../utils/all_events.json";
 
 interface TicketCardProps extends TicketType {
-  setSelectedId: React.Dispatch<React.SetStateAction<string>>;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TicketCard = ({
