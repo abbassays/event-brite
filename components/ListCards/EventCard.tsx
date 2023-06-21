@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdEdit, MdDelete, MdLocationPin } from "react-icons/md";
 
 import { EventType } from "../../types";
 
@@ -69,6 +69,11 @@ const EventCard = ({
         </div>
 
         <div className="w-full md:w-fit flex space-x-2">
+           <p className="text-xl md:text-green-500 md:hover:bg-green-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white py-1 hover:bg-blue-600">
+            <Link href={`/admin/events/${id}/check-in`}>
+              <MdLocationPin className="mx-auto" />
+            </Link>
+          </p>
           <p className="text-xl md:text-blue-500 md:hover:bg-blue-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white py-1 hover:bg-blue-600">
             <Link href={`/admin/events/${id}`}>
               <MdEdit className="mx-auto" />

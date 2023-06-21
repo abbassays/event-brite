@@ -2,16 +2,16 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import Layout from "../../../../components/UI/Layout";
-import TicketForm from "../../../../components/AdminForms/TicketForm";
+import EventForm from "../../../../components/AdminForms/EventForm";
 
-const EditTicketPage = () => {
+const EditEventPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
   return (
-    <Layout title="Edit Ticket">
-      <TicketForm ticketId={id as string} />
+    <Layout title="Edit Event">
+      <EventForm eventId={id as string} />
     </Layout>
   );
 };
-export default EditTicketPage;
+export default EditEventPage;

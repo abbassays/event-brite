@@ -3,26 +3,26 @@ import { useRouter } from "next/router";
 import { QrReader } from "react-qr-reader";
 import { MdPhotoCamera } from "react-icons/md";
 
-import allTickets from "../../../../utils/all_tickets.json";
-import { TicketType } from "../../../../types";
+import allEvents from "../../../../utils/all_events.json";
+import { EventType } from "../../../../types";
 
 import Layout from "../../../../components/UI/Layout";
 import Container from "../../../../components/UI/Container";
 
 const CheckIn = () => {
   const router = useRouter();
-  const [ticket, setTicket] = useState<TicketType>();
+  const [event, setEvent] = useState<EventType>();
   const [startScan, setStartScan] = useState<boolean>(false);
 
-  const fetchTicket = () => {
-    const ticketId = router.query.id;
-    const ticket = allTickets.find((ticket) => ticket.id === ticketId);
-    setTicket(ticket);
+  const fetchEvent = () => {
+    const eventId = router.query.id;
+    const event = allEvents.find((event) => event.id === eventId);
+    setEvent(event);
   };
 
   useEffect(() => {
-    fetchTicket();
-  }, [router.query.id, allTickets]);
+    fetchEvent();
+  }, [router.query.id, allEvents]);
   const [data, setData] = useState<string>();
 
   return (
