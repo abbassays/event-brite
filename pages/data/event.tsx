@@ -58,6 +58,7 @@ const generateRandomData = () => {
       location: `Location ${i + 1}`,
       image: getRandomImageLink(),
       organiserId: getRandomOrganiserId(),
+      checkedInCount: Math.floor(Math.random() * 501),
     };
     data.push(event);
   }

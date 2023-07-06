@@ -16,6 +16,7 @@ export interface EventType {
   location: string;
   image: string;
   organiserId: string;
+  checkedInCount: number;
 }
 
 export interface OrganiserType {

@@ -7,6 +7,7 @@ import { EventType } from "../../types";
 import Layout from "../../components/CustomUI/Layout";
 import EventsContainer from "../../components/Events/EventsContainer";
 import EventDetails from "../../components/Events/EventDetails";
+import PageLoader from "../../components/CustomUI/PageLoader";
 
 const Event = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const Event = () => {
     }
   }, [id]);
 
-  if (!event) return <div>Loading...</div>;
+  if (!event) return <PageLoader />;
 
   const similarGrid = events.filter(
     (_event) => _event.category === event.category && _event.id !== event.id
