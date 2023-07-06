@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 
 import { OrganiserType } from "../../types";
 
-import Container from "../UI/Container";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import Textarea from "../UI/Textarea";
-import ImagePreview from "../UI/ImagePreview";
+import Container from "../CustomUI/Container";
+import Input from "../CustomUI/Input";
+import Button from "../CustomUI/Button";
+import Textarea from "../CustomUI/Textarea";
+import ImagePreview from "../CustomUI/ImagePreview";
 import { defaultCommission } from "../../utils/AppDefaults";
-import Toggle from "../UI/Toggle";
+import Toggle from "../CustomUI/Toggle";
 
 const OrganiserForm = ({ organiser }: { organiser?: OrganiserType }) => {
   const [uploadedImage, setUploadedImage] = useState<string>();

@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 
 import { ContactUs } from "../../types";
 
-import Input from "../UI/Input";
-import Textarea from "../UI/Textarea";
-import Button from "../UI/Button";
+import Input from "../CustomUI/Input";
+import Textarea from "../CustomUI/Textarea";
+import Button from "../CustomUI/Button";
 
 /* 
   in my react typescript app there is a container component that maps some cards, each card is a component, inside each card there is a delete modal, 

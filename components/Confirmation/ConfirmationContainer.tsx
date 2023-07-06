@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { BoughtTicketType, CartType, ItemType } from "../../types";
 import allTickets from "../../utils/all_tickets.json";
 
-import Button from "../UI/Button";
+import Button from "../CustomUI/Button";
 import ItemSummary from "./ItemSummary";
 
 const ConfirmationContainer = ({ cart }: { cart: CartType }) => {
@@ -72,7 +72,7 @@ const ConfirmationContainer = ({ cart }: { cart: CartType }) => {
               <span className="flex items-center">
                 <span className="mr-2 text-sm text-blue-500">$</span>
                 <span className="text-xl sm:text-3xl text-blue-500">
-                  {(totalPrice).toFixed(2)}
+                  {totalPrice.toFixed(2)}
                 </span>
               </span>
             </p>

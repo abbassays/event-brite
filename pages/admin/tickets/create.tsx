@@ -1,6 +1,6 @@
 import React from "react";
 
-import Layout from "../../../components/UI/Layout";
+import Layout from "../../../components/CustomUI/Layout";
 import TicketForm from "../../../components/AdminForms/TicketForm";
 
 const CreateEvent = () => {

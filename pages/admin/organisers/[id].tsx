@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 
 import allOrganisers from "../../..//utils/all_organisers.json";
 
-import Layout from "../../../components/UI/Layout";
+import Layout from "../../../components/CustomUI/Layout";
 import OrganiserForm from "../../../components/AdminForms/OrganiserForm";
 import { OrganiserType } from "../../../types";
-import PageLoader from "../../../components/UI/PageLoader";
+import PageLoader from "../../../components/CustomUI/PageLoader";
 
 const EditTicketPage = () => {
   const [organiser, setOrganiser] = useState<OrganiserType>();

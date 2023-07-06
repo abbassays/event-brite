@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import { allEvents } from "../../../utils/json-database";
 import { EventType } from "../../../types";
 
-import AdminLayout from "../../../components/UI/AdminLayout";
-import Container from "../../../components/UI/Container";
+import AdminLayout from "../../../components/CustomUI/AdminLayout";
+import Container from "../../../components/CustomUI/Container";
 import EventCard from "../../../components/ListCards/EventCard";
-import DeleteModal from "../../../components/UI/DeleteModal";
-import Pagination from "../../../components/UI/Pagination";
-import Button from "../../../components/UI/Button";
+import DeleteModal from "../../../components/CustomUI/DeleteModal";
+import Pagination from "../../../components/CustomUI/Pagination";
+import Button from "../../../components/CustomUI/Button";
 
 const AllEventsPage = () => {
   const router = useRouter();

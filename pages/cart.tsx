@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { CartType } from "../types";
 import allCarts from "../utils/all_carts.json";
 
-import Layout from "../components/UI/Layout";
+import Layout from "../components/CustomUI/Layout";
 import CartContainer from "../components/Cart/CartContainer";
 import BillingPaymentForm from "../components/Cart/BillingPaymentForm";
-import Container from "../components/UI/Container";
+import Container from "../components/CustomUI/Container";
 import Wizard from "../components/Cart/Wizard";
 
 const cart = () => {
@@ -22,7 +22,6 @@ const cart = () => {
   useEffect(() => {
     fetchCart();
   }, [allCarts]);
-
 
   return (
     <Layout title="Cart">

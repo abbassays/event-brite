@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import allOrders from "../../utils/all_orders.json";
 import { OrderType } from "../../types";
 
-import Container from "../UI/Container";
+import Container from "../CustomUI/Container";
 import OrderCard from "./OrderCard";
-import Pagination from "../UI/Pagination";
+import Pagination from "../CustomUI/Pagination";
 
 const OrdersList = ({ userId }: { userId: string }) => {
   const itemsPerPage = 5;

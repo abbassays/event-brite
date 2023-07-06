@@ -4,11 +4,11 @@ import Link from "next/link";
 import allEvents from "../utils/all_events.json";
 import { EventType } from "../types";
 
-import Layout from "../components/UI/Layout";
+import Layout from "../components/CustomUI/Layout";
 import CategoryContainer from "../components/Category/CategoryContainer";
 import EventsContainer from "../components/Events/EventsContainer";
-import Button from "../components/UI/Button";
-import Banner from "../components/UI/Banner";
+import Button from "../components/CustomUI/Button";
+import Banner from "../components/CustomUI/Banner";
 
 const Home = () => {
   const [featuredEvents, setFeaturedEvents] = useState<EventType[]>([]);

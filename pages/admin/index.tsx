@@ -4,8 +4,8 @@ import allEvents from "../../utils/all_events.json";
 import allTickets from "../../utils/all_tickets.json";
 import allOrganisers from "../../utils/all_organisers.json";
 
-import AdminLayout from "../../components/UI/AdminLayout";
-import Container from "../../components/UI/Container";
+import AdminLayout from "../../components/CustomUI/AdminLayout";
+import Container from "../../components/CustomUI/Container";
 import CountCard from "../../components/AdminDashboard/CountCard";
 import EventCard from "../../components/ListCards/EventCard";
 import TicketCard from "../../components/ListCards/TicketCard";

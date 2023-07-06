@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-import Container from "../UI/Container";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
+import Container from "../CustomUI/Container";
+import Input from "../CustomUI/Input";
+import Button from "../CustomUI/Button";
 import BillingForm from "./BillingForm";
 
 const BillingPaymentForm = ({

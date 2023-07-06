@@ -4,8 +4,8 @@ import { IoLocationSharp, IoCalendar } from "react-icons/io5";
 
 import { EventType } from "../../types";
 
-import Container from "../UI/Container";
-import ImageContainer from "../UI/ImageContainer";
+import Container from "../CustomUI/Container";
+import ImageContainer from "../CustomUI/ImageContainer";
 import { getDateTimeString } from "../../utils/DateFunctions";
 import TicketModal from "../Ticket/TicketModal";
 import CategoryIcon from "../../utils/CategoryIcon";

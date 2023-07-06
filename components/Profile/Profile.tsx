@@ -7,9 +7,9 @@ import { BillingAddressType, UserType } from "../../types";
 type ProfileType = BillingAddressType & UserType;
 
 import ComponentContainer from "./ComponentContainer";
-import Button from "../UI/Button";
-import Input from "../UI/Input";
-import ImagePreview from "../UI/ImagePreview";
+import Button from "../CustomUI/Button";
+import Input from "../CustomUI/Input";
+import ImagePreview from "../CustomUI/ImagePreview";
 
 const Profile = ({ userId }: { userId: string }) => {
   const [user, setUser] = useState<ProfileType>();

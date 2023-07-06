@@ -6,8 +6,8 @@ import { MdPhotoCamera } from "react-icons/md";
 import allEvents from "../../../../utils/all_events.json";
 import { EventType } from "../../../../types";
 
-import Layout from "../../../../components/UI/Layout";
-import Container from "../../../../components/UI/Container";
+import Layout from "../../../../components/CustomUI/Layout";
+import Container from "../../../../components/CustomUI/Container";
 
 const CheckIn = () => {
   const router = useRouter();

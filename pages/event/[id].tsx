@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import events from "../../utils/all_events.json";
 import { EventType } from "../../types";
 
-import Layout from "../../components/UI/Layout";
+import Layout from "../../components/CustomUI/Layout";
 import EventsContainer from "../../components/Events/EventsContainer";
 import EventDetails from "../../components/Events/EventDetails";
 

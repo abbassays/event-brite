@@ -2,7 +2,7 @@ import React from "react";
 
 import { EventType } from "../../types";
 
-import Container from "../UI/Container";
+import Container from "../CustomUI/Container";
 import EventCard from "./EventCard";
 
 const EventsContainer = ({
@@ -14,7 +14,9 @@ const EventsContainer = ({
   title: string;
   description?: string;
 }) => {
-  const eventsGrid = events.map((event) => <EventCard key={event.id} {...event} />);
+  const eventsGrid = events.map((event) => (
+    <EventCard key={event.id} {...event} />
+  ));
 
   return (
     <Container

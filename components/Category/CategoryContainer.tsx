@@ -3,7 +3,7 @@ import React from "react";
 import categories from "../../utils/categories";
 import { CategoryType } from "../../types";
 
-import Container from "../UI/Container";
+import Container from "../CustomUI/Container";
 import CategoryCard from "./CategoryCard";
 
 const CategoryContainer = () => {
