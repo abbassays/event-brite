@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { OrganiserType } from "../../types";
-import allOrganisers from "../../utils/all_organisers.json";
 
 import Container from "../UI/Container";
 import Input from "../UI/Input";
@@ -12,8 +11,7 @@ import ImagePreview from "../UI/ImagePreview";
 import { defaultCommission } from "../../utils/AppDefaults";
 import Toggle from "../UI/Toggle";
 
-const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
-  const [organiser, setOrganiser] = useState<OrganiserType>();
+const OrganiserForm = ({ organiser }: { organiser?: OrganiserType }) => {
   const [uploadedImage, setUploadedImage] = useState<string>();
   const {
     register,
@@ -30,18 +28,6 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
     /* Create Event on backend */
   };
 
-  const fetchOrganiser = () => {
-    /* This will be a dynamic route with organiser id, organiser will be fetched here from organiser id */
-    const fetchedOrganiser = allOrganisers.find(
-      (organiser) => organiser.id === organiserId
-    );
-    setOrganiser(fetchedOrganiser);
-  };
-
-  useEffect(() => {
-    if (organiserId) fetchOrganiser();
-  }, [allOrganisers, organiserId]);
-
   const formItems = (
     <>
       <Input
@@ -52,7 +38,7 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
         register={register}
         errors={errors}
         rules={{ required: "Name is required" }}
-        defaultValue={organiser?.name}
+        // defaultValue={organiser?.name}
       />
       <Input
         type="number"
@@ -65,15 +51,10 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
           required: "Commission is required",
           min: { value: 0, message: "Commission cannot be negative" },
         }}
-        defaultValue={defaultCommission}
+        // defaultValue={defaultCommission}
       />
 
-      <Toggle
-        register={register}
-        name="isEnabled"
-        label="Enabled"
-        defaultChecked={organiser?.isEnabled}
-      />
+      <Toggle register={register} name="isEnabled" label="Enabled" />
 
       <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
         <label className="block mb-1 font-medium text-gray-900">
@@ -98,7 +79,7 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
           name="description"
           register={register}
           errors={errors}
-          defaultValue={organiser?.description}
+          // defaultValue={organiser?.description}
         />
       </div>
     </>

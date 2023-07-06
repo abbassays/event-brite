@@ -6,22 +6,10 @@ type ToggleProps = {
   name: string;
   register: UseFormRegister<any>;
   rules?: Record<string, any>;
-  defaultChecked: boolean;
 };
 
-const Toggle = ({
-  name,
-  register,
-  rules,
-  label,
-  defaultChecked,
-  ...rest
-}: ToggleProps) => {
+const Toggle = ({ name, register, rules, label, ...rest }: ToggleProps) => {
   const [enabled, setEnabled] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (defaultChecked !== undefined) setEnabled(defaultChecked);
-  }, [defaultChecked]);
 
   return (
     <div className="flex items-center gap-4">
