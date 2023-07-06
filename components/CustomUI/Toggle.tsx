@@ -12,8 +12,8 @@ const Toggle = ({ name, register, rules, label, ...rest }: ToggleProps) => {
   const [enabled, setEnabled] = useState<boolean>(false);
 
   return (
-    <div className="flex items-center gap-4">
-      <label className="block mb-1 font-medium text-gray-900">
+    <div className="flex flex-col">
+      <label className="block mb-3 font-medium text-gray-900">
         {label}
         {rules?.required && <span className="text-red-400"> *</span>}
       </label>
