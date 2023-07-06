@@ -22,6 +22,8 @@ export interface OrganiserType {
   name: string;
   description: string;
   image: string;
+  commission?: number;
+  isEnabled: boolean;
 }
 
 export interface TicketType {

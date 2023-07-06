@@ -9,13 +9,8 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Textarea from "../UI/Textarea";
 import ImagePreview from "../UI/ImagePreview";
-
-/* 
-  in my react typescript app there is a container component that maps some cards, each card is a component, inside each card there is a delete modal, 
-  when a delete button on a card is clicked, the modal of the card opens asking for confirmation, the problem is that there are many modals.
-  I want to remodel this in a way that there is one single modal inside the container componenent, and when delete button is pressed on a card, the modal opens and it gets card's id via which it deletes a specific card.
-  how can this be done?
- */
+import { defaultCommission } from "../../utils/AppDefaults";
+import Toggle from "../UI/Toggle";
 
 const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
   const [organiser, setOrganiser] = useState<OrganiserType>();
@@ -24,7 +19,11 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<OrganiserType>();
+  } = useForm<OrganiserType>({
+    defaultValues: {
+      ...organiser,
+    },
+  });
 
   const onSubmit = (data: OrganiserType) => {
     console.log("Submitting data", data, "\nErrors are", errors);
@@ -55,6 +54,27 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
         rules={{ required: "Name is required" }}
         defaultValue={organiser?.name}
       />
+      <Input
+        type="number"
+        label="Commission (%)"
+        placeholder="Organiser Commission"
+        name="commission"
+        register={register}
+        errors={errors}
+        rules={{
+          required: "Commission is required",
+          min: { value: 0, message: "Commission cannot be negative" },
+        }}
+        defaultValue={defaultCommission}
+      />
+
+      <Toggle
+        register={register}
+        name="isEnabled"
+        label="Enabled"
+        defaultChecked={organiser?.isEnabled}
+      />
+
       <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
         <label className="block mb-1 font-medium text-gray-900">
           Organiser Image
@@ -94,12 +114,10 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <div className="mt-10">
-          <Button type="submit" variant="primary">
-            {organiser ? "Edit " : "Create "}
-            Organiser
-          </Button>
-        </div>
+        <Button className="mt-10" type="submit" variant="primary">
+          {organiser ? "Save " : "Create "}
+          Organiser
+        </Button>
       </Container>
     </form>
   );

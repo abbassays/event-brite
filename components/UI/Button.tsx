@@ -37,7 +37,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   const buttonClasses = classNames(
-    "rounded-lg transition-colors inline-block mx-auto h-min my-auto px-4 py-1.5 font-bold shadow-md",
+    "rounded-lg transition-colors inline-block h-min my-auto px-4 py-1.5 font-bold shadow-md",
     buttonStyle,
     hoverStyle,
     focusStyle,
