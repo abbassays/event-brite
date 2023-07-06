@@ -15,6 +15,7 @@ export interface EventType {
   endDate: string;
   location: string;
   image: string;
+  organiserId: string;
 }
 
 export interface OrganiserType {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import allEvents from "../../../utils/all_events.json";
+import { allEvents } from "../../../utils/json-database";
 import { EventType } from "../../../types";
 
 import AdminLayout from "../../../components/UI/AdminLayout";

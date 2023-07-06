@@ -1,5 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid"; // For generating unique IDs
+import { EventType } from "../../types";
+import { allOrganisers } from "../../utils/json-database";
 
 const generateRandomData = () => {
   const categories = [
@@ -24,22 +26,25 @@ const generateRandomData = () => {
     const randomDate = new Date(
       start.getTime() + Math.random() * (end.getTime() - start.getTime())
     );
-    return randomDate;
+    return randomDate.toISOString();
   };
 
   const getRandomImageLink = () => {
     const width = Math.floor(Math.random() * 500) + 100; // Random width between 100 and 600
     const height = Math.floor(Math.random() * 300) + 100; // Random height between 100 and 400
-    const bgColor = Math.floor(Math.random() * 16777215).toString(16); // Random hexadecimal color code
-    const fgColor = "000000"; // Fixed foreground color
     // return `http://dummyimage.com/${width}x${height}.png/${bgColor}/${fgColor}`;
     return `https://picsum.photos/${width}/${height}`;
+  };
+
+  const getRandomOrganiserId = () => {
+    const randomIndex = Math.floor(Math.random() * allOrganisers.length);
+    return allOrganisers[randomIndex].id;
   };
 
   const data = [];
 
   for (let i = 0; i < 100; i++) {
-    const event = {
+    const event: EventType = {
       id: uuidv4(),
       name: `Event ${i + 1}`,
       description: `Description for Event ${i + 1}. Description for Event ${
@@ -52,6 +57,7 @@ const generateRandomData = () => {
       endDate: getRandomDate(),
       location: `Location ${i + 1}`,
       image: getRandomImageLink(),
+      organiserId: getRandomOrganiserId(),
     };
     data.push(event);
   }
