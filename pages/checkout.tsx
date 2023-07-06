@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import allCarts from "../utils/all_carts.json";
 import { CartType } from "../types";
 
-import Layout from "../components/UI/Layout";
+import Layout from "../components/CustomUI/Layout";
 import CartContainer from "../components/Cart/CartContainer";
 import BillingPaymentForm from "../components/Cart/BillingPaymentForm";
-import Container from "../components/UI/Container";
+import Container from "../components/CustomUI/Container";
 
 const cart = () => {
   const [cart, setCart] = useState<CartType>();

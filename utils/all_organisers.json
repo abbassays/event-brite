@@ -3,120 +3,171 @@
     "id": "b3bbc2cf-d6cd-4ced-acf6-2644fe4b1b24",
     "name": "Organiser 1",
     "description": "Description for Event 1.",
-    "image": "https://i.pravatar.cc/415"
+    "image": "https://i.pravatar.cc/415",
+    "isEnabled": false,
+    "GST": 7
   },
   {
     "id": "191a730d-cdae-4cf9-ace1-0bfd671b3b65",
     "name": "Organiser 2",
     "description": "Description for Event 2.",
-    "image": "https://i.pravatar.cc/480"
+    "image": "https://i.pravatar.cc/480",
+    "commission": 20,
+    "isEnabled": true,
+    "GST": 3
   },
   {
     "id": "93ce828e-3930-44d0-9715-3d77f3d75d5d",
     "name": "Organiser 3",
     "description": "Description for Event 3.",
-    "image": "https://i.pravatar.cc/196"
+    "image": "https://i.pravatar.cc/196",
+    "isEnabled": false,
+    "GST": 2
   },
   {
     "id": "6d177b6e-1c45-4ba3-ba7c-4d6d3a699820",
     "name": "Organiser 4",
     "description": "Description for Event 4.",
-    "image": "https://i.pravatar.cc/370"
+    "image": "https://i.pravatar.cc/370",
+    "isEnabled": true,
+    "GST": 6
   },
   {
     "id": "8087b762-e7f6-44bb-9870-615c2ae18943",
     "name": "Organiser 5",
     "description": "Description for Event 5.",
-    "image": "https://i.pravatar.cc/378"
+    "image": "https://i.pravatar.cc/378",
+    "commission": 20,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "08e9c096-a6d4-4000-bb65-194a43f9566c",
     "name": "Organiser 6",
     "description": "Description for Event 6.",
-    "image": "https://i.pravatar.cc/101"
+    "image": "https://i.pravatar.cc/101",
+    "isEnabled": false,
+    "GST": 8
   },
   {
     "id": "92da15ab-0729-4b8b-bd41-a9c12cb3d8c4",
     "name": "Organiser 7",
     "description": "Description for Event 7.",
-    "image": "https://i.pravatar.cc/186"
+    "image": "https://i.pravatar.cc/186",
+    "commission": 20,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "eaf3ca49-92ed-44e8-b93e-1bf93dbedb0f",
     "name": "Organiser 8",
     "description": "Description for Event 8.",
-    "image": "https://i.pravatar.cc/319"
+    "image": "https://i.pravatar.cc/319",
+    "isEnabled": false,
+    "GST": 3
   },
   {
     "id": "f02dd787-8eeb-45fb-8ed5-8571dbd7a8fd",
     "name": "Organiser 9",
     "description": "Description for Event 9.",
-    "image": "https://i.pravatar.cc/272"
+    "image": "https://i.pravatar.cc/272",
+    "commission": 12,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "b7efb2e5-9503-4c88-b045-d45c927396cb",
     "name": "Organiser 10",
     "description": "Description for Event 10.",
-    "image": "https://i.pravatar.cc/110"
+    "image": "https://i.pravatar.cc/110",
+    "commission": 4,
+    "isEnabled": false,
+    "GST": 5
   },
   {
     "id": "7a68a3a0-ec17-41f1-abcb-8fdb86597c25",
     "name": "Organiser 11",
     "description": "Description for Event 11.",
-    "image": "https://i.pravatar.cc/129"
+    "image": "https://i.pravatar.cc/129",
+    "commission": 16,
+    "isEnabled": true,
+    "GST": 6
   },
   {
     "id": "4a46686c-ac51-42b7-a744-6f1f5a565917",
     "name": "Organiser 12",
     "description": "Description for Event 12.",
-    "image": "https://i.pravatar.cc/250"
+    "image": "https://i.pravatar.cc/250",
+    "commission": 9,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "5cace701-c240-4d76-93e9-00a4359d06ef",
     "name": "Organiser 13",
     "description": "Description for Event 13.",
-    "image": "https://i.pravatar.cc/564"
+    "image": "https://i.pravatar.cc/564",
+    "commission": 20,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "5a7f76e5-7c1f-4e1a-869e-466cb0d11a67",
     "name": "Organiser 14",
     "description": "Description for Event 14.",
-    "image": "https://i.pravatar.cc/348"
+    "image": "https://i.pravatar.cc/348",
+    "commission": 5,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "1574a494-aea8-4e2d-ae45-fe121c3bfd15",
     "name": "Organiser 15",
     "description": "Description for Event 15.",
-    "image": "https://i.pravatar.cc/548"
+    "image": "https://i.pravatar.cc/548",
+    "isEnabled": false,
+    "GST": 1
   },
   {
     "id": "afed013d-1a63-4e62-98e1-5cbe2da0b3e6",
     "name": "Organiser 16",
     "description": "Description for Event 16.",
-    "image": "https://i.pravatar.cc/257"
+    "image": "https://i.pravatar.cc/257",
+    "commission": 7,
+    "isEnabled": true,
+    "GST": 2
   },
   {
     "id": "987e9561-cbb0-4180-bb2e-a580513110e5",
     "name": "Organiser 17",
     "description": "Description for Event 17.",
-    "image": "https://i.pravatar.cc/319"
+    "image": "https://i.pravatar.cc/319",
+    "commission": 20,
+    "isEnabled": true
   },
   {
     "id": "30364f64-8498-4809-9588-17624dd3d42e",
     "name": "Organiser 18",
     "description": "Description for Event 18.",
-    "image": "https://i.pravatar.cc/471"
+    "image": "https://i.pravatar.cc/471",
+    "commission": 3,
+    "isEnabled": false,
+    "GST": 2
   },
   {
     "id": "377f7d43-dc68-4767-b6da-f4238c8e5e35",
     "name": "Organiser 19",
     "description": "Description for Event 19.",
-    "image": "https://i.pravatar.cc/139"
+    "image": "https://i.pravatar.cc/139",
+    "isEnabled": true
   },
   {
     "id": "ea72ee64-ea3f-4871-8bf4-a1cf5224d1ce",
     "name": "Organiser 20",
     "description": "Description for Event 20.",
-    "image": "https://i.pravatar.cc/567"
+    "image": "https://i.pravatar.cc/567",
+    "commission": 2,
+    "isEnabled": false,
+    "GST": 2
   }
 ]

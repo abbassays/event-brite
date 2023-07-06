@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 
-import Button from "../UI/Button";
+import Button from "../CustomUI/Button";
 
 import { EventType } from "../../types";
 import Link from "next/link";

@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 import allEvents from "../utils/all_events.json";
 import { EventType } from "../types";
 
-import Layout from "../components/UI/Layout";
+import Layout from "../components/CustomUI/Layout";
 import EventsContainer from "../components/Events/EventsContainer";
-import Pagination from "../components/UI/Pagination";
+import Pagination from "../components/CustomUI/Pagination";
 import Filter from "../components/Events/Filter";
-import Container from "../components/UI/Container";
+import Container from "../components/CustomUI/Container";
 
 const Events = () => {
   const itemsPerPage = 12;
@@ -27,14 +27,15 @@ const Events = () => {
     fetchEvents();
   }, [allEvents, currentPage]);
 
-  console.log(
-    "events",events
-  );
+  console.log("events", events);
 
   return (
     <Layout title="Events">
       <Container>
-        <Filter events={events} allEvents={allEvents} setEvents={setEvents}
+        <Filter
+          events={events}
+          allEvents={allEvents}
+          setEvents={setEvents}
           setCurrentPage={setCurrentPage}
         />
         <EventsContainer

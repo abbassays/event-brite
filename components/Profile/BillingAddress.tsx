@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 
 import { BillingAddressType } from "../../types";
 
-import Button from "../UI/Button";
-import Container from "../UI/Container";
+import Button from "../CustomUI/Button";
+import Container from "../CustomUI/Container";
 import BillingForm from "../Cart/BillingForm";
 import ComponentContainer from "./ComponentContainer";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import Input from "../UI/Input";
+import Input from "../CustomUI/Input";
 import Link from "next/link";
 
 const SignUpForm = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Input from "../UI/Input";
-import Select from "../UI/Select";
+import Input from "../CustomUI/Input";
+import Select from "../CustomUI/Select";
 
 import allUsers from "../../utils/all_users.json";
 import countryList from "../../utils/countryList";

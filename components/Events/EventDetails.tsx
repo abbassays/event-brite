@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { IoLocationSharp, IoCalendar } from "react-icons/io5";
+import { FaUserCheck } from "react-icons/fa";
 
 import { EventType } from "../../types";
 
-import Container from "../UI/Container";
-import ImageContainer from "../UI/ImageContainer";
+import Container from "../CustomUI/Container";
+import ImageContainer from "../CustomUI/ImageContainer";
 import { getDateTimeString } from "../../utils/DateFunctions";
 import TicketModal from "../Ticket/TicketModal";
 import CategoryIcon from "../../utils/CategoryIcon";
+
+import { customSession } from "../../utils/AppDefaults";
 
 const EventDetails = ({
   id,
@@ -19,6 +22,8 @@ const EventDetails = ({
   endDate,
   location,
   image,
+  checkedInCount,
+  organiserId,
 }: EventType) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -38,6 +43,24 @@ const EventDetails = ({
       <div className="flex flex-col sm:flex-row w-full mt-4">
         <div className="flex flex-col space-y-10 sm:w-3/5">
           <h2 className="text-2xl md:text-3xl font-medium">Event Details</h2>
+
+          {(customSession.user.role === "ADMIN" ||
+            customSession.user.id === organiserId) && (
+            <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
+              <div className="bg-slate-200 rounded-lg p-3 h-fit">
+                <p className="text-blue-600">
+                  <FaUserCheck />
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <h3 className="text-xl font-medium text-black">
+                  {checkedInCount}
+                </h3>
+                <p className="text-sm">Checked-In</p>
+              </div>
+            </div>
+          )}
+
           <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
             <div className="bg-slate-200 rounded-lg p-3 h-fit">
               <IoCalendar className="text-blue-600" />

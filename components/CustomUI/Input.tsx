@@ -1,11 +1,12 @@
 import React, { InputHTMLAttributes } from "react";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   name: string;
-  register: any;
-  errors: any;
   isFile?: boolean;
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
   rules?: Record<string, any>;
 }
 

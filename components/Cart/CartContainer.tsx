@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { CartType, BoughtTicketType, ItemType } from "../../types";
 import allTickets from "../../utils/all_tickets.json";
 
-import Container from "../UI/Container";
-import Button from "../UI/Button";
+import Container from "../CustomUI/Container";
+import Button from "../CustomUI/Button";
 import ItemCard from "./ItemCard";
 import ItemSummaryCard from "./ItemSummaryCard";
 
@@ -28,7 +28,10 @@ const CartContainer = ({
       const foundTicket = allTickets.find(
         (ticket) => ticket.id === cartTicket?.ticketId
       );
-      fetchedTickets.push({ ...foundTicket, boughtQuantity: cartTicket?.quantity });
+      fetchedTickets.push({
+        ...foundTicket,
+        boughtQuantity: cartTicket?.quantity,
+      });
     });
     setTickets(fetchedTickets);
 
@@ -91,7 +94,7 @@ const CartContainer = ({
                   <span>Total</span>
                   <span className="flex items-center text-xl text-blue-500">
                     <span className="mr-2 text-base">$</span>
-                    <span>{(totalPrice).toFixed(2)}</span>
+                    <span>{totalPrice.toFixed(2)}</span>
                   </span>
                 </div>
                 <Button

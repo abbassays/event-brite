@@ -8,7 +8,7 @@ import { CartType, EventType, TicketType } from "../../types";
 import { getDateTimeString } from "../../utils/DateFunctions";
 
 import TicketCard from "./TicketCard";
-import Button from "../UI/Button";
+import Button from "../CustomUI/Button";
 
 type ModalProps = {
   eventId: string;

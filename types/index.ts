@@ -15,6 +15,8 @@ export interface EventType {
   endDate: string;
   location: string;
   image: string;
+  organiserId: string;
+  checkedInCount: number;
 }
 
 export interface OrganiserType {
@@ -22,6 +24,9 @@ export interface OrganiserType {
   name: string;
   description: string;
   image: string;
+  commission?: number;
+  isEnabled: boolean;
+  GST?: number;
 }
 
 export interface TicketType {

@@ -1,61 +1,80 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { OrganiserType } from "../../types";
-import allOrganisers from "../../utils/all_organisers.json";
+import { defaultCommission, defaultGST } from "../../utils/AppDefaults";
 
-import Container from "../UI/Container";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import Textarea from "../UI/Textarea";
-import ImagePreview from "../UI/ImagePreview";
+import Button from "../CustomUI/Button";
+import Container from "../CustomUI/Container";
+import ImagePreview from "../CustomUI/ImagePreview";
+import Input from "../CustomUI/Input";
+import Textarea from "../CustomUI/Textarea";
+import Toggle from "../CustomUI/Toggle";
 
-/* 
-  in my react typescript app there is a container component that maps some cards, each card is a component, inside each card there is a delete modal, 
-  when a delete button on a card is clicked, the modal of the card opens asking for confirmation, the problem is that there are many modals.
-  I want to remodel this in a way that there is one single modal inside the container componenent, and when delete button is pressed on a card, the modal opens and it gets card's id via which it deletes a specific card.
-  how can this be done?
- */
-
-const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
-  const [organiser, setOrganiser] = useState<OrganiserType>();
+const OrganiserForm = ({ organiser }: { organiser?: OrganiserType }) => {
   const [uploadedImage, setUploadedImage] = useState<string>();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<OrganiserType>();
+  } = useForm<OrganiserType>({
+    defaultValues: {
+      ...organiser,
+      commission: organiser?.commission || defaultCommission,
+      GST: organiser?.GST || defaultGST,
+    },
+  });
 
   const onSubmit = (data: OrganiserType) => {
     console.log("Submitting data", data, "\nErrors are", errors);
     /* Create Event on backend */
   };
 
-  const fetchOrganiser = () => {
-    /* This will be a dynamic route with organiser id, organiser will be fetched here from organiser id */
-    const fetchedOrganiser = allOrganisers.find(
-      (organiser) => organiser.id === organiserId
-    );
-    setOrganiser(fetchedOrganiser);
-  };
-
-  useEffect(() => {
-    if (organiserId) fetchOrganiser();
-  }, [allOrganisers, organiserId]);
-
   const formItems = (
     <>
-      <Input
-        type="text"
-        label="Name"
-        placeholder="Organiser Name"
-        name="name"
-        register={register}
-        errors={errors}
-        rules={{ required: "Name is required" }}
-        defaultValue={organiser?.name}
-      />
-      <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
+      <div className="col-span-3">
+        <Input
+          type="text"
+          label="Name"
+          placeholder="Organiser Name"
+          name="name"
+          register={register}
+          errors={errors}
+          rules={{ required: "Name is required" }}
+        />
+      </div>
+      <div className="col-span-3 sm:col-span-1 md:col-span-3 xl:col-span-1">
+        <Input
+          type="number"
+          label="Commission (%)"
+          placeholder="Organiser Commission"
+          name="commission"
+          register={register}
+          errors={errors}
+          rules={{
+            required: "Commission is required",
+            min: { value: 0, message: "Commission cannot be negative" },
+          }}
+        />
+      </div>
+      <div className="col-span-3 sm:col-span-1 md:col-span-3 xl:col-span-1">
+        <Input
+          type="number"
+          label="GST (%)"
+          placeholder="General Sales Tax on Organiser"
+          name="GST"
+          register={register}
+          errors={errors}
+          rules={{
+            min: { value: 0, message: "Commission cannot be negative" },
+          }}
+        />
+      </div>
+      <div className="col-span-3 sm:col-span-1 md:col-span-3 xl:col-span-1">
+        <Toggle register={register} name="isEnabled" label="Enabled" />
+      </div>
+
+      <div className="md:h-auto col-span-3 md:row-span-5 order-last md:order-none sm:mb-6 relative">
         <label className="block mb-1 font-medium text-gray-900">
           Organiser Image
         </label>
@@ -71,14 +90,13 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
         </div>
       </div>
 
-      <div className="row-span-2">
+      <div className="row-span-2 col-span-3">
         <Textarea
           label="Description"
           placeholder="Organiser Description"
           name="description"
           register={register}
           errors={errors}
-          defaultValue={organiser?.description}
         />
       </div>
     </>
@@ -91,15 +109,13 @@ const OrganiserForm = ({ organiserId }: { organiserId?: string }) => {
         description={`${
           organiser ? "Edit details of a" : "Create a new"
         } organiser`}
-        className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
+        className="grid-cols-3 md:grid-cols-6 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <div className="mt-10">
-          <Button type="submit" variant="primary">
-            {organiser ? "Edit " : "Create "}
-            Organiser
-          </Button>
-        </div>
+        <Button className="mt-10" type="submit" variant="primary">
+          {organiser ? "Save " : "Create "}
+          Organiser
+        </Button>
       </Container>
     </form>
   );

@@ -5,12 +5,12 @@ import { EventType, TicketType } from "../../types";
 import allEvents from "../../utils/all_events.json";
 import allTickets from "../../utils/all_tickets.json";
 
-import Container from "../UI/Container";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import Select from "../UI/Select";
-import Textarea from "../UI/Textarea";
-import ImagePreview from "../UI/ImagePreview";
+import Container from "../CustomUI/Container";
+import Input from "../CustomUI/Input";
+import Button from "../CustomUI/Button";
+import Select from "../CustomUI/Select";
+import Textarea from "../CustomUI/Textarea";
+import ImagePreview from "../CustomUI/ImagePreview";
 
 interface TicketFormProps {
   ticketId?: string | undefined;

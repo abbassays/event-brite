@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { CartType } from "../types";
 import allCarts from "../utils/all_carts.json";
 
-import Container from "../components/UI/Container";
+import Container from "../components/CustomUI/Container";
 import ConfirmationContainer from "../components/Confirmation/ConfirmationContainer";
 
 const Confirmation = () => {

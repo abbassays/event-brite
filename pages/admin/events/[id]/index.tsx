@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import Layout from "../../../../components/UI/Layout";
+import Layout from "../../../../components/CustomUI/Layout";
 import EventForm from "../../../../components/AdminForms/EventForm";
 
 const EditEventPage = () => {

@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 
 import { ChangePasswordType } from "../../types";
 
-import Input from "../UI/Input";
-import Button from "../UI/Button";
+import Input from "../CustomUI/Input";
+import Button from "../CustomUI/Button";
 import ComponentContainer from "./ComponentContainer";
 
 const ChangePassword = () => {

@@ -1,5 +1,5 @@
-import Layout from "../components/UI/Layout";
-import Container from "../components/UI/Container";
+import Layout from "../components/CustomUI/Layout";
+import Container from "../components/CustomUI/Container";
 import Image from "next/image";
 
 const AboutPage = () => {

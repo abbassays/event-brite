@@ -1,7 +1,7 @@
 import React from "react";
 
-import Layout from "../components/UI/Layout";
-import Container from "../components/UI/Container";
+import Layout from "../components/CustomUI/Layout";
+import Container from "../components/CustomUI/Container";
 
 const PrivacyPolicyPage = () => {
   return (

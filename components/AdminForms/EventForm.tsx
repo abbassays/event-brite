@@ -5,13 +5,13 @@ import categories from "../../utils/categories";
 import { EventType } from "../../types";
 import allEvents from "../../utils/all_events.json";
 
-import Container from "../UI/Container";
-import Input from "../UI/Input";
-import Select from "../UI/Select";
-import Button from "../UI/Button";
-import Textarea from "../UI/Textarea";
+import Container from "../CustomUI/Container";
+import Input from "../CustomUI/Input";
+import Select from "../CustomUI/Select";
+import Button from "../CustomUI/Button";
+import Textarea from "../CustomUI/Textarea";
 import Image from "next/image";
-import ImagePreview from "../UI/ImagePreview";
+import ImagePreview from "../CustomUI/ImagePreview";
 
 const EventForm = ({ eventId }: { eventId?: string }) => {
   const [event, setEvent] = useState<EventType>();

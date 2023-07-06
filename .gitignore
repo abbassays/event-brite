@@ -32,6 +32,7 @@ yarn-error.log*
 
 # todo
 todo.md
+todo-v2.md
 
 # typescript
 *.tsbuildinfo
