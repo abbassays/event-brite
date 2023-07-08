@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import allEvents from "../../utils/all_events.json";
 import allTickets from "../../utils/all_tickets.json";
@@ -10,36 +10,54 @@ import CountCard from "../../components/AdminDashboard/CountCard";
 import EventCard from "../../components/ListCards/EventCard";
 import TicketCard from "../../components/ListCards/TicketCard";
 import OrganiserCard from "../../components/ListCards/OrganiserCard";
-
-const sections = [
-  {
-    title: "Recent Events",
-    list: allEvents
-      .sort(
-        (a, b) =>
-          new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-      )
-      .slice(0, 5)
-      .map((event) => <EventCard key={event.id} {...event} />),
-  },
-  {
-    title: "Top-Priced Tickets",
-    list: allTickets
-      .sort((a, b) => b.price - a.price)
-      .slice(0, 5)
-      .map((ticket) => <TicketCard key={ticket.id} {...ticket} />),
-  },
-  {
-    title: "Organisers",
-    list: allOrganisers
-      .slice(0, 5)
-      .map((organiser) => <OrganiserCard key={organiser.id} {...organiser} />),
-  },
-];
+import DeleteModal from "@/components/CustomUI/DeleteModal";
 
 const AdminOverviewPage = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedId, setSelectedId] = useState<string>("");
+
+  const sections = [
+    {
+      title: "Recent Events",
+      list: allEvents
+        .sort(
+          (a, b) =>
+            new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+        )
+        .slice(0, 5)
+        .map((event) => <EventCard setIsOpen={setIsOpen} setSelectedId={setSelectedId} key={event.id} {...event} />),
+    },
+    {
+      title: "Top-Priced Tickets",
+      list: allTickets
+        .sort((a, b) => b.price - a.price)
+        .slice(0, 5)
+        .map((ticket) => <TicketCard setIsOpen={setIsOpen} setSelectedId={setSelectedId} key={ticket.id} {...ticket} />),
+    },
+    {
+      title: "Organisers",
+      list: allOrganisers
+        .slice(0, 5)
+        .map((organiser) => (
+          <OrganiserCard setIsOpen={setIsOpen} setSelectedId={setSelectedId} key={organiser.id} {...organiser} />
+        )),
+    },
+  ];
+
+  const handleDelete = (eventId: string) => {
+    // Delete event from DB
+    console.log("Deleting event with id: " + eventId);
+  };
+
   return (
     <AdminLayout title="Admin Dashboard">
+      <DeleteModal
+        selectedId={selectedId}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        handleDelete={handleDelete}
+      />
+
       <Container
         title="Dashboard"
         description="Overview of all the Events, Tickets, & Organisers"
