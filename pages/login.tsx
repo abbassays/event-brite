@@ -15,7 +15,7 @@ const LoginPage = () => {
               width={96}
               height={96}
               src="/images/logo.png"
-              className="h-8 mr-3"
+              className="h-8 mr-3 w-auto"
               alt="Logo"
             />
           </Link>

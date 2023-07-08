@@ -80,13 +80,13 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">
-              <Image
+              {/* <Image
                 width={96}
                 height={96}
                 src="/images/logo.png"
-                className="h-8 mr-3"
+                className="h-8 mr-3 w-auto"
                 alt="Logo"
-              />
+              /> */}
             </Link>
           </div>
 

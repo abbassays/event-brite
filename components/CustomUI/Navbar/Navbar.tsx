@@ -1,17 +1,23 @@
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 
+import { useCustomSession } from "@/context/customSession";
+import { loggedInUsers } from "@/utils/loggedInUsers";
+
 import Button from "../Button";
+import AccountManager from "./AccountManager";
 import SearchBar from "./SearchBar";
 
 function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  const { customSession, setCustomSession } = useCustomSession();
 
   const isAdminRoute = () => {
     return router.pathname.startsWith("/admin");
@@ -29,10 +35,6 @@ function Navbar() {
       link: "/",
     },
     // This will be shown if the user is logged in
-    {
-      name: "Profile",
-      link: "/profile",
-    },
     {
       name: "Events",
       link: "/events",
@@ -53,37 +55,34 @@ function Navbar() {
 
   const handleLogin = () => {
     router.push("/login");
-  };
-
-  const handleLogout = () => {
-    console.log("logout");
+    setCustomSession(loggedInUsers.customer1);
   };
 
   const handleSignUp = () => {
     router.push("/signup");
   };
 
+  console.log("Session is ", customSession);
+
   return (
     <nav className="bg-white shadow">
       <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl mx-auto px-2 sm:px-6 xl:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
-            <a href="/">
-              <Image
-                className="block xl:hidden h-8 w-auto "
-                src="/images/logo.png"
-                alt="Logo"
-                width={32}
-                height={32}
-              />
-              <Image
-                className="hidden xl:block h-8 w-auto "
-                src="/images/logo.png"
-                alt="Logo"
-                width={48}
-                height={48}
-              />
-            </a>
+            <Image
+              className="block xl:hidden h-auto w-auto "
+              src="/images/logo.png"
+              alt="Logo"
+              width={32}
+              height={32}
+            />
+            <Image
+              className="hidden xl:block h-auto w-auto "
+              src="/images/logo.png"
+              alt="Logo"
+              width={48}
+              height={48}
+            />
           </div>
 
           <div className="flex items-center w-full max-w-xs md:max-w-sm">
@@ -98,7 +97,7 @@ function Navbar() {
           </div>
 
           <div className="hidden xl:ml-6 xl:flex xl:items-center">
-            {isAdmin
+            {customSession?.role !== "CUSTOMER"
               ? navbarItems
                   .filter(
                     (item) => item.name !== "Events" && item.name !== "Cart"
@@ -117,30 +116,28 @@ function Navbar() {
                       <Link href={item.link}>{item.name}</Link>
                     </p>
                   ))
-              : navbarItems
-                  .filter((item) => item.name !== "Profile")
-                  .map((item, index) => (
-                    <p
-                      key={index}
-                      className={`px-6 py-2 text-lg transition-colors
+              : navbarItems.map((item, index) => (
+                  <p
+                    key={index}
+                    className={`px-6 py-2 text-lg transition-colors
                   ${
                     router.pathname === item.link
                       ? "text-blue-600 font-bold underline underline-offset-4"
                       : "text-blue-500 hover:text-blue-600"
                   }
                 `}
-                    >
-                      <Link href={item.link}>{item.name}</Link>
-                    </p>
-                  ))}
+                  >
+                    <Link href={item.link}>{item.name}</Link>
+                  </p>
+                ))}
+          </div>
+
+          <div className="flex items-center">
+            <AccountManager />
           </div>
 
           <div className=" xl:flex justify-between space-x-4 hidden ">
-            {isAdmin ? (
-              <Button variant="secondary" onClick={handleLogout}>
-                Logout
-              </Button>
-            ) : (
+            {!customSession && (
               <>
                 <Button variant="primary" onClick={handleLogin}>
                   Login
@@ -168,13 +165,7 @@ function Navbar() {
               <Link href={item.link}>{item.name}</Link>
             </p>
           ))}
-          {isAdmin ? (
-            <>
-              <p className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50">
-                Logout
-              </p>
-            </>
-          ) : (
+          {!customSession && (
             <>
               <p
                 onClick={handleLogin}
@@ -182,7 +173,6 @@ function Navbar() {
               >
                 Login
               </p>
-
               <p
                 onClick={handleSignUp}
                 className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50"

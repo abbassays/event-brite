@@ -11,7 +11,7 @@ import { getDateTimeString } from "../../utils/DateFunctions";
 import TicketModal from "../Ticket/TicketModal";
 import CategoryIcon from "../../utils/CategoryIcon";
 
-import { customSession } from "../../utils/AppDefaults";
+// import { defaultSession } from "../../utils/AppDefaults";
 
 const EventDetails = ({
   id,
@@ -44,8 +44,9 @@ const EventDetails = ({
         <div className="flex flex-col space-y-10 sm:w-3/5">
           <h2 className="text-2xl md:text-3xl font-medium">Event Details</h2>
 
-          {(customSession.user.role === "ADMIN" ||
-            customSession.user.id === organiserId) && (
+          {
+            // (defaultSession.user.role === "ADMIN" ||
+            // defaultSession.user.id === organiserId) &&
             <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
               <div className="bg-slate-200 rounded-lg p-3 h-fit">
                 <p className="text-blue-600">
@@ -59,7 +60,7 @@ const EventDetails = ({
                 <p className="text-sm">Checked-In</p>
               </div>
             </div>
-          )}
+          }
 
           <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
             <div className="bg-slate-200 rounded-lg p-3 h-fit">

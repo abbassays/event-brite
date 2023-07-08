@@ -62,7 +62,7 @@ const OrderCard = ({
     <>
       <Disclosure>
         {({ open }) => (
-          <div className="flex flex-col my-2 p-2 sm:p-4 md:p-8 rounded sm:rounded-lg lg:rounded-xl bg-white">
+          <div className="flex flex-col my-2 p-2 sm:p-4 md:p-8 rounded sm:rounded-lg lg:rounded-xl bg-white shadow-md">
             <Disclosure.Button>
               <div className="flex items-center justify-between ">
                 <p>

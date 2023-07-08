@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export interface CategoryType {
   category: string;
   count: number;
@@ -27,6 +25,17 @@ export interface OrganiserType {
   commission?: number;
   isEnabled: boolean;
   GST?: number;
+}
+
+export interface StaffMemberType {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  // can be in multiple organizations
+  organizations: {
+    id: string;
+  }[];
 }
 
 export interface TicketType {
@@ -96,3 +105,36 @@ export interface ContactUs {
   email: string;
   message: string;
 }
+
+export interface AdminType {
+  id: string;
+  name: string;
+}
+
+export interface CustomerType {
+  id: string;
+  name: string;
+}
+
+export type SessionType =
+  | ({
+      email: string;
+    } & (
+      | {
+          role: "ORGANISER";
+          user: OrganiserType;
+        }
+      | {
+          role: "STAFF";
+          user: StaffMemberType;
+        }
+      | {
+          role: "ADMIN";
+          user: AdminType;
+        }
+      | {
+          role: "CUSTOMER";
+          user: CustomerType;
+        }
+    ))
+  | null;
