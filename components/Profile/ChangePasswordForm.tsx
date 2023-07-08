@@ -7,7 +7,7 @@ import Input from "../CustomUI/Input";
 import Button from "../CustomUI/Button";
 import ComponentContainer from "./ComponentContainer";
 
-const ChangePassword = () => {
+const ChangePasswordForm = () => {
   const {
     register,
     handleSubmit,
@@ -71,4 +71,4 @@ const ChangePassword = () => {
   );
 };
 
-export default ChangePassword;
+export default ChangePasswordForm;
