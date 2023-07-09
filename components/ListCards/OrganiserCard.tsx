@@ -50,7 +50,7 @@ const OrganiserCard = ({
 
         <div className="w-full md:w-fit flex space-x-2">
           <p className="text-xl md:text-blue-500 md:hover:bg-blue-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white py-1 hover:bg-blue-600">
-            <Link href={`/admin/organisers/${id}`}>
+            <Link href={`/dashboard/organisers/${id}`}>
               <MdEdit className="mx-auto" />
             </Link>
           </p>

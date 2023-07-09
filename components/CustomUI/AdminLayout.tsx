@@ -17,15 +17,15 @@ const adminSideBarItems = [
   },
   {
     name: "Event",
-    route: "/admin/events",
+    route: "/dashboard/events",
   },
   {
     name: "Ticket",
-    route: "/admin/tickets",
+    route: "/dashboard/tickets",
   },
   {
     name: "Organiser",
-    route: "/admin/organisers",
+    route: "/dashboard/organisers",
   },
   {
     name: "Staff Members",

@@ -72,12 +72,12 @@ const EventCard = ({
 
         <div className=" md:w-fit flex gap-2 md:flex-row flex-col">
           <p className="text-xl md:text-green-500 md:hover:bg-green-500 p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-green-500 w-full text-white hover:bg-green-600">
-            <Link href={`/admin/events/${id}/check-in`}>
+            <Link href={`/dashboard/events/${id}/check-in`}>
               <MdLocationPin className="mx-auto" />
             </Link>
           </p>
           <p className="text-xl md:text-blue-500 md:hover:bg-blue-500 p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white hover:bg-blue-600">
-            <Link href={`/admin/events/${id}`}>
+            <Link href={`/dashboard/events/${id}`}>
               <MdEdit className="mx-auto" />
             </Link>
           </p>

@@ -43,10 +43,11 @@ const AllEventsPage = () => {
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    
     const searchedWord = e.target.value?.toLowerCase();
     const searchedEvents = allEvents.filter((event) => {
-      return event.organiserName.toLowerCase().includes(searchedWord.toLowerCase());
+      return event.organiserName
+        .toLowerCase()
+        .includes(searchedWord.toLowerCase());
     });
     setEvents(searchedEvents);
     setCurrentPage(1);
@@ -63,7 +64,7 @@ const AllEventsPage = () => {
 
   const createButton = (
     <div>
-      <Button onClick={() => router.push("/admin/events/create")}>
+      <Button onClick={() => router.push("/dashboard/events/create")}>
         Create Event
       </Button>
     </div>
@@ -71,7 +72,10 @@ const AllEventsPage = () => {
 
   const searchBar = (
     <div className="flex justify-end">
-      <CustomSearchBar placeholder="Search Organiser" onChange={(e) => handleSearch(e)} />
+      <CustomSearchBar
+        placeholder="Search Organiser"
+        onChange={(e) => handleSearch(e)}
+      />
     </div>
   );
 

@@ -59,7 +59,7 @@ const AllTicketsPage = () => {
 
   const createButton = (
     <div>
-      <Button onClick={() => router.push("/admin/tickets/create")}>
+      <Button onClick={() => router.push("/dashboard/tickets/create")}>
         Create Ticket
       </Button>
     </div>

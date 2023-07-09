@@ -28,7 +28,6 @@ export const eventsColumn: ColumnDef<EventType>[] = [
   //   cell: ({ row }) => {
   //     const dateString: string = row.getValue("startDate");
   //     const dateObj = new Date(dateString);
-
   //     return <div>{dateObj.toDateString()}</div>;
   //   },
   // },
@@ -38,7 +37,6 @@ export const eventsColumn: ColumnDef<EventType>[] = [
   //   cell: ({ row }) => {
   //     const dateString: string = row.getValue("endDate");
   //     const dateObj = new Date(dateString);
-
   //     return <div>{dateObj.toDateString()}</div>;
   //   },
   // },
@@ -63,12 +61,12 @@ export const eventsColumn: ColumnDef<EventType>[] = [
   //     return (
   //       <div className="w-full md:w-fit flex space-x-2 p-1 bg-zinc-100 shadow-md rounded-md">
   //         <p className="text-xl text-green-500 hover:bg-green-500 p-1 rounded hover:text-white cursor-pointer transition-colors w-full">
-  //           <Link href={`/admin/events/${id}/check-in`}>
+  //           <Link href={`/dashboard/events/${id}/check-in`}>
   //             <MdLocationPin className="mx-auto" />
   //           </Link>
   //         </p>
   //         <p className="text-xl text-blue-500 hover:bg-blue-500 p-1 rounded hover:text-white cursor-pointer transition-colors w-full">
-  //           <Link href={`/admin/events/${id}`}>
+  //           <Link href={`/dashboard/events/${id}`}>
   //             <MdEdit className="mx-auto" />
   //           </Link>
   //         </p>

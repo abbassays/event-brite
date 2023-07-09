@@ -92,7 +92,7 @@ const TicketCard = ({
 
         <div className=" md:w-fit flex gap-2 md:flex-row flex-col">
           <p className="text-xl md:text-blue-500 md:hover:bg-blue-500 p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white hover:bg-blue-600">
-            <Link href={`/admin/tickets/${id}`}>
+            <Link href={`/dashboard/tickets/${id}`}>
               <MdEdit className="mx-auto" />
             </Link>
           </p>

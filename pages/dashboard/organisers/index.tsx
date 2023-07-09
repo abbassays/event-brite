@@ -48,7 +48,7 @@ const AllOrganisersPage = () => {
 
   const createButton = (
     <div>
-      <Button onClick={() => router.push("/admin/organisers/create")}>
+      <Button onClick={() => router.push("/dashboard/organisers/create")}>
         Create Organiser
       </Button>
     </div>
