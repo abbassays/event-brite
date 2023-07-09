@@ -2,9 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { BiSolidDollarCircle } from "react-icons/bi";
+import { TbTicketOff } from "react-icons/tb";
 
 import { EventType, TicketType } from "../../types";
 import allEvents from "../../utils/all_events.json";
+import CustomToolTip from "../ui/tooltip";
 
 interface TicketCardProps extends TicketType {
   setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
@@ -15,7 +18,7 @@ const TicketCard = ({
   id,
   eventId,
   image,
-  description,
+  soldQuantity,
   price,
   quantity,
   type,
@@ -54,18 +57,35 @@ const TicketCard = ({
       </div>
 
       <div className="flex justify-between items-center w-full gap-5 lg:gap-10">
-        <div className="flex justify-between md:items-center w-full md:flex-row flex-col md:gap-2">
-          <div className="flex flex-col">
+        <div className="flex justify-between md:items-center w-full md:flex-row flex-col gap-1 md:gap-2">
+          <div className="flex items-center gap-2 md:items-start md:flex-col md:gap-0">
             <p className="text-xl font-medium">{event?.name}</p>
             <p className="text-sm text-gray-500">{type}</p>
           </div>
 
-          <div className="flex gap-2 md:gap-0 md:flex-col items-center text-center">
-            <p className="font-medium">${price.toFixed(2)}</p>
-            <p className="text-xs text-gray-500">Max: {quantity}</p>
+          <div className="flex gap-2 md:gap-1 md:flex-col items-center text-center">
+            <p className="font-medium text-sm">${price.toFixed(2)}</p>
+            <CustomToolTip message="Max Tickets">
+              <div className="bg-gray-200 text-gray-700 py-1 px-2 rounded-lg flex gap-2">
+                <TbTicketOff />
+                <p className="text-xs font-medium">{quantity}</p>
+              </div>
+            </CustomToolTip>
           </div>
 
-          <div className="font-medium md:text-base lg:text-base">
+          <div className="flex gap-2 md:gap-1 md:flex-col items-center text-center">
+            <p className="font-medium text-sm">{soldQuantity} sold</p>
+            <CustomToolTip message="Revenue">
+              <div className="bg-green-100 text-green-800 py-1 px-2 rounded-lg flex gap-2">
+                <BiSolidDollarCircle />
+                <p className="text-xs font-medium">
+                  {(price * soldQuantity).toFixed(2)}
+                </p>
+              </div>
+            </CustomToolTip>
+          </div>
+
+          <div className="font-medium text-sm md:text-base">
             {organiserName}
           </div>
         </div>

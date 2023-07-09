@@ -45,6 +45,7 @@ export interface TicketType {
   description: string;
   price: number;
   quantity: number;
+  soldQuantity: number;
   image: string;
   startDate: string;
   endDate: string;

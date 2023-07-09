@@ -27,13 +27,17 @@ const generateRandomData = () => {
 
   for (let i = 0; i < allEvents.length; i++) {
     ["Free", "Paid", "Donation"].map((ticketType) => {
+      const maxQuantity = Math.floor(Math.random() * 100) + 1;
+      const soldQuantity = Math.floor(Math.random() * maxQuantity) + 1;
+
       const ticket: TicketType = {
         id: uuidv4(),
         type: ticketType,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, quam libero ultricies nunc",
         price: ticketType !== "Paid" ? 0 : Math.random() * 100 + 1,
-        quantity: Math.floor(Math.random() * 5) + 1,
+        quantity: maxQuantity,
+        soldQuantity: soldQuantity,
         image: getRandomImageLink(),
         startDate: getRandomDate().toISOString(),
         endDate: getRandomDate().toISOString(),
