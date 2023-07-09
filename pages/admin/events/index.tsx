@@ -13,6 +13,7 @@ import Pagination from "../../../components/CustomUI/Pagination";
 import Button from "../../../components/CustomUI/Button";
 import { EventsTable } from "@/components/Tables/EventsTable";
 import { eventsColumn } from "@/components/Tables/columns/EventsColumn";
+import CustomSearchBar from "@/components/CustomUI/SearchBar";
 
 const AllEventsPage = () => {
   const router = useRouter();
@@ -42,6 +43,7 @@ const AllEventsPage = () => {
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    
     const searchedWord = e.target.value?.toLowerCase();
     const searchedEvents = allEvents.filter((event) => {
       return event.name.toLowerCase().includes(searchedWord.toLowerCase());
@@ -69,17 +71,7 @@ const AllEventsPage = () => {
 
   const searchBar = (
     <div className="flex justify-end">
-      <div className="flex justify-end border rounded-lg overflow-hidden w-full max-w-xs">
-        <input
-          className="p-2 w-full text-gray-500 font-medium leading-tight focus:outline-blue-500 focus:shadow-outline"
-          type="text"
-          placeholder="Search Organizers"
-          onChange={(e) => handleSearch(e)}
-        />
-        <div className="text-blue-500 bg-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
-          <FaSearch />
-        </div>
-      </div>
+      <CustomSearchBar onChange={(e) => handleSearch(e)} />
     </div>
   );
 
