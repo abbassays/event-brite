@@ -1,36 +1,44 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { EventType, TicketType } from "../../types";
-import allEvents from "../../utils/all_events.json";
-import allTickets from "../../utils/all_tickets.json";
+import { EventType, TicketType } from "@/types";
+import { allEvents } from "@/utils/json-database";
 
-import Container from "../CustomUI/Container";
-import Input from "../CustomUI/Input";
-import Button from "../CustomUI/Button";
-import Select from "../CustomUI/Select";
-import Textarea from "../CustomUI/Textarea";
-import ImagePreview from "../CustomUI/ImagePreview";
+import Button from "@/components//CustomUI/Button";
+import Container from "@/components//CustomUI/Container";
+import ImagePreview from "@/components//CustomUI/ImagePreview";
+import Input from "@/components//CustomUI/Input";
+import Select from "@/components//CustomUI/Select";
+import Textarea from "@/components//CustomUI/Textarea";
 
 interface TicketFormProps {
-  ticketId?: string | undefined;
+  ticket?: TicketType;
+  eventsList: EventType[];
 }
 
-const TicketForm = ({ ticketId }: TicketFormProps) => {
-  const [events, setEvents] = useState<EventType[] | []>([]);
-  const [ticket, setTicket] = useState<TicketType | undefined>();
+const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
   const [uploadedImage, setUploadedImage] = useState<string | undefined>();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<TicketType>();
+  } = useForm<TicketType>({
+    defaultValues: {
+      ...ticket,
+      startDate: ticket?.startDate.slice(0, 16),
+      endDate: ticket?.endDate.slice(0, 16),
+      eventId: ticket?.eventId,
+      price: Number(ticket?.price.toFixed(0)),
+    },
+  });
 
   const ticketOptions = ["Free", "Paid", "Donation"].map((option) => ({
     id: option,
     name: option,
   }));
+
+  const eventOptions = eventsList;
 
   const numberRules = {
     min: {
@@ -49,21 +57,6 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
     /* Create Event on backend */
   };
 
-  const fetchEvents = () => {
-    /* fetch events from backend here to map in dropdown */
-    setEvents(allEvents);
-  };
-
-  const fetchTicket = () => {
-    const fetchedTicket = allTickets.find((ticket) => ticket.id === ticketId);
-    setTicket(fetchedTicket);
-  };
-
-  useEffect(() => {
-    fetchEvents();
-    if (ticketId) fetchTicket();
-  }, [allEvents, ticketId]);
-
   const formItems = (
     <>
       <Select
@@ -74,16 +67,7 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         rules={{ required: "Ticekt Type is required" }}
         placeholder="Select an option"
         size={1}
-        options={
-          !ticket
-            ? ticketOptions
-            : ticketOptions.map((option) => {
-                if (option.id === ticket.type) {
-                  return { ...option, selected: true };
-                }
-                return option;
-              })
-        }
+        options={ticketOptions}
       />
 
       <div className="row-span-2">
@@ -93,7 +77,7 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
           name="description"
           register={register}
           errors={errors}
-          defaultValue={ticket?.description}
+          // defaultValue={ticket?.description}
         />
       </div>
 
@@ -104,7 +88,7 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         name="price"
         register={register}
         errors={errors}
-        defaultValue={ticket?.price}
+        // defaultValue={ticket?.price}
         rules={
           selectedType === "Paid"
             ? {
@@ -122,7 +106,7 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         name="quantity"
         register={register}
         errors={errors}
-        defaultValue={ticket?.quantity}
+        // defaultValue={ticket?.quantity}
         rules={{ required: "Ticket Max Quantity is required", ...numberRules }}
       />
 
@@ -149,7 +133,6 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         name="startDate"
         register={register}
         errors={errors}
-        defaultValue={ticket?.startDate ? ticket.startDate.slice(0, 16) : ""}
         rules={{ required: "Sale Starts Date is required" }}
       />
 
@@ -160,7 +143,6 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         name="endDate"
         register={register}
         errors={errors}
-        defaultValue={ticket?.endDate ? ticket.endDate.slice(0, 16) : ""}
         rules={{ required: "Sale End Date is required" }}
       />
 
@@ -172,16 +154,7 @@ const TicketForm = ({ ticketId }: TicketFormProps) => {
         rules={{ required: "Event is required" }}
         placeholder="Select an option"
         size={1}
-        options={
-          !ticket
-            ? events
-            : events.map((event) => {
-                if (event.id === ticket.eventId) {
-                  return { ...event, selected: true };
-                }
-                return event;
-              })
-        }
+        options={eventOptions}
       />
     </>
   );

@@ -6,7 +6,6 @@ import { MdEdit, MdDelete, MdLocationPin } from "react-icons/md";
 import { EventType } from "../../types";
 
 import CategoryIcon from "../../utils/CategoryIcon";
-import { getOrganiserById } from "@/utils/json-database";
 
 interface EventCardProps extends EventType {
   setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
@@ -21,7 +20,6 @@ const EventCard = ({
   location,
   startDate,
   endDate,
-  organiserId,
   organiserName,
   setSelectedId,
   setIsOpen,

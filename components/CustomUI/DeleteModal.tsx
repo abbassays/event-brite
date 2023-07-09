@@ -6,11 +6,13 @@ export default function DeleteModal({
   isOpen,
   setIsOpen,
   handleDelete,
+  message,
 }: {
   selectedId: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   handleDelete: (selectedId: string) => void;
+  message?: string;
 }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -51,7 +53,7 @@ export default function DeleteModal({
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Are you sure you want to delete the item?
+                    {message || "Are you sure you want to delete the item?"}
                   </p>
                 </div>
 

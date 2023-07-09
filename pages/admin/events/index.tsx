@@ -46,10 +46,10 @@ const AllEventsPage = () => {
     
     const searchedWord = e.target.value?.toLowerCase();
     const searchedEvents = allEvents.filter((event) => {
-      return event.name.toLowerCase().includes(searchedWord.toLowerCase());
+      return event.organiserName.toLowerCase().includes(searchedWord.toLowerCase());
     });
     setEvents(searchedEvents);
-    setCurrentPage(0);
+    setCurrentPage(1);
   };
 
   const eventsList = events?.map((event) => (
@@ -71,7 +71,7 @@ const AllEventsPage = () => {
 
   const searchBar = (
     <div className="flex justify-end">
-      <CustomSearchBar onChange={(e) => handleSearch(e)} />
+      <CustomSearchBar placeholder="Search Organiser" onChange={(e) => handleSearch(e)} />
     </div>
   );
 

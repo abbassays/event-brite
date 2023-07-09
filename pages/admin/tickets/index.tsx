@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import allTickets from "../../../utils/all_tickets.json";
+import { allTickets } from "@/utils/json-database";
 import { TicketType } from "../../../types";
 
-import AdminLayout from "../../../components/CustomUI/AdminLayout";
-import Container from "../../../components/CustomUI/Container";
-import TicketCard from "../../../components/ListCards/TicketCard";
-import DeleteModal from "../../../components/CustomUI/DeleteModal";
-import Pagination from "../../../components/CustomUI/Pagination";
-import Button from "../../../components/CustomUI/Button";
+import Pagination from "@/components/CustomUI/Pagination";
+import Button from "@/components/CustomUI/Button";
+import CustomSearchBar from "@/components/CustomUI/SearchBar";
+import TicketCard from "@/components/ListCards/TicketCard";
+import DeleteModal from "@/components/CustomUI/DeleteModal";
+import AdminLayout from "@/components/CustomUI/AdminLayout";
+import Container from "@/components/CustomUI/Container";
 
 const AllTicketsPage = () => {
   const router = useRouter();
@@ -36,6 +37,16 @@ const AllTicketsPage = () => {
     // Delete ticket from DB
     console.log("Deleting ticket with id: " + ticketId);
   };
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchedWord = e.target.value?.toLowerCase();
+    const searchedTickets = allTickets.filter((ticket) => {
+      return ticket.organiserName
+        .toLowerCase()
+        .includes(searchedWord.toLowerCase());
+    });
+    setTickets(searchedTickets);
+    setCurrentPage(1);
+  };
 
   const ticketsList = tickets?.map((ticket) => (
     <TicketCard
@@ -54,6 +65,15 @@ const AllTicketsPage = () => {
     </div>
   );
 
+  const searchBar = (
+    <div className="flex justify-end">
+      <CustomSearchBar
+        placeholder="Search Organiser"
+        onChange={(e) => handleSearch(e)}
+      />
+    </div>
+  );
+
   return (
     <AdminLayout title="All Tickets">
       <DeleteModal
@@ -64,8 +84,9 @@ const AllTicketsPage = () => {
       />
       <Container
         title="All Tickets"
-        className="grid grid-cols-1"
+        className="grid grid-cols-1 gap-2"
         gridItems={ticketsList}
+        gridHeaders={searchBar}
         actionButton={createButton}
       >
         <Pagination
