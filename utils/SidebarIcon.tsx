@@ -1,6 +1,6 @@
 import { CgProfile, CgPassword, CgHome, CgList } from "react-icons/cg";
 import { GiTicket, GiPartyFlags } from "react-icons/gi";
-import { BiUser } from "react-icons/bi";
+import { PiUsersThree, PiUser } from "react-icons/pi";
 import { TbHomeStats } from "react-icons/tb";
 
 export const SidebarIcon = ({ item }: { item: string }) => {
@@ -10,8 +10,9 @@ export const SidebarIcon = ({ item }: { item: string }) => {
   if (item === "My Orders") return <CgList />;
   if (item === "Event") return <GiPartyFlags />;
   if (item === "Ticket") return <GiTicket />;
-  if (item === "Organiser") return <BiUser />;
+  if (item === "Organiser") return <PiUser />;
   if (item === "Dashboard") return <TbHomeStats />;
+  if (item === "Staff Members") return <PiUsersThree />;
 
   return null;
 };

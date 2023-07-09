@@ -10,7 +10,7 @@ type SideBarProps = {
   }[];
 };
 
-const AdminSidebar = ({ items }: SideBarProps) => {
+const DashboardSidebar = ({ items }: SideBarProps) => {
   const router = useRouter();
   return (
     <div
@@ -43,4 +43,4 @@ const AdminSidebar = ({ items }: SideBarProps) => {
   );
 };
 
-export default AdminSidebar;
+export default DashboardSidebar;

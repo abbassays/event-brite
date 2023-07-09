@@ -36,6 +36,7 @@ export interface StaffMemberType {
   // can be in multiple organisations
   organisations: {
     id: string;
+    name: string;
   }[];
 }
 

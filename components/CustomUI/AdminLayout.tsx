@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer";
-import AdminSidebar from "./AdminSidebar";
+import DashboardSidebar from "./DashboardSidebar";
 
 type Props = {
   children?: ReactNode;
@@ -27,6 +27,10 @@ const adminSideBarItems = [
     name: "Organiser",
     route: "/admin/organisers",
   },
+  {
+    name: "Staff Members",
+    route: "/dashboard/staff",
+  },
 ];
 
 const AdminLayout = ({
@@ -42,7 +46,7 @@ const AdminLayout = ({
       </Head>
       <Navbar />
       <div className="flex justify-start">
-        <AdminSidebar items={adminSideBarItems} />
+        <DashboardSidebar items={adminSideBarItems} />
         <div className="min-h-screen w-full ">{children}</div>
       </div>
       <Footer />

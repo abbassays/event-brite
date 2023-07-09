@@ -38,9 +38,11 @@ const staffMember1: SessionType = {
     organisations: [
       {
         id: organiser1.user.id,
+        name: organiser1.user.name,
       },
       {
         id: organiser2.user.id,
+        name: organiser2.user.name,
       },
     ],
   },
