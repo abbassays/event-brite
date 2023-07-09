@@ -7,7 +7,7 @@ import Input from "../CustomUI/Input";
 import Button from "../CustomUI/Button";
 import ComponentContainer from "./ComponentContainer";
 
-const ChangePasswordForm = () => {
+const ChangePasswordForm = ({ isNew }: { isNew?: boolean }) => {
   const {
     register,
     handleSubmit,
@@ -22,17 +22,19 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <ComponentContainer title="Change Password">
-      <form onSubmit={handleSubmit(handleChangePassword)}>
-        <Input
-          type="password"
-          label="Old Password"
-          placeholder="Old Password"
-          name="oldPassword"
-          register={register}
-          errors={errors}
-          rules={{ required: "Old Password is required" }}
-        />
+    <ComponentContainer title={!isNew ? "Change Password" : ""}>
+      <form onSubmit={handleSubmit(handleChangePassword)}  >
+        {!isNew && (
+          <Input
+            type="password"
+            label="Old Password"
+            placeholder="Old Password"
+            name="oldPassword"
+            register={register}
+            errors={errors}
+            rules={{ required: "Old Password is required" }}
+          />
+        )}
         <Input
           type="password"
           label="New Password"
@@ -63,7 +65,7 @@ const ChangePasswordForm = () => {
         />
         <div className="mt-6">
           <Button type="submit" variant="primary">
-            Change Password
+            {isNew ? "Set" : "Change"} Password
           </Button>
         </div>
       </form>
