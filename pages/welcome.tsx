@@ -13,13 +13,13 @@ const WelcomePage = (props: Props) => {
   return (
     <Layout title="Welcome!">
       <Container>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center text-center">
           <h1 className="text-3xl font-bold">
             Welcome {customSession?.user?.name}
           </h1>
           <p className="text-lg mt-3 text-gray-600">Set a New Password to Continue</p>
 
-          <div className="max-w-2xl w-full">
+          <div className="max-w-2xl w-full text-left">
             <ChangePasswordForm isNew />
           </div>
         </div>
