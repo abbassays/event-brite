@@ -13,30 +13,31 @@ import Textarea from "../CustomUI/Textarea";
 import Image from "next/image";
 import ImagePreview from "../CustomUI/ImagePreview";
 
-const EventForm = ({ eventId }: { eventId?: string }) => {
-  const [event, setEvent] = useState<EventType>();
+const EventForm = ({
+  event,
+  categoryList,
+}: {
+  event?: EventType;
+  categoryList: any;
+}) => {
   const [uploadedImage, setUploadedImage] = useState<string | undefined>();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<EventType>();
+  } = useForm<EventType>({
+    defaultValues: {
+      ...event,
+      startDate: event?.startDate.slice(0, 16),
+      endDate: event?.endDate.slice(0, 16),
+    },
+  });
 
   const onSubmit = (data: EventType) => {
     console.log("Submitting data", data, "\nErrors are", errors);
     /* Create Event on backend */
   };
-
-  const fetchEvent = () => {
-    /* This will be a dynamic route with event id, event will be fetched here from event id */
-    const fetchedEvent = allEvents.find((event) => event.id === eventId);
-    setEvent(fetchedEvent);
-  };
-
-  useEffect(() => {
-    fetchEvent();
-  }, [eventId]);
 
   console.log("Event is", event);
 
@@ -50,7 +51,6 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         register={register}
         errors={errors}
         rules={{ required: "Name is required" }}
-        defaultValue={event?.name}
       />
       <div className="row-span-2">
         <Textarea
@@ -59,7 +59,6 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
           name="description"
           register={register}
           errors={errors}
-          defaultValue={event?.description}
         />
       </div>
       <Input
@@ -70,7 +69,6 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         register={register}
         errors={errors}
         rules={{ required: "Location is required" }}
-        defaultValue={event?.location}
       />
       <Select
         label="Category"
@@ -79,13 +77,7 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         errors={errors}
         rules={{ required: "Category is required" }}
         placeholder="Select an option"
-        options={categories.map((item) => {
-          return {
-            id: item.category,
-            name: item.category,
-            selected: item.category === event?.category,
-          };
-        })}
+        options={categoryList}
       />
 
       <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
@@ -112,7 +104,6 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         register={register}
         errors={errors}
         rules={{ required: "Start Date is required" }}
-        defaultValue={event?.startDate ? event.startDate.slice(0, 16) : ""}
       />
       <Input
         type="datetime-local"
@@ -122,7 +113,6 @@ const EventForm = ({ eventId }: { eventId?: string }) => {
         register={register}
         errors={errors}
         rules={{ required: "End Date is required" }}
-        defaultValue={event?.endDate ? event.endDate.slice(0, 16) : ""}
       />
     </>
   );
