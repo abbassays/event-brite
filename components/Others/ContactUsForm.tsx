@@ -14,7 +14,7 @@ import Button from "../CustomUI/Button";
   how can this be done?
  */
 
-const ContactUsForm = () => {
+const ContactUsForm = ({ isDisabled }: { isDisabled?: boolean }) => {
   const {
     register,
     handleSubmit,
@@ -28,30 +28,34 @@ const ContactUsForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        type="text"
-        label="Name"
-        placeholder="Your Name"
-        name="name"
-        register={register}
-        errors={errors}
-        rules={{ required: "Name is required" }}
-      />
-      <Input
-        type="text"
-        label="Email"
-        placeholder="Your Email"
-        name="email"
-        register={register}
-        errors={errors}
-        rules={{
-          required: "Name is required",
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address",
-          },
-        }}
-      />
+      {!isDisabled && (
+        <>
+          <Input
+            type="text"
+            label="Name"
+            placeholder="Your Name"
+            name="name"
+            register={register}
+            errors={errors}
+            rules={{ required: "Name is required" }}
+          />
+          <Input
+            type="text"
+            label="Email"
+            placeholder="Your Email"
+            name="email"
+            register={register}
+            errors={errors}
+            rules={{
+              required: "Name is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address",
+              },
+            }}
+          />
+        </>
+      )}
       <div className="row-span-2">
         <Textarea
           label="Message"
