@@ -6,7 +6,7 @@ import Layout from "@/components/CustomUI/Layout";
 import TicketForm from "@/components/AdminForms/TicketForm";
 import PageLoader from "@/components/CustomUI/PageLoader";
 
-const CreateEvent = () => {
+const CreateTicketPage = () => {
   if (!allEvents) return <PageLoader />;
 
   return (
@@ -16,4 +16,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default CreateTicketPage;

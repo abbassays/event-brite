@@ -9,7 +9,7 @@ import { EventType } from "../../../../types";
 import Layout from "../../../../components/CustomUI/Layout";
 import Container from "../../../../components/CustomUI/Container";
 
-const CheckIn = () => {
+const CheckInPage = () => {
   const router = useRouter();
   const [event, setEvent] = useState<EventType>();
   const [startScan, setStartScan] = useState<boolean>(false);
@@ -63,4 +63,4 @@ const CheckIn = () => {
   );
 };
 
-export default CheckIn;
+export default CheckInPage;

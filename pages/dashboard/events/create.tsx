@@ -5,7 +5,7 @@ import categories from "@/utils/categories";
 import Layout from "../../../components/CustomUI/Layout";
 import EventForm from "../../../components/AdminForms/EventForm";
 
-const CreateEvent = () => {
+const CreateEventPage = () => {
   const categoryList = categories.map((item) => {
     return {
       id: item.category,
@@ -20,4 +20,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default CreateEventPage;

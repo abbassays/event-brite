@@ -8,7 +8,7 @@ import StaffForm from "@/components/AdminForms/StaffForm";
 import { StaffMemberType } from "@/types";
 import PageLoader from "@/components/CustomUI/PageLoader";
 
-const EditStaffPage = () => {
+const EditStaffMemberPage = () => {
   const [staffMember, setStaffMember] = useState<StaffMemberType>();
   const router = useRouter();
   const { id } = router.query;
@@ -34,4 +34,4 @@ const EditStaffPage = () => {
   );
 };
 
-export default EditStaffPage;
+export default EditStaffMemberPage;
