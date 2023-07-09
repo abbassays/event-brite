@@ -5,6 +5,7 @@ type ContainerProps = {
   description?: string;
   children?: React.ReactNode;
   className?: string;
+  gridHeaders?: React.ReactNode;
   gridItems?: React.ReactNode;
   actionButton?: React.ReactNode;
 };
@@ -16,6 +17,7 @@ const Container = ({
   className,
   gridItems,
   actionButton,
+  gridHeaders,
 }: ContainerProps) => {
   return (
     <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl max-w-md mx-auto mt-10 px-4 w-full">
@@ -30,6 +32,7 @@ const Container = ({
           {description}
         </p>
       )}
+      {gridHeaders && <div className={`mt-4`}>{gridHeaders}</div>}
       <div className={`grid ${className} mt-4`}>{gridItems}</div>
       {children}
     </div>
