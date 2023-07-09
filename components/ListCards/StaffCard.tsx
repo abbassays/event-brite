@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MdEdit, MdDelete } from "react-icons/md";
+import React from "react";
+import { MdDelete, MdEdit } from "react-icons/md";
 
-import { EventType, StaffMemberType, TicketType } from "../../types";
+import { StaffMemberType } from "../../types";
 
 interface StaffCardProps extends StaffMemberType {
   setSelectedId?: React.Dispatch<React.SetStateAction<string>>;

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import allOrganisers from "../../..//utils/all_organisers.json";
+import { allOrganisers } from "@/utils/json-database";
 
 import Layout from "../../../components/CustomUI/Layout";
 import OrganiserForm from "../../../components/AdminForms/OrganiserForm";
 import { OrganiserType } from "../../../types";
 import PageLoader from "../../../components/CustomUI/PageLoader";
 
-const EditTicketPage = () => {
+const EditOrganiserPage = () => {
   const [organiser, setOrganiser] = useState<OrganiserType>();
   const router = useRouter();
   const { id } = router.query;
@@ -33,4 +33,4 @@ const EditTicketPage = () => {
     </Layout>
   );
 };
-export default EditTicketPage;
+export default EditOrganiserPage;

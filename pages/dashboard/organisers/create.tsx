@@ -1,9 +1,9 @@
 import React from "react";
 
-import Layout from "../../../components/CustomUI/Layout";
-import OrganiserForm from "../../../components/AdminForms/OrganiserForm";
+import Layout from "@/components/CustomUI/Layout";
+import OrganiserForm from "@/components/AdminForms/OrganiserForm";
 
-const CreateEvent = () => {
+const CreateOrganiser = () => {
   return (
     <Layout title="Create Organiser">
       <OrganiserForm />
@@ -11,4 +11,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default CreateOrganiser;

@@ -113,8 +113,7 @@ const OrganiserForm = ({ organiser }: { organiser?: OrganiserType }) => {
         gridItems={formItems}
       >
         <Button className="mt-10" type="submit" variant="primary">
-          {organiser ? "Save " : "Create "}
-          Organiser
+          {organiser ? "Save" : "Create"}
         </Button>
       </Container>
     </form>

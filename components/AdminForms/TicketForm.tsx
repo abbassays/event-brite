@@ -169,7 +169,7 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
       >
         <div className="mt-10">
           <Button type="submit" variant="primary">
-            {ticket ? "Edit " : "Create "} Ticket
+            {ticket ? "Edit" : "Create"}
           </Button>
         </div>
       </Container>
