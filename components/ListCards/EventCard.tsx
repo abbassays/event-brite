@@ -34,8 +34,8 @@ const EventCard = ({
   const organizer = getOrganiserById(organiserId);
 
   return (
-    <div className="flex space-x-3 md:space-x-10 items-center rounded md:rounded-xl bg-white my-2 pr-2 md:pr-6 md:px-6 py-2 shadow">
-      <div className="relative h-16 aspect-square hidden md:block">
+    <div className="flex gap-3 md:gap-5 lg:gap-10 items-center rounded md:rounded-xl bg-white px-6 py-2 shadow">
+      <div className="relative max-h-20 h-full md:h-16 aspect-square xs:block hidden">
         <Image
           src={image}
           alt={name}
@@ -45,46 +45,48 @@ const EventCard = ({
         />
       </div>
 
-      <div className="flex justify-between items-center w-full md:flex-row flex-col">
-        <div className="flex flex-col space-y-1">
-          <div className="flex space-x-2 items-center">
-            <p className="text-xl font-medium">{name} | </p>
-            <p className="text-sm">{location}</p>
-            <p className="text-blue-500">
-              <CategoryIcon category={category} />
+      <div className="flex justify-between items-center w-full gap-5 lg:gap-10">
+        <div className="flex justify-between md:items-center w-full md:flex-row flex-col md:gap-2">
+          <div className="flex flex-col gap-1">
+            <p className="text-xl font-medium">{name}</p>
+
+            <div className="flex gap-2 text-xs lg:text-sm">
+              <p className="">{location}</p>
+              <p className="text-blue-500">
+                <CategoryIcon category={category} />
+              </p>
+            </div>
+          </div>
+
+          <div className="">
+            <p className="text-xs lg:text-sm font-medium">
+              {new Date(startDate).toDateString()}{" "}
+              <span className="font-normal text-gray-500"> to </span>
             </p>
+            <p className="text-xs lg:text-sm font-medium">
+              {new Date(endDate).toDateString()}
+            </p>
+          </div>
+
+          <div className="font-medium md:text-base lg:text-base">
+            {organizer.name}
           </div>
         </div>
 
-        <div className="md:my-0 my-2">
-          <p className="text-sm font-medium">
-            {new Date(startDate).toDateString()}{" "}
-            <span className="font-normal text-gray-500"> to </span>
-          </p>
-          <p className="text-sm font-medium">
-            {new Date(endDate).toDateString()}
-          </p>
-        </div>
-
-        <div className="">
-          Organized by
-          <span className="font-medium"> {organizer.name}</span>
-        </div>
-
-        <div className="w-full md:w-fit flex space-x-2">
-          <p className="text-xl md:text-green-500 md:hover:bg-green-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white py-1 hover:bg-blue-600">
+        <div className=" md:w-fit flex gap-2 md:flex-row flex-col">
+          <p className="text-xl md:text-green-500 md:hover:bg-green-500 p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-green-500 w-full text-white hover:bg-green-600">
             <Link href={`/admin/events/${id}/check-in`}>
               <MdLocationPin className="mx-auto" />
             </Link>
           </p>
-          <p className="text-xl md:text-blue-500 md:hover:bg-blue-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white py-1 hover:bg-blue-600">
+          <p className="text-xl md:text-blue-500 md:hover:bg-blue-500 p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-blue-500 w-full text-white hover:bg-blue-600">
             <Link href={`/admin/events/${id}`}>
               <MdEdit className="mx-auto" />
             </Link>
           </p>
           <p
             onClick={openModal}
-            className="text-xl md:text-red-500 md:hover:bg-red-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-red-500 w-full text-white py-1 hover:bg-red-600"
+            className="text-xl md:text-red-500 md:hover:bg-red-500 p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-red-500 w-full text-white hover:bg-red-600"
           >
             <MdDelete className="mx-auto" />
           </p>

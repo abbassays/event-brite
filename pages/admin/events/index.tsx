@@ -93,7 +93,7 @@ const AllEventsPage = () => {
       />
       <Container
         title="All Events"
-        className="grid grid-cols-1"
+        className="grid grid-cols-1 gap-2"
         gridItems={eventsList}
         actionButton={createButton}
         gridHeaders={searchBar}
