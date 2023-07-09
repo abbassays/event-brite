@@ -32,9 +32,9 @@ const AllOrganisersPage = () => {
     fetchOrganisers();
   }, [allOrganisers, currentPage]);
 
-  const handleDelete = (eventId: string) => {
+  const handleDelete = (organiserId: string) => {
     // Delete organiser from DB
-    console.log("Deleting organiser with id: " + eventId);
+    console.log("Deleting organiser with id: " + organiserId);
   };
 
   const organisersList = organisers?.map((organiser) => (
@@ -47,11 +47,9 @@ const AllOrganisersPage = () => {
   ));
 
   const createButton = (
-    <div>
-      <Button onClick={() => router.push("/dashboard/organisers/create")}>
-        Create Organiser
-      </Button>
-    </div>
+    <Button onClick={() => router.push("/dashboard/organisers/create")}>
+      Create Organiser
+    </Button>
   );
 
   return (

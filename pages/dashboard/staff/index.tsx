@@ -10,6 +10,7 @@ import DeleteModal from "@/components/CustomUI/DeleteModal";
 import Pagination from "@/components/CustomUI/Pagination";
 import Button from "@/components/CustomUI/Button";
 import StaffCard from "@/components/ListCards/StaffCard";
+import CustomSearchBar from "@/components/CustomUI/SearchBar";
 
 const AllStaffMembersPage = () => {
   const router = useRouter();
@@ -32,9 +33,23 @@ const AllStaffMembersPage = () => {
     fetchStaffMembers();
   }, [allStaffMembers, currentPage]);
 
-  const handleDelete = (eventId: string) => {
+  const handleDelete = (staffId: string) => {
     // Delete staff member from DB
-    console.log("Deleting staff member with id: " + eventId);
+    console.log("Deleting staff member with id: " + staffId);
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchedWord = e.target.value?.toLowerCase();
+    const searchedStaff = allStaffMembers.filter((staff) => {
+      return (
+        staff.name.toLowerCase().includes(searchedWord) ||
+        staff.organisations.some((org) =>
+          org.name.toLowerCase().includes(searchedWord)
+        )
+      );
+    });
+    setStaffMembers(searchedStaff);
+    setCurrentPage(1);
   };
 
   const staffMemberList = staffMembers?.map((staffMember) => (
@@ -47,10 +62,17 @@ const AllStaffMembersPage = () => {
   ));
 
   const createButton = (
-    <div>
-      <Button onClick={() => router.push("/dashboard/staff/create")}>
-        Create
-      </Button>
+    <Button onClick={() => router.push("/dashboard/staff/create")}>
+      Create
+    </Button>
+  );
+
+  const searchBar = (
+    <div className="flex justify-end">
+      <CustomSearchBar
+        placeholder="Search Staff by Name / Organiser"
+        onChange={(e) => handleSearch(e)}
+      />
     </div>
   );
 
@@ -67,6 +89,7 @@ const AllStaffMembersPage = () => {
         className="grid grid-cols-1"
         gridItems={staffMemberList}
         actionButton={createButton}
+        gridHeaders={searchBar}
       >
         <Pagination
           currentPage={currentPage}
