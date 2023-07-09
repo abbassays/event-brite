@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid"; // For generating unique IDs
 import { EventType } from "../../types";
-import { allOrganisers } from "../../utils/json-database";
+import { allOrganisers, getRandomOrganiser } from "../../utils/json-database";
 
 const generateRandomData = () => {
   const categories = [
@@ -36,13 +36,7 @@ const generateRandomData = () => {
     return `https://picsum.photos/${width}/${height}`;
   };
 
-  const getRandomOrganiser = () => {
-    const randomIndex = Math.floor(Math.random() * allOrganisers.length);
-    return {
-      id: allOrganisers[randomIndex].id,
-      name: allOrganisers[randomIndex].name,
-    };
-  };
+
 
   const data = [];
 

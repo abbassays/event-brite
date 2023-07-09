@@ -24,3 +24,19 @@ export const getTicketById = (id: string) => {
 export const getOrderByOrderId = (id: string) => {
   return orders.find((order) => order.id === id);
 };
+
+export const getRandomOrganiser = () => {
+  const randomIndex = Math.floor(Math.random() * allOrganisers.length);
+  return {
+    id: allOrganisers[randomIndex].id,
+    name: allOrganisers[randomIndex].name,
+  };
+};
+
+export const getRandomEvent = () => {
+  const randomIndex = Math.floor(Math.random() * allEvents.length);
+  return {
+    id: allEvents[randomIndex].id,
+    name: allEvents[randomIndex].name,
+  };
+};

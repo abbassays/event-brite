@@ -48,7 +48,10 @@ export interface TicketType {
   image: string;
   startDate: string;
   endDate: string;
-  eventId?: string;
+  eventId: string;
+  eventName: string;
+  organiserId: string;
+  organiserName: string;
 }
 
 export interface ItemType {

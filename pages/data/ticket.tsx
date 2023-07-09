@@ -1,8 +1,9 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid"; // For generating unique IDs
 
-import allEvents from "../../utils/all_events.json";
+import { allEvents } from "@/utils/json-database";
 import { TicketType } from "../../types";
+import { getRandomOrganiser } from "@/utils/json-database";
 
 const generateRandomData = () => {
   const getRandomImageLink = () => {
@@ -37,6 +38,9 @@ const generateRandomData = () => {
         startDate: getRandomDate().toISOString(),
         endDate: getRandomDate().toISOString(),
         eventId: allEvents[i].id,
+        eventName: allEvents[i].name,
+        organiserId: allEvents[i].organiserId,
+        organiserName: allEvents[i].organiserName,
       };
       data.push(ticket);
     });

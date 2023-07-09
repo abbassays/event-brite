@@ -49,6 +49,7 @@ const ItemSummary = ({
       startDate,
       type,
       eventId,
+      eventName: event.name,
       category: event.category,
       location: event.location,
       name: event.name,
