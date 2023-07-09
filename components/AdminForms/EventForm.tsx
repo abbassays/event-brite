@@ -1,17 +1,14 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import categories from "../../utils/categories";
 import { EventType } from "../../types";
-import allEvents from "../../utils/all_events.json";
 
+import Button from "../CustomUI/Button";
 import Container from "../CustomUI/Container";
+import ImagePreview from "../CustomUI/ImagePreview";
 import Input from "../CustomUI/Input";
 import Select from "../CustomUI/Select";
-import Button from "../CustomUI/Button";
 import Textarea from "../CustomUI/Textarea";
-import Image from "next/image";
-import ImagePreview from "../CustomUI/ImagePreview";
 
 const EventForm = ({
   event,
@@ -125,11 +122,15 @@ const EventForm = ({
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <div className="mt-10">
+        <div className="mt-10 flex gap-4">
           <Button type="submit" variant="primary">
-            {event ? "Edit " : "Create "}
-            Event
+            {event ? "Save" : "Create"}
           </Button>
+          {event && (
+            <Button type="button" variant="tertiary">
+              Publish
+            </Button>
+          )}
         </div>
       </Container>
     </form>
