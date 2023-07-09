@@ -22,6 +22,7 @@ const EventCard = ({
   startDate,
   endDate,
   organiserId,
+  organiserName,
   setSelectedId,
   setIsOpen,
 }: EventCardProps) => {
@@ -30,8 +31,6 @@ const EventCard = ({
     setSelectedId(id);
     console.log("Opening modal for: ", id, name);
   };
-
-  const organizer = getOrganiserById(organiserId);
 
   return (
     <div className="flex gap-3 md:gap-5 lg:gap-10 items-center rounded md:rounded-xl bg-white px-6 py-2 shadow">
@@ -69,7 +68,7 @@ const EventCard = ({
           </div>
 
           <div className="font-medium md:text-base lg:text-base">
-            {organizer.name}
+            {organiserName}
           </div>
         </div>
 

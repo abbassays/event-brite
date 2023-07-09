@@ -35,7 +35,7 @@ const staffMember1: SessionType = {
     name: "Staff Member 1",
     description: "Description for Staff Member 1.",
     image: "https://i.pravatar.cc/480",
-    organizations: [
+    organisations: [
       {
         id: organiser1.user.id,
       },

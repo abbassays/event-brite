@@ -52,6 +52,9 @@ const ItemSummary = ({
       category: event.category,
       location: event.location,
       name: event.name,
+      checkedInCount: event.checkedInCount,
+      organiserId: event.organiserId,
+      organiserName: event.organiserName,
     });
   };
 

@@ -15,6 +15,7 @@ export interface EventType {
   image: string;
   organiserId: string;
   checkedInCount: number;
+  organiserName: string;
 }
 
 export interface OrganiserType {
@@ -32,8 +33,8 @@ export interface StaffMemberType {
   name: string;
   description: string;
   image: string;
-  // can be in multiple organizations
-  organizations: {
+  // can be in multiple organisations
+  organisations: {
     id: string;
   }[];
 }

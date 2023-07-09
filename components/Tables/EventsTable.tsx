@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/table";
 import { useState } from "react";
 import { Input } from "../ui/input";
+import EventCard from "../ListCards/EventCard";
+import { EventType } from "@/types";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -28,7 +30,7 @@ export function EventsTable<TData, TValue>({
   columns,
   data,
   showFilter,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<EventType, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
@@ -78,18 +80,28 @@ export function EventsTable<TData, TValue>({
         </TableHeader>
         <TableBody>
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="min-w-[100px]">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
+            table.getRowModel().rows.map((row) => {
+              const event: EventType = row.original;
+              return (
+                <EventCard
+                  key={row.original?.id}
+                  {...(row.original as EventType)}
+                />
+                // <TableRow
+                //   key={row.id}
+                //   data-state={row.getIsSelected() && "selected"}
+                // >
+                //   {row.getVisibleCells().map((cell) => (
+                //     <TableCell key={cell.id} className="min-w-[100px]">
+                //       {flexRender(
+                //         cell.column.columnDef.cell,
+                //         cell.getContext()
+                //       )}
+                //     </TableCell>
+                //   ))}
+                // </TableRow>
+              );
+            })
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">

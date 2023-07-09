@@ -36,14 +36,18 @@ const generateRandomData = () => {
     return `https://picsum.photos/${width}/${height}`;
   };
 
-  const getRandomOrganiserId = () => {
+  const getRandomOrganiser = () => {
     const randomIndex = Math.floor(Math.random() * allOrganisers.length);
-    return allOrganisers[randomIndex].id;
+    return {
+      id: allOrganisers[randomIndex].id,
+      name: allOrganisers[randomIndex].name,
+    };
   };
 
   const data = [];
 
   for (let i = 0; i < 100; i++) {
+    const organiser = getRandomOrganiser();
     const event: EventType = {
       id: uuidv4(),
       name: `Event ${i + 1}`,
@@ -57,8 +61,9 @@ const generateRandomData = () => {
       endDate: getRandomDate(),
       location: `Location ${i + 1}`,
       image: getRandomImageLink(),
-      organiserId: getRandomOrganiserId(),
       checkedInCount: Math.floor(Math.random() * 501),
+      organiserId: organiser.id,
+      organiserName: organiser.name,
     };
     data.push(event);
   }
