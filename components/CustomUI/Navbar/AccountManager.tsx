@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdSettings } from "react-icons/md";
 import { useRouter } from "next/router";
 
 import { useCustomSession } from "@/context/customSession";
@@ -52,8 +52,12 @@ const AccountManager = () => {
               <p className="text-gray-400 font-light">{customSession?.email}</p>
 
               <Link href={"/profile"}>
-                <Button variant="tertiary" className="mt-3">
-                  View Profile
+                <Button
+                  variant="tertiary"
+                  className="mt-3 flex items-center gap-2"
+                >
+                  <MdSettings />
+                  <p>Settings</p>
                 </Button>
               </Link>
             </div>

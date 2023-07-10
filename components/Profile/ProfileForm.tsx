@@ -8,7 +8,7 @@ import ImagePreview from "../CustomUI/ImagePreview";
 import Input from "../CustomUI/Input";
 import ComponentContainer from "./ComponentContainer";
 
-const Profile = ({ user }: { user: ProfileType }) => {
+const ProfileForm = ({ user }: { user: ProfileType }) => {
   const [uploadedImage, setUploadedImage] = useState<string | undefined>(
     user?.avatar
   );
@@ -98,4 +98,4 @@ const Profile = ({ user }: { user: ProfileType }) => {
   );
 };
 
-export default Profile;
+export default ProfileForm;

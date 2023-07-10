@@ -1,6 +1,6 @@
 import React from "react";
 
-import SidebarIcon from "../../utils/SidebarIcon";
+import SidebarIcon from "@/utils/SidebarIcon";
 
 type SideBarProps = {
   items: string[];

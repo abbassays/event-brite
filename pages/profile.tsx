@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { BillingAddressType, ProfileType, UserType } from "@/types";
+import { useCustomSession } from "@/context/customSession";
+import { ProfileType } from "@/types";
 import { allUsers } from "@/utils/json-database";
 
-import Layout from "../components/CustomUI/Layout";
-import Profile from "../components/Profile/Profile";
-import ChangePasswordForm from "../components/Profile/ChangePasswordForm";
-import BillingAddress from "../components/Profile/BillingAddressForm";
-import OrdersList from "../components/Profile/OrdersList";
-import Sidebar from "../components/CustomUI/Sidebar";
+import Layout from "@/components/CustomUI/Layout";
 import PageLoader from "@/components/CustomUI/PageLoader";
+import Sidebar from "@/components/CustomUI/Sidebar";
+import BillingAddress from "@/components/Profile/BillingAddressForm";
+import ChangePasswordForm from "@/components/Profile/ChangePasswordForm";
+import OrdersList from "@/components/Profile/OrdersList";
+import ProfileForm from "@/components/Profile/ProfileForm";
+import PaymentConfigForm from "@/components/Profile/PaymentConfigForm";
 
 const ProfilePage = () => {
   /* fetch user id from session */
   const userId = "1";
   const [user, setUser] = useState<ProfileType>();
+
+  const { customSession } = useCustomSession();
 
   const fetchUser = () => {
     /* function to fetch user details */
@@ -28,9 +32,15 @@ const ProfilePage = () => {
 
   const [selectedItem, setSelectedItem] = useState<string>("Profile");
 
-  const sideBarItems = ["Profile", "Password", "Billing Address", "My Orders"];
+  const sideBarItems = [
+    "Profile",
+    "Password",
+    "Billing Address",
+    "My Orders",
+    customSession?.role === "ORGANISER" ? "Stripe Details" : "",
+  ];
 
-  if (!user) return <PageLoader />;
+  if (!user && !customSession) return <PageLoader />;
 
   return (
     <Layout title={`User Profile`}>
@@ -42,12 +52,11 @@ const ProfilePage = () => {
         />
 
         <div className="flex flex-col w-full">
-          {selectedItem === "Profile" && <Profile user={user} />}
+          {selectedItem === "Profile" && <ProfileForm user={user} />}
           {selectedItem === "Password" && <ChangePasswordForm />}
-          {selectedItem === "Billing Address" && (
-            <BillingAddress user={user} />
-          )}
+          {selectedItem === "Billing Address" && <BillingAddress user={user} />}
           {selectedItem === "My Orders" && <OrdersList userId={userId} />}
+          {selectedItem === "Stripe Details" && <PaymentConfigForm user={user} />}
         </div>
       </div>
     </Layout>
