@@ -1,19 +1,12 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
-import {
-  allEvents,
-  allOrganisers,
-  allStaffMembers,
-  allTickets,
-} from "@/utils/json-database";
 import { useCustomSession } from "@/context/customSession";
 
 import AdminLayout from "@/components/CustomUI/AdminLayout";
 import Container from "@/components/CustomUI/Container";
-
 import DeleteModal from "@/components/CustomUI/DeleteModal";
 import PageLoader from "@/components/CustomUI/PageLoader";
-import { useRouter } from "next/router";
 import AdminDashboard from "@/components/Dashboard/AdminDashboard";
 import OrganiserDashboard from "@/components/Dashboard/OrganiserDashboard";
 import StaffMemberDashboard from "@/components/Dashboard/StaffMemberDashboard";

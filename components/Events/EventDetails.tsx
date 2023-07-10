@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { IoLocationSharp, IoCalendar } from "react-icons/io5";
 import { FaUserCheck } from "react-icons/fa";
+import { MdQrCodeScanner } from "react-icons/md";
 
-import { EventType } from "../../types";
+import { EventType } from "@/types";
+import { useCustomSession } from "@/context/customSession";
+import { getDateTimeString } from "@/utils/DateFunctions";
+import CategoryIcon from "@/utils/CategoryIcon";
 
 import Container from "../CustomUI/Container";
 import ImageContainer from "../CustomUI/ImageContainer";
-import { getDateTimeString } from "../../utils/DateFunctions";
 import TicketModal from "../Ticket/TicketModal";
-import CategoryIcon from "../../utils/CategoryIcon";
+import { useRouter } from "next/router";
 
 // import { defaultSession } from "../../utils/AppDefaults";
 
@@ -26,6 +28,9 @@ const EventDetails = ({
   organiserId,
 }: EventType) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const router = useRouter();
+  const { customSession, selectedOrg } = useCustomSession();
 
   return (
     <Container>
@@ -44,13 +49,16 @@ const EventDetails = ({
         <div className="flex flex-col space-y-10 sm:w-3/5">
           <h2 className="text-2xl md:text-3xl font-medium">Event Details</h2>
 
-          {
-            // (defaultSession.user.role === "ADMIN" ||
-            // defaultSession.user.id === organiserId) &&
-            <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
-              <div className="bg-slate-200 rounded-lg p-3 h-fit">
+          {(customSession?.role === "ADMIN" ||
+            customSession?.user.id === organiserId ||
+            selectedOrg?.id === organiserId) && (
+            <div
+              onClick={() => router.push(`/dashboard/events/${id}/check-in`)}
+              className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl cursor-pointer"
+            >
+              <div className="bg-slate-200 rounded-lg p-2 h-fit">
                 <p className="text-blue-600">
-                  <FaUserCheck />
+                  <MdQrCodeScanner size={28} />
                 </p>
               </div>
               <div className="flex flex-col">
@@ -60,7 +68,7 @@ const EventDetails = ({
                 <p className="text-sm">Checked-In</p>
               </div>
             </div>
-          }
+          )}
 
           <div className="flex w-fit space-x-6 text-gray-500 text-base md:text-xl">
             <div className="bg-slate-200 rounded-lg p-3 h-fit">
