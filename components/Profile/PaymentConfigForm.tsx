@@ -24,11 +24,8 @@ const PaymentConfigForm = ({ user }: { user: ProfileType }) => {
 
   return (
     <ComponentContainer title="User Profile">
-      <div className="grid sm:grid-cols-3">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="sm:col-span-2 order-2 sm:order-1"
-        >
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             type="text"
             label="Stripe API Key"
