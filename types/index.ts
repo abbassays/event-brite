@@ -62,14 +62,19 @@ export interface ItemType {
   quantity: number;
 }
 
+export interface SaleType {
+  id: string;
+  ticketId: string;
+  quantity: number;
+  price: number;
+  organiserName: string;
+  eventName: string;
+  date: string;
+}
+
 export interface CartType {
   id: string;
-  items:
-    | {
-        ticketId: string;
-        quantity: number;
-      }[]
-    | [];
+  items: SaleType[];
 }
 
 export interface BoughtTicketType extends TicketType {

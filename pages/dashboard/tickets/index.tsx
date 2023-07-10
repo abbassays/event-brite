@@ -17,7 +17,7 @@ const AllTicketsPage = () => {
   const router = useRouter();
   const itemsPerPage = 12;
 
-  const { customSession, setCustomSession, selectedOrg } = useCustomSession();
+  const { customSession, selectedOrg } = useCustomSession();
 
   const [tickets, setTickets] = useState<TicketType[]>([]);
   const [visibleTickets, setVisibleTickets] = useState<TicketType[]>();

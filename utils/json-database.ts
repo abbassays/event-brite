@@ -3,7 +3,8 @@ import events from "./all_events.json";
 import tickets from "./all_tickets.json";
 import orders from "./all_orders.json";
 import staffMembers from "./all_staff_members.json";
-import users from './all_users.json'
+import users from "./all_users.json";
+import sales from "./all_sales.json";
 
 import {
   EventType,
@@ -11,6 +12,7 @@ import {
   OrganiserType,
   TicketType,
   StaffMemberType,
+  SaleType,
 } from "@/types";
 
 export const allOrganisers: OrganiserType[] = organisers;
@@ -18,7 +20,8 @@ export const allEvents: EventType[] = events;
 export const allTickets: TicketType[] = tickets;
 export const allOrders: OrderType[] = orders;
 export const allStaffMembers: StaffMemberType[] = staffMembers;
-export const allUsers = users
+export const allUsers = users;
+export const allSales: SaleType[] = sales;
 
 export const getOrganiserById = (id: string) => {
   return organisers.find((organiser) => organiser.id === id);
@@ -64,4 +67,14 @@ export const getRandomEvent = () => {
     id: allEvents[randomIndex].id,
     name: allEvents[randomIndex].name,
   };
+};
+
+export const getRandomTicket = () => {
+  const randomIndex = Math.floor(Math.random() * allTickets.length);
+  return allTickets[randomIndex];
+};
+
+export const getRandomSale = () => {
+  const randomIndex = Math.floor(Math.random() * allSales.length);
+  return allSales[randomIndex];
 };

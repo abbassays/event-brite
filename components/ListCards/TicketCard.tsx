@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { BiSolidDollarCircle } from "react-icons/bi";
+import { FaSackDollar } from "react-icons/fa6";
 import { TbTicketOff } from "react-icons/tb";
 
 import { EventType, TicketType } from "../../types";
@@ -77,7 +77,7 @@ const TicketCard = ({
             <p className="font-medium text-sm">{soldQuantity} sold</p>
             <CustomToolTip message="Revenue">
               <div className="bg-green-100 text-green-800 py-1 px-2 rounded-lg flex gap-2">
-                <BiSolidDollarCircle />
+                <FaSackDollar />
                 <p className="text-xs font-medium">
                   {(price * soldQuantity).toFixed(2)}
                 </p>

@@ -36,8 +36,6 @@ const generateRandomData = () => {
     return `https://picsum.photos/${width}/${height}`;
   };
 
-
-
   const data = [];
 
   for (let i = 0; i < 100; i++) {
@@ -58,6 +56,7 @@ const generateRandomData = () => {
       checkedInCount: Math.floor(Math.random() * 501),
       organiserId: organiser.id,
       organiserName: organiser.name,
+      ticketsSold: Math.floor(Math.random() * 101),
     };
     data.push(event);
   }

@@ -17,19 +17,23 @@ const staffSideBar = [
     route: "/dashboard",
   },
   {
-    name: "Event",
+    name: "Events",
     route: "/dashboard/events",
   },
   {
-    name: "Ticket",
+    name: "Tickets",
     route: "/dashboard/tickets",
+  },
+  {
+    name: "Sales",
+    route: "/dashboard/sales",
   },
 ];
 
 const adminSideBarItems = [
   ...staffSideBar,
   {
-    name: "Organiser",
+    name: "Organisers",
     route: "/dashboard/organisers",
   },
   {
