@@ -15,7 +15,7 @@ import Container from "@/components/CustomUI/Container";
 const AllTicketsPage = () => {
   const router = useRouter();
   const itemsPerPage = 12;
- 
+
   const [tickets, setTickets] = useState<TicketType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
