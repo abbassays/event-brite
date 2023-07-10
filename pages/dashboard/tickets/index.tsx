@@ -15,6 +15,7 @@ import Container from "@/components/CustomUI/Container";
 const AllTicketsPage = () => {
   const router = useRouter();
   const itemsPerPage = 12;
+ 
   const [tickets, setTickets] = useState<TicketType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
@@ -44,7 +45,7 @@ const AllTicketsPage = () => {
         .toLowerCase()
         .includes(searchedWord.toLowerCase());
     });
-    setTickets(searchedTickets);
+    setTickets(searchedTickets.slice(0, itemsPerPage));
     setCurrentPage(1);
   };
 

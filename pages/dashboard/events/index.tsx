@@ -18,6 +18,7 @@ import CustomSearchBar from "@/components/CustomUI/SearchBar";
 const AllEventsPage = () => {
   const router = useRouter();
   const itemsPerPage = 10;
+ 
   const [events, setEvents] = useState<EventType[]>(allEvents);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
@@ -49,7 +50,7 @@ const AllEventsPage = () => {
         .toLowerCase()
         .includes(searchedWord.toLowerCase());
     });
-    setEvents(searchedEvents);
+    setEvents(searchedEvents.slice(0, itemsPerPage));
     setCurrentPage(1);
   };
 

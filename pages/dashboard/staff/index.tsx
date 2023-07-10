@@ -15,6 +15,7 @@ import CustomSearchBar from "@/components/CustomUI/SearchBar";
 const AllStaffMembersPage = () => {
   const router = useRouter();
   const itemsPerPage = 10;
+  
   const [staffMembers, setStaffMembers] = useState<StaffMemberType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
@@ -48,7 +49,7 @@ const AllStaffMembersPage = () => {
         )
       );
     });
-    setStaffMembers(searchedStaff);
+    setStaffMembers(searchedStaff.slice(0, itemsPerPage));
     setCurrentPage(1);
   };
 

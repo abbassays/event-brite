@@ -14,6 +14,7 @@ import Button from "../../../components/CustomUI/Button";
 const AllOrganisersPage = () => {
   const router = useRouter();
   const itemsPerPage = 10;
+ 
   const [organisers, setOrganisers] = useState<OrganiserType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
@@ -25,7 +26,7 @@ const AllOrganisersPage = () => {
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
     );
-    setOrganisers(selectedOrganisers);
+    setOrganisers(selectedOrganisers.slice(0, itemsPerPage));
   };
 
   useEffect(() => {
