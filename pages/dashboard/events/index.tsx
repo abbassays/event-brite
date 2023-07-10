@@ -64,7 +64,7 @@ const AllEventsPage = () => {
         .toLowerCase()
         .includes(searchedWord.toLowerCase());
     });
-    setEvents(searchedEvents.slice(0, itemsPerPage));
+    setVisibleEvents(searchedEvents.slice(0, itemsPerPage));
     setCurrentPage(1);
   };
 

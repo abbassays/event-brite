@@ -71,7 +71,12 @@ const AccountManager = () => {
                 onClick={() => {
                   if (session.role !== "STAFF") {
                     setCustomSession(session);
-                    router.reload();
+
+                    if (session.role === "CUSTOMER") router.push("/");
+                    else {
+                      router.push("/dashboard");
+                      router.reload();
+                    }
                   }
                 }}
               >
@@ -89,6 +94,7 @@ const AccountManager = () => {
                           className="font-medium bg-zinc-100 p-2 mb-2 rounded-md text-gray-500"
                           onClick={() => {
                             setCustomSession(session, organisation);
+                            router.push("/dashboard");
                             router.reload();
                           }}
                         >
