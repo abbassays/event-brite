@@ -1,14 +1,20 @@
-import { useCustomSession } from "@/context/customSession";
-import { SaleType } from "@/types";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+
+import { useCustomSession } from "@/context/customSession";
+import { SaleType } from "@/types";
 import { allSales } from "@/utils/json-database";
+
+import AdminLayout from "@/components/CustomUI/AdminLayout";
+import Container from "@/components/CustomUI/Container";
+import Pagination from "@/components/CustomUI/Pagination";
+import SaleCard from "@/components/ListCards/SaleCard";
 
 type Props = {};
 
 const AllSalesPage = (props: Props) => {
   const router = useRouter();
-  const itemsPerPage = 12;
+  const itemsPerPage = 15;
 
   const { customSession, selectedOrg } = useCustomSession();
 
@@ -37,7 +43,27 @@ const AllSalesPage = (props: Props) => {
     fetchSales();
   }, [sales, currentPage]);
 
-  return <div>AllSalesPage</div>;
+  const salesList = visibleSales?.map((sale) => (
+    <SaleCard key={sale.id} {...sale} />
+  ));
+
+  return (
+    <AdminLayout title="All Sales">
+      <Container
+        title="All Sales"
+        className="grid grid-cols-1 gap-2"
+        gridItems={salesList}
+        // gridHeaders={searchBar}
+      >
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalItems={sales.length}
+          itemsPerPage={itemsPerPage}
+        />
+      </Container>
+    </AdminLayout>
+  );
 };
 
 export default AllSalesPage;
