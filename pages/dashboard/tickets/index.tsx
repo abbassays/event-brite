@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { allTickets } from "@/utils/json-database";
+import { allTickets, getTicketsByOrganiserId } from "@/utils/json-database";
 import { TicketType } from "../../../types";
 
 import Pagination from "@/components/CustomUI/Pagination";
@@ -11,28 +11,49 @@ import TicketCard from "@/components/ListCards/TicketCard";
 import DeleteModal from "@/components/CustomUI/DeleteModal";
 import AdminLayout from "@/components/CustomUI/AdminLayout";
 import Container from "@/components/CustomUI/Container";
+import { useCustomSession } from "@/context/customSession";
 
 const AllTicketsPage = () => {
   const router = useRouter();
   const itemsPerPage = 12;
 
+  const { customSession, setCustomSession, selectedOrg } = useCustomSession();
+
   const [tickets, setTickets] = useState<TicketType[]>();
+  const [visibleTickets, setVisibleTickets] = useState<TicketType[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const initializeTickets = () => {
+    if (customSession?.role === "ADMIN") {
+      setVisibleTickets(allTickets);
+    } else if (customSession?.role === "ORGANISER") {
+      setVisibleTickets(getTicketsByOrganiserId(customSession.user.id));
+    } else if (customSession?.role === "STAFF") {
+      setVisibleTickets(getTicketsByOrganiserId(selectedOrg.id));
+    } else {
+      // router.push("/");
+    }
+  };
+
   const fetchTickets = () => {
     /* Replace this code with your code to fetch tickets */
-    const selectedTickets = allTickets.slice(
+    const selectedTickets = visibleTickets.slice(
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
     );
     setTickets(selectedTickets);
   };
 
+  useEffect(
+    () => initializeTickets(),
+    [allTickets, customSession, selectedOrg]
+  );
+
   useEffect(() => {
     fetchTickets();
-  }, [allTickets, currentPage]);
+  }, [visibleTickets, currentPage]);
 
   const handleDelete = (ticketId: string) => {
     // Delete ticket from DB
@@ -40,10 +61,13 @@ const AllTicketsPage = () => {
   };
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchedWord = e.target.value?.toLowerCase();
-    const searchedTickets = allTickets.filter((ticket) => {
-      return ticket.organiserName
-        .toLowerCase()
-        .includes(searchedWord.toLowerCase());
+    const searchedTickets = visibleTickets.filter((ticket) => {
+      return (
+        ticket.organiserName
+          .toLowerCase()
+          .includes(searchedWord.toLowerCase()) ||
+        ticket.eventName.toLowerCase().includes(searchedWord.toLowerCase())
+      );
     });
     setTickets(searchedTickets.slice(0, itemsPerPage));
     setCurrentPage(1);
@@ -93,7 +117,7 @@ const AllTicketsPage = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          totalItems={allTickets.length}
+          totalItems={visibleTickets.length}
           itemsPerPage={itemsPerPage}
         />
       </Container>
