@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import {
+  HiMiniArrowsUpDown,
+  HiArrowLongDown,
+  HiOutlineArrowLongUp,
+} from "react-icons/hi2";
 
 import { allEvents, getEventByOrganiserId } from "@/utils/json-database";
 import { EventType } from "@/types";
@@ -21,6 +26,7 @@ const AllEventsPage = () => {
 
   const [events, setEvents] = useState<EventType[]>([]);
   const [visibleEvents, setVisibleEvents] = useState<EventType[]>([]);
+  const [sortAsc, setSortAsc] = useState<"asc" | "dsc" | null>(null);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
@@ -57,6 +63,30 @@ const AllEventsPage = () => {
     console.log("Deleting event with id: " + eventId);
   };
 
+  const handleSort = () => {
+    if (sortAsc === "asc") {
+      setSortAsc("dsc");
+      setVisibleEvents(
+        events
+          .sort((a, b) => a.ticketsSold - b.ticketsSold)
+          .slice(0, itemsPerPage)
+      );
+    } else if (sortAsc === "dsc") {
+      setSortAsc(null);
+      setVisibleEvents(events.slice(0, itemsPerPage));
+      console.log("LOLOLOL");
+    } else {
+      setSortAsc("asc");
+      setVisibleEvents(
+        events
+          .sort((a, b) => b.ticketsSold - a.ticketsSold)
+          .slice(0, itemsPerPage)
+      );
+    }
+
+    setCurrentPage(1);
+  };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchedWord = e.target.value?.toLowerCase();
     const searchedEvents = events.filter((event) => {
@@ -78,15 +108,28 @@ const AllEventsPage = () => {
   ));
 
   const createButton = (
-    <div>
-      <Button onClick={() => router.push("/dashboard/events/create")}>
-        Create Event
-      </Button>
-    </div>
+    <Button onClick={() => router.push("/dashboard/events/create")}>
+      Create Event
+    </Button>
   );
 
   const searchBar = (
-    <div className="flex justify-end">
+    <div className="flex flex-col sm:flex-row justify-end gap-4 items-end sm:items-center">
+      <Button
+        variant="tertiary"
+        className="flex items-center justify-center gap-1 w-fit"
+        onClick={handleSort}
+      >
+        {sortAsc === "asc" ? (
+          <HiOutlineArrowLongUp />
+        ) : sortAsc === "dsc" ? (
+          <HiArrowLongDown />
+        ) : (
+          <HiMiniArrowsUpDown />
+        )}
+        <p>Sales</p>
+      </Button>
+
       <CustomSearchBar
         placeholder="Search Organiser"
         onChange={(e) => handleSearch(e)}

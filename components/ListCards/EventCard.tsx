@@ -1,11 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MdEdit, MdDelete, MdLocationPin } from "react-icons/md";
+import {
+  MdEdit,
+  MdDelete,
+  MdLocationPin,
+  MdOutlineShoppingCart,
+} from "react-icons/md";
 
 import { EventType } from "../../types";
 
 import CategoryIcon from "../../utils/CategoryIcon";
+import CustomToolTip from "../ui/tooltip";
 
 interface EventCardProps extends EventType {
   setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
@@ -21,6 +27,7 @@ const EventCard = ({
   startDate,
   endDate,
   organiserName,
+  ticketsSold,
   setSelectedId,
   setIsOpen,
 }: EventCardProps) => {
@@ -64,6 +71,13 @@ const EventCard = ({
               {new Date(endDate).toDateString()}
             </p>
           </div>
+
+          <CustomToolTip message="Tickets Sold">
+            <div className="bg-blue-50 text-blue-600 py-1 px-2 rounded-md flex gap-2 w-fit">
+              <MdOutlineShoppingCart />
+              <p className="text-xs font-medium">{ticketsSold}</p>
+            </div>
+          </CustomToolTip>
 
           <div className="font-medium md:text-base lg:text-base">
             {organiserName}

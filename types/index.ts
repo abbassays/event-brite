@@ -16,6 +16,7 @@ export interface EventType {
   organiserId: string;
   checkedInCount: number;
   organiserName: string;
+  ticketsSold: number;
 }
 
 export interface OrganiserType {
@@ -83,7 +84,6 @@ export interface UserType {
   avatar: string;
 }
 export type ProfileType = BillingAddressType & UserType;
-
 
 export interface ChangePasswordType {
   oldPassword: string;
