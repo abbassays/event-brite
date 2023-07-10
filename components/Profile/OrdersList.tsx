@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import allOrders from "../../utils/all_orders.json";
-import { OrderType } from "../../types";
+import { allOrders } from "@/utils/json-database";
+import { OrderType } from "@/types";
 
 import Container from "../CustomUI/Container";
 import OrderCard from "./OrderCard";

@@ -30,8 +30,8 @@ const Button: React.FC<ButtonProps> = ({
     activeStyle = "active:bg-blue-700";
   } else if (variant === "tertiary") { // Tertiary style
     buttonStyle =
-      "border border-transparent bg-transparent text-blue-500 hover:text-blue-600 focus:text-blue-600 active:text-blue-700";
-    hoverStyle = "hover:bg-transparent hover:text-blue-600";
+      "border border-transparent bg-white text-blue-500 hover:text-blue-600 focus:text-blue-600 active:text-blue-700";
+    hoverStyle = "hover:bg-opacity-75 hover:text-blue-600";
     focusStyle = "focus:text-blue-600";
     activeStyle = "active:text-blue-700";
   }

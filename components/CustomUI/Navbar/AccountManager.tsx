@@ -52,7 +52,7 @@ const AccountManager = () => {
               <p className="text-gray-400 font-light">{customSession?.email}</p>
 
               <Link href={"/profile"}>
-                <Button variant="secondary" className="mt-3">
+                <Button variant="tertiary" className="mt-3">
                   View Profile
                 </Button>
               </Link>
@@ -99,7 +99,7 @@ const AccountManager = () => {
 
           <div className="flex justify-end p-2">
             <Button
-              variant="tertiary"
+              variant="secondary"
               className="flex justify-center items-center"
               onClick={() => {
                 setCustomSession(null, null);
