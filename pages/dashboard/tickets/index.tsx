@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { allTickets, getTicketsByOrganiserId } from "@/utils/json-database";
-import { TicketType } from "../../../types";
+import { TicketType } from "@/types";
 
 import Pagination from "@/components/CustomUI/Pagination";
 import Button from "@/components/CustomUI/Button";

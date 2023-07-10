@@ -1,38 +1,56 @@
-import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-import { allStaffMembers } from "@/utils/json-database";
 import { StaffMemberType } from "@/types";
+import { allStaffMembers, getStaffMemberByOrganiserId } from "@/utils/json-database";
 
 import AdminLayout from "@/components/CustomUI/AdminLayout";
+import Button from "@/components/CustomUI/Button";
 import Container from "@/components/CustomUI/Container";
 import DeleteModal from "@/components/CustomUI/DeleteModal";
 import Pagination from "@/components/CustomUI/Pagination";
-import Button from "@/components/CustomUI/Button";
-import StaffCard from "@/components/ListCards/StaffCard";
 import CustomSearchBar from "@/components/CustomUI/SearchBar";
+import StaffCard from "@/components/ListCards/StaffCard";
+import { useCustomSession } from "@/context/customSession";
 
 const AllStaffMembersPage = () => {
   const router = useRouter();
   const itemsPerPage = 10;
-  
-  const [staffMembers, setStaffMembers] = useState<StaffMemberType[]>();
+
+  const { customSession, selectedOrg } = useCustomSession();
+
+  const [staffMembers, setStaffMembers] = useState<StaffMemberType[]>([]);
+  const [visibleStaffMembers, setVisibleStaffMembers] =
+    useState<StaffMemberType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+  const initializeStaff = () => {
+    if (customSession?.role === "ADMIN") {
+      setStaffMembers(allStaffMembers);
+    } else if (customSession?.role === "ORGANISER") {
+      setStaffMembers(getStaffMemberByOrganiserId(customSession.user.id));
+    }
+  };
+
   const fetchStaffMembers = () => {
     /* Replace this code with your code to fetch staff */
-    const selectedStaffMember = allStaffMembers.slice(
+    const selectedStaffMember = staffMembers.slice(
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
     );
-    setStaffMembers(selectedStaffMember);
+    setVisibleStaffMembers(selectedStaffMember);
   };
+
+  useEffect(
+    () => initializeStaff(),
+    [allStaffMembers, customSession, selectedOrg]
+  );
 
   useEffect(() => {
     fetchStaffMembers();
-  }, [allStaffMembers, currentPage]);
+  }, [staffMembers, currentPage]);
 
   const handleDelete = (staffId: string) => {
     // Delete staff member from DB
@@ -41,7 +59,7 @@ const AllStaffMembersPage = () => {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchedWord = e.target.value?.toLowerCase();
-    const searchedStaff = allStaffMembers.filter((staff) => {
+    const searchedStaff = staffMembers.filter((staff) => {
       return (
         staff.name.toLowerCase().includes(searchedWord) ||
         staff.organisations.some((org) =>
@@ -49,11 +67,11 @@ const AllStaffMembersPage = () => {
         )
       );
     });
-    setStaffMembers(searchedStaff.slice(0, itemsPerPage));
+    setVisibleStaffMembers(searchedStaff.slice(0, itemsPerPage));
     setCurrentPage(1);
   };
 
-  const staffMemberList = staffMembers?.map((staffMember) => (
+  const staffMemberList = visibleStaffMembers?.map((staffMember) => (
     <StaffCard
       key={staffMember.id}
       setSelectedId={setSelectedId}
@@ -95,7 +113,7 @@ const AllStaffMembersPage = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          totalItems={allStaffMembers.length}
+          totalItems={staffMembers.length}
           itemsPerPage={itemsPerPage}
         />
       </Container>

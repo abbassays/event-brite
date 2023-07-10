@@ -27,7 +27,7 @@ const AllEventsPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   // const [searchedWord, setSearchedWord] = useState<string>("");
 
-  const initializeTickets = () => {
+  const initializeEvents = () => {
     if (customSession?.role === "ADMIN") {
       setEvents(allEvents);
     } else if (customSession?.role === "ORGANISER") {
@@ -46,7 +46,7 @@ const AllEventsPage = () => {
     setVisibleEvents(selectedEvents);
   };
 
-  useEffect(() => initializeTickets(), [allEvents, customSession, selectedOrg]);
+  useEffect(() => initializeEvents(), [allEvents, customSession, selectedOrg]);
 
   useEffect(() => {
     fetchEvents();
