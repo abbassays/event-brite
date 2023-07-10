@@ -19,31 +19,29 @@ const AllTicketsPage = () => {
 
   const { customSession, setCustomSession, selectedOrg } = useCustomSession();
 
-  const [tickets, setTickets] = useState<TicketType[]>();
-  const [visibleTickets, setVisibleTickets] = useState<TicketType[]>([]);
+  const [tickets, setTickets] = useState<TicketType[]>([]);
+  const [visibleTickets, setVisibleTickets] = useState<TicketType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const initializeTickets = () => {
     if (customSession?.role === "ADMIN") {
-      setVisibleTickets(allTickets);
+      setTickets(allTickets);
     } else if (customSession?.role === "ORGANISER") {
-      setVisibleTickets(getTicketsByOrganiserId(customSession.user.id));
+      setTickets(getTicketsByOrganiserId(customSession.user.id));
     } else if (customSession?.role === "STAFF") {
-      setVisibleTickets(getTicketsByOrganiserId(selectedOrg.id));
-    } else {
-      // router.push("/");
+      setTickets(getTicketsByOrganiserId(selectedOrg.id));
     }
   };
 
   const fetchTickets = () => {
     /* Replace this code with your code to fetch tickets */
-    const selectedTickets = visibleTickets.slice(
+    const selectedTickets = tickets.slice(
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
     );
-    setTickets(selectedTickets);
+    setVisibleTickets(selectedTickets);
   };
 
   useEffect(
@@ -53,15 +51,16 @@ const AllTicketsPage = () => {
 
   useEffect(() => {
     fetchTickets();
-  }, [visibleTickets, currentPage]);
+  }, [tickets, currentPage]);
 
   const handleDelete = (ticketId: string) => {
     // Delete ticket from DB
     console.log("Deleting ticket with id: " + ticketId);
   };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchedWord = e.target.value?.toLowerCase();
-    const searchedTickets = visibleTickets.filter((ticket) => {
+    const searchedTickets = tickets.filter((ticket) => {
       return (
         ticket.organiserName
           .toLowerCase()
@@ -69,11 +68,11 @@ const AllTicketsPage = () => {
         ticket.eventName.toLowerCase().includes(searchedWord.toLowerCase())
       );
     });
-    setTickets(searchedTickets.slice(0, itemsPerPage));
+    setVisibleTickets(searchedTickets.slice(0, itemsPerPage));
     setCurrentPage(1);
   };
 
-  const ticketsList = tickets?.map((ticket) => (
+  const ticketsList = visibleTickets?.map((ticket) => (
     <TicketCard
       key={ticket.id}
       setSelectedId={setSelectedId}
@@ -117,7 +116,7 @@ const AllTicketsPage = () => {
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          totalItems={visibleTickets.length}
+          totalItems={tickets.length}
           itemsPerPage={itemsPerPage}
         />
       </Container>

@@ -14,7 +14,7 @@ type Props = {
 const staffSideBar = [
   {
     name: "Dashboard",
-    route: "/admin",
+    route: "/dashboard",
   },
   {
     name: "Event",

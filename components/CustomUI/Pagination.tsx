@@ -39,13 +39,13 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex flex-col items-center mt-10">
-      <span className="text-sm text-gray-700">
+    <div className="flex flex-col items-center mt-10 gap-2">
+      <p className="text-sm text-gray-700">
         Showing{" "}
         <span className="font-semibold text-gray-900">{currentPage}</span> of{" "}
         <span className="font-semibold text-gray-900">{totalPages}</span>{" "}
-      </span>
-      <div className="inline-flex mt-2 xs:mt-0">
+      </p>
+      <div className="flex xs:mt-0">
         <button
           onClick={handlePreviousPage}
           className="px-4 py-2 text-sm font-medium text-gray-800 rounded-l border-[1.5px] border-r-0 border-blue-500 bg-white hover:bg-slate-100"
