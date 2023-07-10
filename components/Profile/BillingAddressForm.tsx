@@ -1,29 +1,31 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
-import { BillingAddressType } from "../../types";
+import { BillingAddressType, ProfileType } from "@/types";
 
-import Button from "../CustomUI/Button";
-import Container from "../CustomUI/Container";
 import BillingForm from "../Cart/BillingForm";
+import Button from "../CustomUI/Button";
 import ComponentContainer from "./ComponentContainer";
 
 // fetch billing address from user id if needed
-const BillingAddress = ({ userId }: { userId: string }) => {
+const BillingAddress = ({ user }: { user: ProfileType }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<BillingAddressType>();
+  } = useForm<BillingAddressType>({
+    defaultValues: {
+      ...user,
+    },
+  });
 
-  const handleBillingAddress = (data: any) => {
-    console.log("Change Password", data);
+  const handleBillingAddress = (data: BillingAddressType) => {
+    console.log("data", data);
   };
 
   return (
     <ComponentContainer title="Change Billing Address">
       <form onSubmit={handleSubmit(handleBillingAddress)}>
-        <BillingForm register={register} errors={errors} userId={userId} />
+        <BillingForm register={register} errors={errors} userId={user.id} />
 
         <div className="mt-6 ">
           <Button type="submit" variant="primary">

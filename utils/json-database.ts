@@ -3,6 +3,7 @@ import events from "./all_events.json";
 import tickets from "./all_tickets.json";
 import orders from "./all_orders.json";
 import staffMembers from "./all_staff_members.json";
+import users from './all_users.json'
 
 import {
   EventType,
@@ -17,6 +18,7 @@ export const allEvents: EventType[] = events;
 export const allTickets: TicketType[] = tickets;
 export const allOrders: OrderType[] = orders;
 export const allStaffMembers: StaffMemberType[] = staffMembers;
+export const allUsers = users
 
 export const getOrganiserById = (id: string) => {
   return organisers.find((organiser) => organiser.id === id);

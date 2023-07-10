@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../CustomUI/Input";
 import Select from "../CustomUI/Select";
 
-import allUsers from "../../utils/all_users.json";
-import countryList from "../../utils/countryList";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { BillingAddressType, UserType } from "../../types";
+import { BillingAddressType, UserType } from "@/types";
+import allUsers from "@/utils/all_users.json";
+import countryList from "@/utils/countryList";
 type ProfileType = BillingAddressType & UserType;
 
 type BillingFormProps = {
@@ -62,7 +61,6 @@ const BillingForm = ({ userId, register, errors }: BillingFormProps) => {
           register={register}
           errors={errors}
           rules={{ required: "Address is required" }}
-          defaultValue={user?.address}
         />
 
         <Select
@@ -73,10 +71,10 @@ const BillingForm = ({ userId, register, errors }: BillingFormProps) => {
           rules={{ required: "Country is required" }}
           placeholder="Select an option"
           size={1}
+          defaultValue={user?.country}
           options={countryList.map((country) => ({
             id: country,
             name: country,
-            selected: country === user?.country,
           }))}
         />
 
@@ -88,7 +86,6 @@ const BillingForm = ({ userId, register, errors }: BillingFormProps) => {
           register={register}
           errors={errors}
           rules={{ required: "State is required" }}
-          defaultValue={user?.state}
         />
 
         <Input
@@ -99,7 +96,6 @@ const BillingForm = ({ userId, register, errors }: BillingFormProps) => {
           register={register}
           errors={errors}
           rules={{ required: "Postal Code is required" }}
-          defaultValue={user?.postalCode}
         />
       </div>
     </div>

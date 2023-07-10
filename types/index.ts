@@ -82,6 +82,8 @@ export interface UserType {
   phone: string;
   avatar: string;
 }
+export type ProfileType = BillingAddressType & UserType;
+
 
 export interface ChangePasswordType {
   oldPassword: string;

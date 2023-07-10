@@ -3,7 +3,7 @@
     "id": "1",
     "name": "John Doe",
     "email": "john.doe@email.com",
-    "phone": "+1 1000 1234",
+    "phone": "110001234",
     "avatar": "/images/avatar.png",
     "address": "123 Main St, New York, NY 10030",
     "state": "New York",

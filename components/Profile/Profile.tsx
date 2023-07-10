@@ -1,55 +1,31 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import allUsers from "../../utils/all_users.json";
-import { BillingAddressType, UserType } from "../../types";
-type ProfileType = BillingAddressType & UserType;
+import { ProfileType, UserType } from "@/types";
 
-import ComponentContainer from "./ComponentContainer";
 import Button from "../CustomUI/Button";
-import Input from "../CustomUI/Input";
 import ImagePreview from "../CustomUI/ImagePreview";
+import Input from "../CustomUI/Input";
+import ComponentContainer from "./ComponentContainer";
 
-const Profile = ({ userId }: { userId: string }) => {
-  const [user, setUser] = useState<ProfileType>();
-
+const Profile = ({ user }: { user: ProfileType }) => {
   const [uploadedImage, setUploadedImage] = useState<string | undefined>(
     user?.avatar
   );
-
-  // ...
-
-  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setUploadedImage(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserType>();
+  } = useForm<UserType>({
+    defaultValues: {
+      ...user,
+    },
+  });
 
-  const onSubmit = (data: any) => {
-    console.log("Change Password", data);
+  const onSubmit = (data: UserType) => {
+    console.log("data", data);
   };
-
-  const fetchUser = () => {
-    /* function to fetch user details */
-    const user = allUsers.find((user) => user.id === userId);
-    setUser(user);
-  };
-
-  useEffect(() => {
-    if (userId) fetchUser();
-  }, [allUsers, userId]);
 
   return (
     <ComponentContainer title="User Profile">
@@ -66,7 +42,6 @@ const Profile = ({ userId }: { userId: string }) => {
             register={register}
             errors={errors}
             rules={{ required: "Name is required" }}
-            defaultValue={user?.name}
           />
 
           <Input
@@ -83,7 +58,6 @@ const Profile = ({ userId }: { userId: string }) => {
                 message: "Invalid email",
               },
             }}
-            defaultValue={user?.email}
           />
 
           <Input
@@ -100,7 +74,6 @@ const Profile = ({ userId }: { userId: string }) => {
                 message: "Invalid phone number.",
               },
             }}
-            defaultValue={user?.phone}
           />
 
           <div className="mt-6">

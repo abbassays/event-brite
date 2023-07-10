@@ -36,12 +36,16 @@ const ImagePreview = ({
     <div className="max-w-md mx-auto w-full aspect-square relative rounded-lg overflow-hidden cursor-pointer">
       <label htmlFor="avatar-upload">
         {uploadedImage || link ? (
-          <Image
-            src={uploadedImage || link}
-            alt={link}
-            fill
-            className="object-contain"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={uploadedImage || link}
+              alt={link}
+              fill
+              sizes="100vw"
+              className="object-contain"
+              priority
+            />
+          </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-gray-400">
             Upload Image{" "}
