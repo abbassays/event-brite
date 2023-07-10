@@ -34,6 +34,20 @@ export const getOrderByOrderId = (id: string) => {
   return orders.find((order) => order.id === id);
 };
 
+export const getEventByOrganiserId = (id: string) => {
+  return events.filter((event) => event.organiserId === id);
+};
+
+export const getTicketsByOrganiserId = (id: string) => {
+  return tickets.filter((ticket) => ticket.organiserId === id);
+};
+
+export const getStaffMemberByOrganiserId = (id: string) => {
+  return staffMembers.filter((staff) =>
+    staff.organisations.some((org) => org.id === id)
+  );
+};
+
 export const getRandomOrganiser = () => {
   const randomIndex = Math.floor(Math.random() * allOrganisers.length);
   return {

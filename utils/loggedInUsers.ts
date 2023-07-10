@@ -6,7 +6,7 @@ const organiser1: SessionType = {
   user: {
     id: "b3bbc2cf-d6cd-4ced-acf6-2644fe4b1b24",
     name: "Organiser 1",
-    description: "Description for Event 1.",
+    description: "Description for Organiser 1.",
     image: "https://i.pravatar.cc/415",
     isEnabled: false,
     GST: 7,
@@ -19,7 +19,7 @@ const organiser2: SessionType = {
   user: {
     id: "191a730d-cdae-4cf9-ace1-0bfd671b3b65",
     name: "Organiser 2",
-    description: "Description for Event 2.",
+    description: "Description for Organiser 2.",
     image: "https://i.pravatar.cc/480",
     commission: 20,
     isEnabled: true,
@@ -31,18 +31,18 @@ const staffMember1: SessionType = {
   email: "user@email.com",
   role: "STAFF",
   user: {
-    id: "12",
+    id: "28cde71c-a80b-4151-b2d8-875251c733a6",
     name: "Staff Member 1",
+    image: "https://i.pravatar.cc/175",
     description: "Description for Staff Member 1.",
-    image: "https://i.pravatar.cc/480",
     organisations: [
       {
-        id: organiser1.user.id,
-        name: organiser1.user.name,
+        id: "eaf3ca49-92ed-44e8-b93e-1bf93dbedb0f",
+        name: "Organiser 8",
       },
       {
-        id: organiser2.user.id,
-        name: organiser2.user.name,
+        id: "4a46686c-ac51-42b7-a744-6f1f5a565917",
+        name: "Organiser 12",
       },
     ],
   },

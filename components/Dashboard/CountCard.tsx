@@ -5,13 +5,13 @@ import AdminIcon from "../../utils/AdminIcon";
 import Link from "next/link";
 
 interface CountCardProps {
-  type: "Event" | "Ticket" | "Organiser";
+  type: "Event" | "Ticket" | "Organiser" | "Staff Member";
   count: number;
 }
 
 const CountCard = ({ type, count }: CountCardProps) => {
   return (
-    <div className="flex flex-col justify-between p-4 md:p-8 rounded-lg bg-white sm:w-full max-w-sm shadow-md">
+    <div className="flex flex-col justify-between p-4 md:p-8 rounded-lg bg-white sm:w-full shadow-md">
       <div className="flex justify-between">
         <div className=" p-2.5 lg:p-4 rounded-full lg:text-5xl text-4xl bg-slate-200 w-fit text-blue-600">
           <AdminIcon item={type} />

@@ -54,12 +54,14 @@ const OrganiserCard = ({
               <MdEdit className="mx-auto" />
             </Link>
           </p>
-          <p
-            onClick={openModal}
-            className="text-xl md:text-red-500 md:hover:bg-red-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-red-500 w-full text-white py-1 hover:bg-red-600"
-          >
-            <MdDelete className="mx-auto" />
-          </p>
+          {setIsOpen && (
+            <p
+              onClick={openModal}
+              className="text-xl md:text-red-500 md:hover:bg-red-500 md:p-1 md:bg-transparent rounded md:hover:text-white cursor-pointer transition-colors bg-red-500 w-full text-white py-1 hover:bg-red-600"
+            >
+              <MdDelete className="mx-auto" />
+            </p>
+          )}
         </div>
       </div>
     </div>
