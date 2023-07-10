@@ -12,13 +12,13 @@ import EventCard from "@/components/ListCards/EventCard";
 import TicketCard from "@/components/ListCards/TicketCard";
 import StaffCard from "../ListCards/StaffCard";
 
-const OrganiserDashboard = () => {
-  const { customSession } = useCustomSession();
+const StaffMemberDashboard = () => {
+  const { customSession, selectedOrg } = useCustomSession();
 
   const sections = [
     {
       title: "Recent Events",
-      list: getEventByOrganiserId(customSession.user.id)
+      list: getEventByOrganiserId(selectedOrg.id)
         .sort(
           (a, b) =>
             new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
@@ -28,33 +28,23 @@ const OrganiserDashboard = () => {
     },
     {
       title: "Top-Revenue Tickets",
-      list: getTicketsByOrganiserId(customSession.user.id)
-      .sort((a, b) => b.price * b.soldQuantity - a.price * a.soldQuantity)
+      list: getTicketsByOrganiserId(selectedOrg.id)
+        .sort((a, b) => b.price * b.soldQuantity - a.price * a.soldQuantity)
         .slice(0, 5)
         .map((ticket) => <TicketCard key={ticket.id} {...ticket} />),
-    },
-    {
-      title: "Staff Members",
-      list: getStaffMemberByOrganiserId(customSession.user.id)
-        .slice(0, 5)
-        .map((organiser) => <StaffCard key={organiser.id} {...organiser} />),
     },
   ];
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <CountCard
           type="Event"
-          count={getEventByOrganiserId(customSession.user.id).length}
+          count={getEventByOrganiserId(selectedOrg.id).length}
         />
         <CountCard
           type="Ticket"
-          count={getTicketsByOrganiserId(customSession.user.id).length}
-        />
-        <CountCard
-          type="Staff Member"
-          count={getStaffMemberByOrganiserId(customSession.user.id).length}
+          count={getTicketsByOrganiserId(selectedOrg.id).length}
         />
       </div>
 
@@ -69,4 +59,4 @@ const OrganiserDashboard = () => {
   );
 };
 
-export default OrganiserDashboard;
+export default StaffMemberDashboard;

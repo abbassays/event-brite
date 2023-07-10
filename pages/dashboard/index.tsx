@@ -16,14 +16,17 @@ import PageLoader from "@/components/CustomUI/PageLoader";
 import { useRouter } from "next/router";
 import AdminDashboard from "@/components/Dashboard/AdminDashboard";
 import OrganiserDashboard from "@/components/Dashboard/OrganiserDashboard";
+import StaffMemberDashboard from "@/components/Dashboard/StaffMemberDashboard";
 
 const AdminOverviewPage = () => {
+  const router = useRouter();
+  const { customSession, selectedOrg } = useCustomSession();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 
-  const { customSession } = useCustomSession();
-  const router = useRouter();
+  console.log("org is ", selectedOrg);
 
   React.useEffect(() => {
     if (customSession) {
@@ -57,6 +60,7 @@ const AdminOverviewPage = () => {
       >
         {customSession.role === "ADMIN" && <AdminDashboard />}
         {customSession.role === "ORGANISER" && <OrganiserDashboard />}
+        {customSession.role === "STAFF" && <StaffMemberDashboard />}
       </Container>
     </AdminLayout>
   );

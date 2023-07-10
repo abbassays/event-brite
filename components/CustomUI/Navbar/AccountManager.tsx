@@ -9,9 +9,10 @@ import { SessionType } from "@/types";
 import { loggedInUsers } from "@/utils/loggedInUsers";
 
 import Button from "../Button";
+import { getOrganiserById } from "@/utils/json-database";
 
 const AccountManager = () => {
-  const { customSession, setCustomSession } = useCustomSession();
+  const { customSession, selectedOrg, setCustomSession } = useCustomSession();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -20,7 +21,10 @@ const AccountManager = () => {
     loggedInUsers.organiser1,
     loggedInUsers.staffMember1,
     loggedInUsers.customer1,
-  ].filter((session) => session.role !== customSession?.role);
+  ].filter(
+    (session) =>
+      session.role !== customSession?.role || customSession.role === "STAFF"
+  );
 
   return (
     <div className="flex flex-col justify-center items-center relative overflow-visible">
@@ -41,6 +45,10 @@ const AccountManager = () => {
               <h1 className="text-xl font-medium">
                 {customSession?.user?.name}
               </h1>
+              {customSession?.role === "STAFF" && (
+                <p className="text-gray-400 font-light">{selectedOrg.name}</p>
+              )}
+
               <p className="text-gray-400 font-light">{customSession?.email}</p>
 
               <Link href={"/profile"}>
@@ -54,14 +62,37 @@ const AccountManager = () => {
           <div className="mt-2 p-2">
             {users.map((session: SessionType) => (
               <div
+                key={session.role}
                 className="cursor-pointer border-b py-2"
                 onClick={() => {
-                  setCustomSession(session);
-                  router.reload();
+                  if (session.role !== "STAFF") {
+                    setCustomSession(session);
+                    router.reload();
+                  }
                 }}
               >
                 <h1 className="text-xl font-medium">{session.user.name}</h1>
-                <p className="text-gray-400 font-light">{session.email}</p>
+                {session.role === "STAFF" && (
+                  <>
+                    <h1 className="font-medium text-gray-400">Switch to:</h1>
+                    {session.user.organisations
+                      .filter(
+                        (organisation) => organisation.id !== selectedOrg.id
+                      )
+                      .map((organisation) => (
+                        <h1
+                          key={organisation.id}
+                          className="font-medium bg-zinc-100 p-2 mb-2 rounded-md text-gray-500"
+                          onClick={() => {
+                            setCustomSession(session, organisation);
+                            router.reload();
+                          }}
+                        >
+                          {organisation.name}
+                        </h1>
+                      ))}
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -71,7 +102,7 @@ const AccountManager = () => {
               variant="tertiary"
               className="flex justify-center items-center"
               onClick={() => {
-                setCustomSession(null);
+                setCustomSession(null, null);
                 router.reload();
               }}
             >

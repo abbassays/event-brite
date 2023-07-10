@@ -27,9 +27,9 @@ const AdminDashboard = (props: Props) => {
         .map((event) => <EventCard key={event.id} {...event} />),
     },
     {
-      title: "Top-Priced Tickets",
+      title: "Top-Revenue Tickets",
       list: allTickets
-        .sort((a, b) => b.price - a.price)
+        .sort((a, b) => b.price * b.soldQuantity - a.price * a.soldQuantity)
         .slice(0, 5)
         .map((ticket) => <TicketCard key={ticket.id} {...ticket} />),
     },

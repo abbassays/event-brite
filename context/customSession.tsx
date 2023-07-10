@@ -11,12 +11,19 @@ import {
 
 interface ContextProps {
   customSession: SessionType;
-  setCustomSession: (session: SessionType) => void;
+  selectedOrg?: Org;
+  setCustomSession: (session: SessionType, org?: Org) => void;
+}
+
+interface Org {
+  id: string;
+  name: string;
 }
 
 const CustomSessionContext = createContext<ContextProps>({
   customSession: null,
-  setCustomSession: (session: SessionType) => null,
+  selectedOrg: null,
+  setCustomSession: (session: SessionType, org?: Org) => null,
 });
 
 export const CustomSessionContextProvider = ({
@@ -25,6 +32,7 @@ export const CustomSessionContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [customSession, setState] = useState(null);
+  const [selectedOrg, setSelectedOrg] = useState<Org>();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -32,17 +40,30 @@ export const CustomSessionContextProvider = ({
       if (session) {
         setState(JSON.parse(session));
       }
+
+      const org = window.localStorage.getItem("selectedOrg");
+      if (org) {
+        setSelectedOrg(JSON.parse(org));
+      }
     }
   }, []);
 
-  const setCustomSession = (session: SessionType) => {
+  const setCustomSession = (session: SessionType, org?: Org) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("session", JSON.stringify(session));
+
+      if (org) {
+        window.localStorage.setItem("selectedOrg", JSON.stringify(org));
+      } else {
+        window.localStorage.removeItem("selectedOrg");
+      }
     }
   };
 
   return (
-    <CustomSessionContext.Provider value={{ customSession, setCustomSession }}>
+    <CustomSessionContext.Provider
+      value={{ customSession, selectedOrg, setCustomSession }}
+    >
       {children}
     </CustomSessionContext.Provider>
   );

@@ -132,9 +132,11 @@ function Navbar() {
                 ))}
           </div>
 
-          <div className="flex items-center">
-            <AccountManager />
-          </div>
+          {customSession && (
+            <div className="flex items-center">
+              <AccountManager />
+            </div>
+          )}
 
           <div className=" xl:flex justify-between space-x-4 hidden ">
             {!customSession && (
