@@ -46,7 +46,7 @@ const AccountManager = () => {
                 {customSession?.user?.name}
               </h1>
               {customSession?.role === "STAFF" && (
-                <p className="text-gray-400 font-light">{selectedOrg.name}</p>
+                <p className="text-gray-400 font-light">{selectedOrg?.name}</p>
               )}
 
               <p className="text-gray-400 font-light">{customSession?.email}</p>
@@ -77,7 +77,7 @@ const AccountManager = () => {
                     <h1 className="font-medium text-gray-400">Switch to:</h1>
                     {session.user.organisations
                       .filter(
-                        (organisation) => organisation.id !== selectedOrg.id
+                        (organisation) => organisation.id !== selectedOrg?.id
                       )
                       .map((organisation) => (
                         <h1
