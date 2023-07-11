@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import allCarts from "../utils/all_carts.json";
+import { allCarts } from "@/utils/json-database";
 import { CartType } from "../types";
 
 import Layout from "../components/CustomUI/Layout";

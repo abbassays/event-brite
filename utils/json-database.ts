@@ -5,6 +5,7 @@ import orders from "./all_orders.json";
 import staffMembers from "./all_staff_members.json";
 import users from "./all_users.json";
 import sales from "./all_sales.json";
+import carts from "./all_carts.json";
 
 import {
   EventType,
@@ -14,6 +15,7 @@ import {
   StaffMemberType,
   SaleType,
   SessionType,
+  CartType,
 } from "@/types";
 
 export const allOrganisers: OrganiserType[] = organisers;
@@ -23,6 +25,7 @@ export const allOrders: OrderType[] = orders;
 export const allStaffMembers: StaffMemberType[] = staffMembers;
 export const allUsers = users;
 export const allSales: SaleType[] = sales;
+export const allCarts: CartType[] = carts;
 
 export const getOrganiserById = (id: string) => {
   return organisers.find((organiser) => organiser.id === id);

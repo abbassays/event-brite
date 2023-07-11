@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { CartType, BoughtTicketType, ItemType } from "../../types";
-import allTickets from "../../utils/all_tickets.json";
+import { CartType, BoughtTicketType, ItemType } from "@/types";
+import { allTickets } from "@/utils/json-database";
 
 import Container from "../CustomUI/Container";
 import Button from "../CustomUI/Button";
@@ -48,16 +48,16 @@ const CartContainer = ({
 
   return (
     <Container title="Your Cart" description="Items that you have bought">
-      <section className=" overflow-hidden bg-blueGray-100">
+      <section className=" overflow-hidden bg-slate-100 p-3 sm:p-6 rounded-lg">
         <div className="container mx-auto">
           <div className="flex flex-wrap -mx-4">
             <div
-              className={`w-full px-4 mb-14 md:mb-0
+              className={`w-full mb-14 md:mb-0 
               ${isCheckout ? "md:w-1/2" : "md:w-8/12 xl:w-9/12"}
             `}
             >
-              <div className="py-12 px-8 md:px-12 bg-white rounded-3xl">
-                <span className="inline-block mb-16 text-darkBlueGray-300 font-medium">
+              <div className="py-6 px-8 md:px-12 bg-white rounded-lg shadow-md">
+                <span className="inline-block mb-16 text-gray-500 font-medium">
                   {tickets?.length > 0
                     ? `You have ${tickets?.reduce((acc, cur) => {
                         return acc + cur.boughtQuantity;
@@ -90,7 +90,7 @@ const CartContainer = ({
                 <h2 className="mb-7 md:mt-6 text-3xl font-heading font-medium">
                   Cart totals
                 </h2>
-                <div className="flex text-xl items-center justify-between py-4 px-10 mb-6 leading-8 bg-white font-heading font-medium rounded-lg">
+                <div className="flex text-xl items-center justify-between py-4 px-10 mb-6 leading-8 bg-white font-heading font-medium rounded-lg shadow-md">
                   <span>Total</span>
                   <span className="flex items-center text-xl text-blue-500">
                     <span className="mr-2 text-base">$</span>

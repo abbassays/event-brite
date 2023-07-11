@@ -39,7 +39,7 @@ const TicketCard = ({
         // Ticket is not in the cart, add it
         setCart({
           ...cart,
-          items: [...cart.items, { ticketId: id, quantity: 1 }],
+          items: [...cart.items],
         });
       }
       setBoughtQuantity(boughtQuantity + 1);

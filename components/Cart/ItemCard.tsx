@@ -4,7 +4,7 @@ import { FaCalendarAlt, FaQuestion } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 
 import { BoughtTicketType, EventType } from "../../types";
-import allEvents from "../../utils/all_events.json";
+import { allEvents } from "@/utils/json-database";
 import { getDateString } from "../../utils/DateFunctions";
 import CategoryIcon from "../../utils/CategoryIcon";
 
@@ -34,7 +34,9 @@ const ItemCard = ({
   return (
     <div className="relative flex flex-wrap items-center xl:justify-between -mx-4 mb-8 pb-8 border-b border-gray-400 border-opacity-40">
       <div className="relative w-32 aspect-square px-4 mb-6 xl:mb-0 border mx-auto lg:mx-0">
-        <Image className="object-cover" src={event?.image} alt="" fill />
+        {event && (
+          <Image className="object-cover" src={event?.image} alt="" fill />
+        )}
       </div>
       <div className="w-full md:w-auto px-4 mb-6 xl:mb-0">
         <p className="block mb-2 text-xl font-heading font-medium hover:underline">
@@ -71,7 +73,7 @@ const ItemCard = ({
         <div className="w-full xl:w-auto px-4">
           <span className="text-xl font-heading font-medium text-blue-500">
             <span className="text-sm">$</span>
-            <span>{price.toFixed(2)}</span>
+            <span>{price?.toFixed(2)}</span>
           </span>
         </div>
       </div>

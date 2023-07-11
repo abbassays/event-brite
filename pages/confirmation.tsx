@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { CartType } from "../types";
-import allCarts from "../utils/all_carts.json";
+import { allCarts } from "@/utils/json-database";
 
 import Container from "../components/CustomUI/Container";
 import ConfirmationContainer from "../components/Confirmation/ConfirmationContainer";

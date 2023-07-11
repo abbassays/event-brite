@@ -1,8 +1,8 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid"; // For generating unique IDs
-import { CartType } from "../../types";
+import { CartType, SaleType } from "../../types";
 
-import allTickets from "../../utils/all_tickets.json";
+import { allOrders } from "@/utils/json-database";
 
 const generateRandomData = () => {
   const categories = [
@@ -33,19 +33,12 @@ const generateRandomData = () => {
   const data = [];
 
   for (let i = 0; i < 3; i++) {
-    let cartItems = [];
-    for (let j = 0; j < 5; j++) {
-      let cartItem = {
-        id: allTickets[Math.floor(Math.random() * 100)].id,
-        quantity: Math.floor(Math.random() * 5) + 1,
-      };
-
-      cartItems.push(cartItem);
-    }
+    // take random order and push
+    const randomOrder = allOrders[Math.floor(Math.random() * allOrders.length)];
 
     const randomCarts: CartType = {
       id: uuidv4(),
-      items: [...cartItems],
+      items: randomOrder.items,
     };
 
     data.push(randomCarts);

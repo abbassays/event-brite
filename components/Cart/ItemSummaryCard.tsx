@@ -25,7 +25,9 @@ const ItemSummaryCard = ({
   return (
     <div className="relative flex flex-wrap items-center space-x-10 -mx-4 border-b border-gray-400 border-opacity-40">
       <div className="relative w-24 aspect-square px-4 mb-6 xl:mb-0 border mx-auto lg:mx-0">
-        <Image className="object-cover" src={event?.image} alt="" fill />
+        {event && (
+          <Image className="object-cover" src={event?.image} alt="" fill />
+        )}
       </div>
 
       <div className="w-full md:w-auto px-4 mb-6 xl:mb-0">

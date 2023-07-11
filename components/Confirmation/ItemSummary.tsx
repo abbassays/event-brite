@@ -58,6 +58,7 @@ const ItemSummary = ({
       checkedInCount: event.checkedInCount,
       organiserId: event.organiserId,
       organiserName: event.organiserName,
+      ticketsSold: event.ticketsSold,
     });
   };
 

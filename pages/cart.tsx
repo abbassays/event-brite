@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { CartType } from "../types";
-import allCarts from "../utils/all_carts.json";
+import { allCarts } from "@/utils/json-database";
 
 import Layout from "../components/CustomUI/Layout";
 import CartContainer from "../components/Cart/CartContainer";
