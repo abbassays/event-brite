@@ -5,7 +5,7 @@ import AdminIcon from "../../utils/AdminIcon";
 import Link from "next/link";
 
 interface CountCardProps {
-  type: "Event" | "Ticket" | "Organiser" | "Staff Member";
+  type: "Event" | "Ticket" | "Organiser" | "Staff Member"|'Sale';
   count: number;
 }
 

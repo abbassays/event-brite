@@ -4,6 +4,7 @@ import {
   getEventByOrganiserId,
   getTicketsByOrganiserId,
   getStaffMemberByOrganiserId,
+  getSalesData,
 } from "@/utils/json-database";
 import { useCustomSession } from "@/context/customSession";
 
@@ -29,7 +30,7 @@ const OrganiserDashboard = () => {
     {
       title: "Top-Revenue Tickets",
       list: getTicketsByOrganiserId(customSession.user.id)
-      .sort((a, b) => b.price * b.soldQuantity - a.price * a.soldQuantity)
+        .sort((a, b) => b.price * b.soldQuantity - a.price * a.soldQuantity)
         .slice(0, 5)
         .map((ticket) => <TicketCard key={ticket.id} {...ticket} />),
     },
@@ -43,7 +44,7 @@ const OrganiserDashboard = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <CountCard
           type="Event"
           count={getEventByOrganiserId(customSession.user.id).length}
@@ -56,6 +57,7 @@ const OrganiserDashboard = () => {
           type="Staff Member"
           count={getStaffMemberByOrganiserId(customSession.user.id).length}
         />
+        <CountCard type="Sale" count={getSalesData(customSession).length} />
       </div>
 
       {/* Show recent events */}
