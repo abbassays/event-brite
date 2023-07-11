@@ -46,7 +46,7 @@ export const CustomSessionContextProvider = ({
         setSelectedOrg(JSON.parse(org));
       }
     }
-  }, []);
+  }, [customSession]);
 
   const setCustomSession = (session: SessionType, org?: Org) => {
     if (typeof window !== "undefined") {

@@ -75,7 +75,6 @@ const AccountManager = () => {
                     if (session.role === "CUSTOMER") router.push("/");
                     else {
                       router.push("/dashboard");
-                      router.reload();
                     }
                   }
                 }}
@@ -95,7 +94,6 @@ const AccountManager = () => {
                           onClick={() => {
                             setCustomSession(session, organisation);
                             router.push("/dashboard");
-                            router.reload();
                           }}
                         >
                           {organisation.name}
@@ -113,7 +111,6 @@ const AccountManager = () => {
               className="flex justify-center items-center"
               onClick={() => {
                 setCustomSession(null, null);
-                router.reload();
               }}
             >
               <MdLogout className="mr-2" />
