@@ -46,16 +46,19 @@ export const CustomSessionContextProvider = ({
         setSelectedOrg(JSON.parse(org));
       }
     }
-  }, [customSession]);
+  }, []);
 
   const setCustomSession = (session: SessionType, org?: Org) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("session", JSON.stringify(session));
+      setState(session);
 
       if (org) {
         window.localStorage.setItem("selectedOrg", JSON.stringify(org));
+        setSelectedOrg(org);
       } else {
         window.localStorage.removeItem("selectedOrg");
+        setSelectedOrg(null);
       }
     }
   };

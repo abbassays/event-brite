@@ -37,7 +37,6 @@ export function DatePickerWithRange({
           new Date(sale.date) >= date.from && new Date(sale.date) <= date.to
         );
       });
-
       setSales(filteredSales);
     } else {
       setSales(allSales);
