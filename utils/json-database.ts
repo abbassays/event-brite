@@ -13,6 +13,7 @@ import {
   TicketType,
   StaffMemberType,
   SaleType,
+  SessionType,
 } from "@/types";
 
 export const allOrganisers: OrganiserType[] = organisers;
@@ -77,4 +78,23 @@ export const getRandomTicket = () => {
 export const getRandomSale = () => {
   const randomIndex = Math.floor(Math.random() * allSales.length);
   return allSales[randomIndex];
+};
+
+export const getSalesbyOrganiserId = (id: string) => {
+  return sales.filter((sale) => {
+    const ticket = getTicketById(sale.ticketId);
+    return ticket.organiserId === id;
+  });
+};
+
+export const getSalesData = (session: SessionType, organiserId?: string) => {
+  if (session.role === "ADMIN") return allSales;
+  else if (session.role === "ORGANISER") {
+    const sales = getSalesbyOrganiserId(session.user.id);
+    return sales;
+  } else if (session.role === "STAFF") {
+    const sales = getSalesbyOrganiserId(organiserId);
+    return sales;
+  }
+  return [];
 };

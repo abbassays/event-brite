@@ -14,18 +14,21 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { SaleType } from "@/types";
-import { allSales } from "@/utils/json-database";
 
 interface DateProps extends React.HTMLAttributes<HTMLDivElement> {
+  allSales: SaleType[];
   setSales: React.Dispatch<React.SetStateAction<SaleType[]>>;
 }
 
-export function DatePickerWithRange({ setSales, className }: DateProps) {
-  const [date, setDate] = React.useState<DateRange | undefined>();
-  //     {
-  //     from: new Date(2023, 0, 20),
-  //     to: addDays(new Date(2023, 0, 20), 20),
-  //   }
+export function DatePickerWithRange({
+  allSales,
+  setSales,
+  className,
+}: DateProps) {
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(2023, 4, 20),
+    to: addDays(new Date(2023, 4, 20), 20),
+  });
 
   React.useEffect(() => {
     if (date?.from && date?.to) {

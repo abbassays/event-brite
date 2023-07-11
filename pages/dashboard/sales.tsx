@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { useCustomSession } from "@/context/customSession";
 import { SaleType } from "@/types";
-import { allSales } from "@/utils/json-database";
+import { getSalesData } from "@/utils/json-database";
 
 import AdminLayout from "@/components/CustomUI/AdminLayout";
 import Container from "@/components/CustomUI/Container";
@@ -20,13 +20,15 @@ const AllSalesPage = (props: Props) => {
 
   const { customSession, selectedOrg } = useCustomSession();
 
+  const [allSales, setAllSales] = useState<SaleType[]>([]);
   const [sales, setSales] = useState<SaleType[]>([]);
   const [visibleSales, setVisibleSales] = useState<SaleType[]>();
   const [currentPage, setCurrentPage] = useState(1);
 
   const initializeSales = () => {
-    if (customSession?.role === "ADMIN") {
-      setSales(allSales);
+    if (customSession) {
+      setAllSales(getSalesData(customSession, selectedOrg?.id));
+      setSales(getSalesData(customSession, selectedOrg?.id));
     }
   };
 
@@ -65,7 +67,7 @@ const AllSalesPage = (props: Props) => {
 
   const searchBar = (
     <div className="flex flex-col sm:flex-row justify-end gap-4 items-end sm:items-center">
-      <DatePickerWithRange setSales={setSales} />
+      <DatePickerWithRange allSales={allSales} setSales={setSales} />
       <CustomSearchBar
         placeholder="Search by Event / Organiser"
         onChange={(e) => handleSearch(e)}
