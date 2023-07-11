@@ -19,7 +19,7 @@ const StaffMemberDashboard = () => {
   const sections = [
     {
       title: "Recent Events",
-      list: getEventByOrganiserId(selectedOrg.id)
+      list: getEventByOrganiserId(selectedOrg?.id)
         .sort(
           (a, b) =>
             new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
@@ -29,7 +29,7 @@ const StaffMemberDashboard = () => {
     },
     {
       title: "Top-Revenue Tickets",
-      list: getTicketsByOrganiserId(selectedOrg.id)
+      list: getTicketsByOrganiserId(selectedOrg?.id)
         .sort((a, b) => b.price * b.soldQuantity - a.price * a.soldQuantity)
         .slice(0, 5)
         .map((ticket) => <TicketCard key={ticket.id} {...ticket} />),
@@ -41,15 +41,15 @@ const StaffMemberDashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <CountCard
           type="Event"
-          count={getEventByOrganiserId(selectedOrg.id).length}
+          count={getEventByOrganiserId(selectedOrg?.id).length}
         />
         <CountCard
           type="Ticket"
-          count={getTicketsByOrganiserId(selectedOrg.id).length}
+          count={getTicketsByOrganiserId(selectedOrg?.id).length}
         />
         <CountCard
           type="Sale"
-          count={getSalesData(customSession, selectedOrg.id).length}
+          count={getSalesData(customSession, selectedOrg?.id).length}
         />
       </div>
 
