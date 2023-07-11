@@ -32,11 +32,13 @@ export function DatePickerWithRange({
 
   React.useEffect(() => {
     if (date?.from && date?.to) {
-      const filteredSales = allSales.filter((sale) => {
-        return (
-          new Date(sale.date) >= date.from && new Date(sale.date) <= date.to
-        );
-      });
+      const filteredSales =
+        allSales &&
+        allSales.filter((sale) => {
+          return (
+            new Date(sale.date) >= date.from && new Date(sale.date) <= date.to
+          );
+        });
       setSales(filteredSales);
     } else {
       setSales(allSales);

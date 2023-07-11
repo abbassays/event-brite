@@ -27,7 +27,8 @@ const AllSalesPage = (props: Props) => {
 
   const initializeSales = () => {
     if (customSession) {
-      setAllSales(getSalesData(customSession, selectedOrg?.id));
+      if (allSales.length === 0)
+        setAllSales(getSalesData(customSession, selectedOrg?.id));
       setSales(getSalesData(customSession, selectedOrg?.id));
     }
   };
@@ -75,7 +76,7 @@ const AllSalesPage = (props: Props) => {
     </div>
   );
 
-  useEffect(() => initializeSales(), [allSales, customSession, selectedOrg]);
+  useEffect(() => initializeSales(), [customSession, selectedOrg]);
 
   useEffect(() => {
     fetchSales();

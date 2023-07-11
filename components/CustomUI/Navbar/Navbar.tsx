@@ -15,19 +15,8 @@ import SearchBar from "./SearchBar";
 function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const { customSession, setCustomSession } = useCustomSession();
-
-  const isAdminRoute = () => {
-    return router.pathname.startsWith("/admin");
-  };
-
-  useEffect(() => {
-    if (router.isReady) {
-      setIsAdmin(isAdminRoute());
-    }
-  }, [router]);
 
   const navbarItems = [
     {

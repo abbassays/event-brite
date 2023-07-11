@@ -48,6 +48,7 @@ export const CustomSessionContextProvider = ({
     }
   }, []);
 
+
   const setCustomSession = (session: SessionType, org?: Org) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("session", JSON.stringify(session));
