@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { EventType, TicketType } from "@/types";
-import { allEvents } from "@/utils/json-database";
 
 import Button from "@/components//CustomUI/Button";
 import Container from "@/components//CustomUI/Container";
@@ -168,6 +168,11 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
         gridItems={formItems}
       >
         <div className="mt-10">
+        <Link href={"/dashboard/tickets"}>
+            <Button type="button" variant="danger">
+              Cancel
+            </Button>
+          </Link>
           <Button type="submit" variant="primary">
             {ticket ? "Edit" : "Create"}
           </Button>

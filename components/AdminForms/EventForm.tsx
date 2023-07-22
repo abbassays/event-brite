@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -123,14 +124,19 @@ const EventForm = ({
         gridItems={formItems}
       >
         <div className="mt-10 flex gap-4">
-          <Button type="submit" variant="primary">
-            {event ? "Save" : "Create"}
-          </Button>
+          <Link href={"/dashboard/events"}>
+            <Button type="button" variant="danger">
+              Cancel
+            </Button>
+          </Link>
           {event && (
             <Button type="button" variant="tertiary">
               Publish
             </Button>
           )}
+          <Button type="submit" variant="primary">
+            {event ? "Save" : "Create"}
+          </Button>
         </div>
       </Container>
     </form>

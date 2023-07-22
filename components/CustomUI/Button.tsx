@@ -1,8 +1,8 @@
 import React, { ButtonHTMLAttributes } from "react";
-import classNames from "classnames";
+import { twMerge } from "tailwind-merge";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | "tertiary"; // Add tertiary variant
+  variant?: "primary" | "secondary" | "tertiary" | "danger"; // Add tertiary variant
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,15 +28,19 @@ const Button: React.FC<ButtonProps> = ({
     hoverStyle = "hover:bg-blue-500 hover:text-white";
     focusStyle = "focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75";
     activeStyle = "active:bg-blue-700";
-  } else if (variant === "tertiary") { // Tertiary style
+  } else if (variant === "tertiary") {
+    // Tertiary style
     buttonStyle =
       "border border-transparent bg-white text-blue-500 hover:text-blue-600 focus:text-blue-600 active:text-blue-700";
     hoverStyle = "hover:bg-opacity-75 hover:text-blue-600";
     focusStyle = "focus:text-blue-600";
     activeStyle = "active:text-blue-700";
+  } else if (variant === "danger") {
+    buttonStyle =
+      "border border-red-500 bg-red-500 text-white hover:bg-red-600 focus:border-red-600 active:border-red-700";
   }
 
-  const buttonClasses = classNames(
+  const buttonClasses = twMerge(
     "rounded-lg transition-colors inline-block h-min my-auto px-4 py-1.5 font-bold shadow-lg",
     buttonStyle,
     hoverStyle,

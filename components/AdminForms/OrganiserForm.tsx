@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -112,9 +113,16 @@ const OrganiserForm = ({ organiser }: { organiser?: OrganiserType }) => {
         className="grid-cols-3 md:grid-cols-6 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <Button className="mt-10" type="submit" variant="primary">
-          {organiser ? "Save" : "Create"}
-        </Button>
+        <div className="mt-10 flex gap-4">
+          <Link href={"/dashboard/organisers"}>
+            <Button type="button" variant="danger">
+              Cancel
+            </Button>
+          </Link>
+          <Button type="submit" variant="primary">
+            {organiser ? "Save" : "Create"}
+          </Button>
+        </div>
       </Container>
     </form>
   );

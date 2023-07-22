@@ -1,15 +1,14 @@
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { StaffMemberType } from "../../types";
-import { defaultCommission, defaultGST } from "../../utils/AppDefaults";
 
 import Button from "../CustomUI/Button";
 import Container from "../CustomUI/Container";
 import ImagePreview from "../CustomUI/ImagePreview";
 import Input from "../CustomUI/Input";
 import Textarea from "../CustomUI/Textarea";
-import Toggle from "../CustomUI/Toggle";
 
 const StaffForm = ({ staff }: { staff?: StaffMemberType }) => {
   const [uploadedImage, setUploadedImage] = useState<string>();
@@ -76,9 +75,16 @@ const StaffForm = ({ staff }: { staff?: StaffMemberType }) => {
         className="grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3"
         gridItems={formItems}
       >
-        <Button className="mt-10" type="submit" variant="primary">
-          {staff ? "Save" : "Create"}
-        </Button>
+        <div className="mt-10 flex gap-4">
+          <Link href={"/dashboard/staff"}>
+            <Button type="button" variant="danger">
+              Cancel
+            </Button>
+          </Link>
+          <Button type="submit" variant="primary">
+            {staff ? "Save" : "Create"}
+          </Button>
+        </div>
       </Container>
     </form>
   );
