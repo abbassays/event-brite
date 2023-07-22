@@ -6,12 +6,13 @@ import { allUsers } from "@/utils/json-database";
 
 import Layout from "@/components/CustomUI/Layout";
 import PageLoader from "@/components/CustomUI/PageLoader";
-import Sidebar from "@/components/CustomUI/Sidebar";
+import SettingsSidebar from "@/components/CustomUI/SettingsSidebar";
 import BillingAddress from "@/components/Profile/BillingAddressForm";
 import ChangePasswordForm from "@/components/Profile/ChangePasswordForm";
 import OrdersList from "@/components/Profile/OrdersList";
 import ProfileForm from "@/components/Profile/ProfileForm";
 import PaymentConfigForm from "@/components/Profile/PaymentConfigForm";
+import { getSettingsSidebarItems } from "@/utils/GetListItems";
 
 const ProfilePage = () => {
   /* fetch user id from session */
@@ -32,21 +33,13 @@ const ProfilePage = () => {
 
   const [selectedItem, setSelectedItem] = useState<string>("Profile");
 
-  const sideBarItems = [
-    "Profile",
-    "Password",
-    "Billing Address",
-    "My Orders",
-    customSession?.role === "ORGANISER" ? "Stripe Details" : "",
-  ];
-
   if (!user && !customSession) return <PageLoader />;
 
   return (
     <Layout title={`User Profile`}>
       <div className="flex justify-start">
-        <Sidebar
-          items={sideBarItems}
+        <SettingsSidebar
+          items={getSettingsSidebarItems(customSession?.role || "")}
           selected={selectedItem}
           setselected={setSelectedItem}
         />
@@ -56,7 +49,9 @@ const ProfilePage = () => {
           {selectedItem === "Password" && <ChangePasswordForm />}
           {selectedItem === "Billing Address" && <BillingAddress user={user} />}
           {selectedItem === "My Orders" && <OrdersList userId={userId} />}
-          {selectedItem === "Stripe Details" && <PaymentConfigForm user={user} />}
+          {selectedItem === "Stripe Details" && (
+            <PaymentConfigForm user={user} />
+          )}
         </div>
       </div>
     </Layout>

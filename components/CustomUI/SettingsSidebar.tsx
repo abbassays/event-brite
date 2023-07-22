@@ -8,7 +8,7 @@ type SideBarProps = {
   setselected: (value: string) => void;
 };
 
-const Sidebar = ({ items, selected, setselected }: SideBarProps) => {
+const SettingsSidebar = ({ items, selected, setselected }: SideBarProps) => {
   return (
     <div
       id="default-sidebar"
@@ -40,4 +40,4 @@ const Sidebar = ({ items, selected, setselected }: SideBarProps) => {
   );
 };
 
-export default Sidebar;
+export default SettingsSidebar;
