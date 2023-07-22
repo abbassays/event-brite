@@ -38,7 +38,10 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
     name: option,
   }));
 
-  const eventOptions = eventsList;
+  const eventOptions = eventsList.map((event) => ({
+    id: event.id,
+    name: event.name,
+  }));
 
   const numberRules = {
     min: {
@@ -77,7 +80,6 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
           name="description"
           register={register}
           errors={errors}
-          // defaultValue={ticket?.description}
         />
       </div>
 
@@ -88,7 +90,6 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
         name="price"
         register={register}
         errors={errors}
-        // defaultValue={ticket?.price}
         rules={
           selectedType === "Paid"
             ? {
@@ -106,7 +107,6 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
         name="quantity"
         register={register}
         errors={errors}
-        // defaultValue={ticket?.quantity}
         rules={{ required: "Ticket Max Quantity is required", ...numberRules }}
       />
 
@@ -168,7 +168,7 @@ const TicketForm = ({ ticket, eventsList }: TicketFormProps) => {
         gridItems={formItems}
       >
         <div className="mt-10">
-        <Link href={"/dashboard/tickets"}>
+          <Link href={"/dashboard/tickets"}>
             <Button type="button" variant="danger">
               Cancel
             </Button>

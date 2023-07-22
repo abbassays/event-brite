@@ -153,3 +153,8 @@ export type SessionType =
         }
     ))
   | null;
+
+export interface SelectItemType {
+  id: string;
+  name: string;
+}

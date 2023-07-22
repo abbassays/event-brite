@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { EventType } from "../../types";
+import { EventType, SelectItemType } from "@/types";
 
 import Button from "../CustomUI/Button";
 import Container from "../CustomUI/Container";
@@ -14,9 +14,11 @@ import Textarea from "../CustomUI/Textarea";
 const EventForm = ({
   event,
   categoryList,
+  organiserList,
 }: {
   event?: EventType;
-  categoryList: any;
+  categoryList: SelectItemType[];
+  organiserList: SelectItemType[];
 }) => {
   const [uploadedImage, setUploadedImage] = useState<string | undefined>();
 
@@ -68,13 +70,24 @@ const EventForm = ({
         errors={errors}
         rules={{ required: "Location is required" }}
       />
+
+      <Select
+        label="Organiser"
+        name="organiserId"
+        register={register}
+        errors={errors}
+        rules={{ required: "Organiser is required" }}
+        placeholder="Select an Organiser"
+        options={organiserList}
+      />
+
       <Select
         label="Category"
         name="category"
         register={register}
         errors={errors}
         rules={{ required: "Category is required" }}
-        placeholder="Select an option"
+        placeholder="Select a Category"
         options={categoryList}
       />
 

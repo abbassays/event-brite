@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { allEvents } from "@/utils/json-database";
+import { allEvents, allOrganisers } from "@/utils/json-database";
 import categories from "@/utils/categories";
 
 import Layout from "../../../../components/CustomUI/Layout";
 import EventForm from "../../../../components/AdminForms/EventForm";
-import { EventType } from "@/types";
+import { EventType, SelectItemType } from "@/types";
 import PageLoader from "@/components/CustomUI/PageLoader";
 
 const EditEventPage = () => {
@@ -14,12 +14,17 @@ const EditEventPage = () => {
   const { id } = router.query;
   const [event, setEvent] = useState<EventType>();
 
-  const categoryList = categories.map((item) => {
+  const categoryList: SelectItemType[] = categories.map((item) => {
     return {
       id: item.category,
       name: item.category,
     };
   });
+
+  const organisersList: SelectItemType[] = allOrganisers.map((organiser) => ({
+    id: organiser.id,
+    name: organiser.name,
+  }));
 
   const fetchEvent = () => {
     /* This will be a dynamic route with event id, event will be fetched here from event id */
@@ -35,7 +40,11 @@ const EditEventPage = () => {
 
   return (
     <Layout title="Edit Event">
-      <EventForm event={event} categoryList={categoryList} />
+      <EventForm
+        event={event}
+        categoryList={categoryList}
+        organiserList={organisersList}
+      />
     </Layout>
   );
 };

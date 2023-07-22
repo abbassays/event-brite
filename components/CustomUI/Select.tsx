@@ -1,3 +1,4 @@
+import { SelectItemType } from "@/types";
 import React, { SelectHTMLAttributes } from "react";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -5,11 +6,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
   register: any;
   errors: any;
-  options: {
-    id: string;
-    name: string;
-    selected?: boolean;
-  }[]; // Array of options
+  options: SelectItemType[]; // Array of options
   rules?: Record<string, any>;
 }
 
