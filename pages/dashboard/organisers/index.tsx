@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-
-import allOrganisers from "../../../utils/all_organisers.json";
-import { OrganiserType } from "../../../types";
-
-import AdminLayout from "../../../components/CustomUI/AdminLayout";
-import Container from "../../../components/CustomUI/Container";
-import OrganiserCard from "../../../components/ListCards/OrganiserCard";
-import DeleteModal from "../../../components/CustomUI/DeleteModal";
-import Pagination from "../../../components/CustomUI/Pagination";
 import { useRouter } from "next/router";
-import Button from "../../../components/CustomUI/Button";
+
+import { allOrganisers } from "@/utils/json-database";
+import { OrganiserType } from "@/types";
+
+import AdminLayout from "@/components/CustomUI/AdminLayout";
+import Container from "@/components/CustomUI/Container";
+import OrganiserCard from "@/components/ListCards/OrganiserCard";
+import DeleteModal from "@/components/CustomUI/DeleteModal";
+import Pagination from "@/components/CustomUI/Pagination";
+import Button from "@/components/CustomUI/Button";
 
 const AllOrganisersPage = () => {
   const router = useRouter();
   const itemsPerPage = 10;
- 
+
   const [organisers, setOrganisers] = useState<OrganiserType[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string>("");
