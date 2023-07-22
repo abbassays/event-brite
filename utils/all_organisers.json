@@ -4,6 +4,7 @@
     "name": "Organiser 1",
     "description": "Description for Organiser 1.",
     "image": "https://i.pravatar.cc/415",
+    "email": "organiser@email.com",
     "isEnabled": false,
     "GST": 7
   },
@@ -12,6 +13,7 @@
     "name": "Organiser 2",
     "description": "Description for Organiser 2.",
     "image": "https://i.pravatar.cc/480",
+    "email": "organiser@email.com",
     "commission": 20,
     "isEnabled": true,
     "GST": 3
@@ -21,6 +23,7 @@
     "name": "Organiser 3",
     "description": "Description for Organiser 3.",
     "image": "https://i.pravatar.cc/196",
+    "email": "organiser@email.com",
     "isEnabled": false,
     "GST": 2
   },
@@ -29,6 +32,7 @@
     "name": "Organiser 4",
     "description": "Description for Organiser 4.",
     "image": "https://i.pravatar.cc/370",
+    "email": "organiser@email.com",
     "isEnabled": true,
     "GST": 6
   },
@@ -37,6 +41,7 @@
     "name": "Organiser 5",
     "description": "Description for Organiser 5.",
     "image": "https://i.pravatar.cc/378",
+    "email": "organiser@email.com",
     "commission": 20,
     "isEnabled": true,
     "GST": 2
@@ -46,6 +51,7 @@
     "name": "Organiser 6",
     "description": "Description for Organiser 6.",
     "image": "https://i.pravatar.cc/101",
+    "email": "organiser@email.com",
     "isEnabled": false,
     "GST": 8
   },
@@ -54,6 +60,7 @@
     "name": "Organiser 7",
     "description": "Description for Organiser 7.",
     "image": "https://i.pravatar.cc/186",
+    "email": "organiser@email.com",
     "commission": 20,
     "isEnabled": true,
     "GST": 2
@@ -63,6 +70,7 @@
     "name": "Organiser 8",
     "description": "Description for Organiser 8.",
     "image": "https://i.pravatar.cc/319",
+    "email": "organiser@email.com",
     "isEnabled": false,
     "GST": 3
   },
@@ -71,6 +79,7 @@
     "name": "Organiser 9",
     "description": "Description for Organiser 9.",
     "image": "https://i.pravatar.cc/272",
+    "email": "organiser@email.com",
     "commission": 12,
     "isEnabled": true,
     "GST": 2
@@ -80,6 +89,7 @@
     "name": "Organiser 10",
     "description": "Description for Organiser 10.",
     "image": "https://i.pravatar.cc/110",
+    "email": "organiser@email.com",
     "commission": 4,
     "isEnabled": false,
     "GST": 5
@@ -89,6 +99,7 @@
     "name": "Organiser 11",
     "description": "Description for Organiser 11.",
     "image": "https://i.pravatar.cc/129",
+    "email": "organiser@email.com",
     "commission": 16,
     "isEnabled": true,
     "GST": 6
@@ -98,6 +109,7 @@
     "name": "Organiser 12",
     "description": "Description for Organiser 12.",
     "image": "https://i.pravatar.cc/250",
+    "email": "organiser@email.com",
     "commission": 9,
     "isEnabled": true,
     "GST": 2
@@ -107,6 +119,7 @@
     "name": "Organiser 13",
     "description": "Description for Organiser 13.",
     "image": "https://i.pravatar.cc/564",
+    "email": "organiser@email.com",
     "commission": 20,
     "isEnabled": true,
     "GST": 2
@@ -116,6 +129,7 @@
     "name": "Organiser 14",
     "description": "Description for Organiser 14.",
     "image": "https://i.pravatar.cc/348",
+    "email": "organiser@email.com",
     "commission": 5,
     "isEnabled": true,
     "GST": 2
@@ -125,6 +139,7 @@
     "name": "Organiser 15",
     "description": "Description for Organiser 15.",
     "image": "https://i.pravatar.cc/548",
+    "email": "organiser@email.com",
     "isEnabled": false,
     "GST": 1
   },
@@ -133,6 +148,7 @@
     "name": "Organiser 16",
     "description": "Description for Organiser 16.",
     "image": "https://i.pravatar.cc/257",
+    "email": "organiser@email.com",
     "commission": 7,
     "isEnabled": true,
     "GST": 2
@@ -142,6 +158,7 @@
     "name": "Organiser 17",
     "description": "Description for Organiser 17.",
     "image": "https://i.pravatar.cc/319",
+    "email": "organiser@email.com",
     "commission": 20,
     "isEnabled": true
   },
@@ -150,6 +167,7 @@
     "name": "Organiser 18",
     "description": "Description for Organiser 18.",
     "image": "https://i.pravatar.cc/471",
+    "email": "organiser@email.com",
     "commission": 3,
     "isEnabled": false,
     "GST": 2
@@ -159,6 +177,7 @@
     "name": "Organiser 19",
     "description": "Description for Organiser 19.",
     "image": "https://i.pravatar.cc/139",
+    "email": "organiser@email.com",
     "isEnabled": true
   },
   {
@@ -166,6 +185,7 @@
     "name": "Organiser 20",
     "description": "Description for Organiser 20.",
     "image": "https://i.pravatar.cc/567",
+    "email": "organiser@email.com",
     "commission": 2,
     "isEnabled": false,
     "GST": 2

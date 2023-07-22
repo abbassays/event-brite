@@ -44,6 +44,17 @@ const OrganiserForm = ({ organiser }: { organiser?: OrganiserType }) => {
           rules={{ required: "Name is required" }}
         />
       </div>
+      <div className="col-span-3">
+        <Input
+          type="text"
+          label="Email"
+          placeholder="Organiser Email"
+          name="email"
+          register={register}
+          errors={errors}
+          rules={{ required: "Email is required" }}
+        />
+      </div>
       <div className="col-span-3 sm:col-span-1 md:col-span-3 xl:col-span-1">
         <Input
           type="number"

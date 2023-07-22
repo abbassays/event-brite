@@ -92,7 +92,7 @@ const AllTicketsPage = () => {
   const searchBar = (
     <div className="flex justify-end">
       <CustomSearchBar
-        placeholder="Search Organiser"
+        placeholder="Search Event/Organiser"
         onChange={(e) => handleSearch(e)}
       />
     </div>

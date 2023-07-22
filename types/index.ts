@@ -23,6 +23,7 @@ export interface OrganiserType {
   id: string;
   name: string;
   description: string;
+  email: string;
   image: string;
   commission?: number;
   isEnabled: boolean;
