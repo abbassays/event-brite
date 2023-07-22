@@ -12,6 +12,7 @@ import { EventType } from "../../types";
 
 import CategoryIcon from "../../utils/CategoryIcon";
 import CustomToolTip from "../ui/tooltip";
+import { getDateTimeString } from "@/utils/DateFunctions";
 
 interface EventCardProps extends EventType {
   setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
@@ -64,11 +65,11 @@ const EventCard = ({
 
           <div className="">
             <p className="text-xs lg:text-sm font-medium">
-              {new Date(startDate).toDateString()}{" "}
+              {getDateTimeString(startDate)}
               <span className="font-normal text-gray-500"> to </span>
             </p>
             <p className="text-xs lg:text-sm font-medium">
-              {new Date(endDate).toDateString()}
+              {getDateTimeString(endDate)}
             </p>
           </div>
 
