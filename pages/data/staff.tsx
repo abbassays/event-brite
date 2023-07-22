@@ -35,6 +35,7 @@ const generateRandomData = () => {
       id: uuidv4(),
       name: `Staff Member ${i + 1}`,
       image: getRandomImageLink(),
+      email: `staffmember${i + 1}@email.com`,
       description: `Description for Organiser ${i + 1}.`,
       organisations: getRandomOrganisations(),
     };

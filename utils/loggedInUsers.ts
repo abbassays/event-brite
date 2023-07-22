@@ -8,7 +8,7 @@ const organiser1: SessionType = {
     name: "Organiser 1",
     description: "Description for Organiser 1.",
     image: "https://i.pravatar.cc/415",
-    email: "organiser1@emil.com",
+    email: "organiser1@email.com",
     isEnabled: false,
     GST: 7,
   },
@@ -23,7 +23,7 @@ const organiser2: SessionType = {
     description: "Description for Organiser 2.",
     image: "https://i.pravatar.cc/480",
     commission: 20,
-    email: "organiser1@emil.com",
+    email: "organiser1@email.com",
     isEnabled: true,
     GST: 3,
   },
@@ -36,6 +36,7 @@ const staffMember1: SessionType = {
     id: "28cde71c-a80b-4151-b2d8-875251c733a6",
     name: "Staff Member 1",
     image: "https://i.pravatar.cc/175",
+    email: "staff@email.com",
     description: "Description for Staff Member 1.",
     organisations: [
       {

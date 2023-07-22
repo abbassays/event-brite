@@ -38,6 +38,15 @@ const StaffForm = ({ staff }: { staff?: StaffMemberType }) => {
         errors={errors}
         rules={{ required: "Name is required" }}
       />
+      <Input
+        type="text"
+        label="Email"
+        placeholder="Staff Member Email"
+        name="email"
+        register={register}
+        errors={errors}
+        rules={{ required: "Email is required" }}
+      />
 
       <div className="md:h-auto md:row-span-5 order-last md:order-none sm:mb-6 relative">
         <label className="block mb-1 font-medium text-gray-900">
