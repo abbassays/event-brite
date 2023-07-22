@@ -28,8 +28,6 @@ function Navbar() {
     router.push("/signup");
   };
 
-  console.log("Session is ", customSession);
-
   return (
     <nav className="bg-white shadow">
       <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl mx-auto px-2 sm:px-6 xl:px-8">

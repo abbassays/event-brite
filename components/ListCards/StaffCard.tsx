@@ -4,6 +4,7 @@ import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 import { StaffMemberType } from "../../types";
+import { useCustomSession } from "@/context/customSession";
 
 interface StaffCardProps extends StaffMemberType {
   setSelectedId?: React.Dispatch<React.SetStateAction<string>>;
@@ -18,6 +19,8 @@ const StaffCard = ({
   setSelectedId,
   setIsOpen,
 }: StaffCardProps) => {
+  const { customSession } = useCustomSession();
+
   const openModal = () => {
     setIsOpen(true);
     setSelectedId(id);
@@ -41,14 +44,20 @@ const StaffCard = ({
           <p className="text-xl font-medium">{name}</p>
           <div className="flex gap-2 text-sm items-center">
             <p className="text-gray-700 text-base">Organisations:</p>
-            {organisations?.map((org, index) => (
-              <p
-                className="text-gray-700 bg-gray-200 rounded-lg px-2 py-1"
-                key={index}
-              >
-                {org?.name}
-              </p>
-            ))}
+            {organisations
+              ?.filter((org) =>
+                customSession.role === "ORGANISER"
+                  ? customSession.user.id === org.id
+                  : true
+              )
+              .map((org, index) => (
+                <p
+                  className="text-gray-700 bg-gray-200 rounded-lg px-2 py-1"
+                  key={index}
+                >
+                  {org?.name}
+                </p>
+              ))}
           </div>
         </div>
 
