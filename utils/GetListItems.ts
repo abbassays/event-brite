@@ -5,9 +5,11 @@ export const getSettingsSidebarItems = (role: string) => {
     "Billing Address",
     "My Orders", //not for admin
     "Stripe Details", //only for organiser and admin
+    "Payment Configuration", // only for admin
   ];
   const filteredSidebarItems = sidebarItems.filter((item) => {
     if (item === "My Orders" && role === "ADMIN") return false;
+    if (item === "Payment Configuration" && role !== "ADMIN") return false;
     if (item === "Stripe Details" && (role === "STAFF" || role === "CUSTOMER"))
       return false;
     return true;

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import { useCustomSession } from "@/context/customSession";
 import { ProfileType } from "@/types";
+import { defaultCommission, defaultGST } from "@/utils/AppDefaults";
+import { getSettingsSidebarItems } from "@/utils/GetListItems";
 import { allUsers } from "@/utils/json-database";
 
 import Layout from "@/components/CustomUI/Layout";
@@ -10,9 +12,9 @@ import SettingsSidebar from "@/components/CustomUI/SettingsSidebar";
 import BillingAddress from "@/components/Profile/BillingAddressForm";
 import ChangePasswordForm from "@/components/Profile/ChangePasswordForm";
 import OrdersList from "@/components/Profile/OrdersList";
-import ProfileForm from "@/components/Profile/ProfileForm";
 import PaymentConfigForm from "@/components/Profile/PaymentConfigForm";
-import { getSettingsSidebarItems } from "@/utils/GetListItems";
+import ProfileForm from "@/components/Profile/ProfileForm";
+import StripeConfigForm from "@/components/Profile/StripeConfigForm";
 
 const ProfilePage = () => {
   /* fetch user id from session */
@@ -50,7 +52,13 @@ const ProfilePage = () => {
           {selectedItem === "Billing Address" && <BillingAddress user={user} />}
           {selectedItem === "My Orders" && <OrdersList userId={userId} />}
           {selectedItem === "Stripe Details" && (
-            <PaymentConfigForm user={user} />
+            <StripeConfigForm user={user} />
+          )}
+          {selectedItem === "Payment Configuration" && (
+            <PaymentConfigForm
+              GST={defaultGST}
+              commission={defaultCommission}
+            />
           )}
         </div>
       </div>

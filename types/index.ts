@@ -92,6 +92,11 @@ export interface UserType {
 }
 export type ProfileType = BillingAddressType & UserType;
 
+export interface PaymentConfigType {
+  commission: number;
+  GST: number;
+}
+
 export interface ChangePasswordType {
   oldPassword: string;
   newPassword: string;
