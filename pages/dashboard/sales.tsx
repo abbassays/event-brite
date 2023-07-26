@@ -68,7 +68,7 @@ const AllSalesPage = (props: Props) => {
 
   const searchBar = (
     <div className="flex flex-col md:flex-row justify-end gap-2 md:gap-4 items-end md:items-center">
-      <DatePickerWithRange allSales={allSales} setSales={setSales} />
+      <DatePickerWithRange allItems={allSales} setItems={setSales} />
       <CustomSearchBar
         placeholder="Search by Event / Organiser"
         onChange={(e) => handleSearch(e)}

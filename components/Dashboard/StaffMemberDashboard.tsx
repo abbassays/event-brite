@@ -5,13 +5,13 @@ import {
   getTicketsByOrganiserId,
   getStaffMemberByOrganiserId,
   getSalesData,
+  getCheckInsData,
 } from "@/utils/json-database";
 import { useCustomSession } from "@/context/customSession";
 
 import CountCard from "@/components/Dashboard/CountCard";
 import EventCard from "@/components/ListCards/EventCard";
 import TicketCard from "@/components/ListCards/TicketCard";
-import StaffCard from "../ListCards/StaffCard";
 
 const StaffMemberDashboard = () => {
   const { customSession, selectedOrg } = useCustomSession();
@@ -38,7 +38,7 @@ const StaffMemberDashboard = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <CountCard
           type="Event"
           count={getEventByOrganiserId(selectedOrg?.id).length}
@@ -50,6 +50,11 @@ const StaffMemberDashboard = () => {
         <CountCard
           type="Sale"
           count={getSalesData(customSession, selectedOrg?.id).length}
+        />
+
+        <CountCard
+          type="Check-In"
+          count={getCheckInsData(customSession, selectedOrg?.id).length}
         />
       </div>
 

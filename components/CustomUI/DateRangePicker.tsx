@@ -16,13 +16,13 @@ import {
 import { SaleType } from "@/types";
 
 interface DateProps extends React.HTMLAttributes<HTMLDivElement> {
-  allSales: SaleType[];
-  setSales: React.Dispatch<React.SetStateAction<SaleType[]>>;
+  allItems: any[];
+  setItems: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
 export function DatePickerWithRange({
-  allSales,
-  setSales,
+  allItems,
+  setItems,
   className,
 }: DateProps) {
   const [date, setDate] = React.useState<DateRange | undefined>({
@@ -33,15 +33,15 @@ export function DatePickerWithRange({
   React.useEffect(() => {
     if (date?.from && date?.to) {
       const filteredSales =
-        allSales &&
-        allSales.filter((sale) => {
+        allItems &&
+        allItems.filter((sale) => {
           return (
             new Date(sale.date) >= date.from && new Date(sale.date) <= date.to
           );
         });
-      setSales(filteredSales);
+      setItems(filteredSales);
     } else {
-      setSales(allSales);
+      setItems(allItems);
     }
   }, [date]);
 

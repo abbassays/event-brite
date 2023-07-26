@@ -5,7 +5,8 @@ import {
   allOrganisers,
   allStaffMembers,
   allTickets,
-  allSales
+  allSales,
+  allCheckIns,
 } from "@/utils/json-database";
 
 import CountCard from "@/components/Dashboard/CountCard";
@@ -52,6 +53,7 @@ const AdminDashboard = (props: Props) => {
         <CountCard type="Organiser" count={allOrganisers.length} />
         <CountCard type="Staff Member" count={allStaffMembers.length} />
         <CountCard type="Sale" count={allSales.length} />
+        <CountCard type="Check-In" count={allCheckIns.length} />
       </div>
 
       {/* Show recent events */}

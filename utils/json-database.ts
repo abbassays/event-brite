@@ -6,6 +6,7 @@ import staffMembers from "./all_staff_members.json";
 import users from "./all_users.json";
 import sales from "./all_sales.json";
 import carts from "./all_carts.json";
+import checkIns from "./all_check_ins.json";
 
 import {
   EventType,
@@ -16,6 +17,7 @@ import {
   SaleType,
   SessionType,
   CartType,
+  CheckInType,
 } from "@/types";
 
 export const allOrganisers: OrganiserType[] = organisers;
@@ -26,6 +28,7 @@ export const allStaffMembers: StaffMemberType[] = staffMembers;
 export const allUsers = users;
 export const allSales: SaleType[] = sales;
 export const allCarts: CartType[] = carts;
+export const allCheckIns: CheckInType[] = checkIns;
 
 export const getOrganiserById = (id: string) => {
   return organisers.find((organiser) => organiser.id === id);
@@ -98,6 +101,22 @@ export const getSalesData = (session: SessionType, organiserId?: string) => {
   } else if (session.role === "STAFF") {
     const sales = getSalesbyOrganiserId(organiserId);
     return sales;
+  }
+  return [];
+};
+
+export const getCheckInByOrganiser = (id: string) => {
+  return checkIns.filter((checkIn) => checkIn.organiserId === id);
+};
+
+export const getCheckInsData = (session: SessionType, organiserId?: string) => {
+  if (session.role === "ADMIN") return allCheckIns;
+  else if (session.role === "ORGANISER") {
+    const checkIns = getCheckInByOrganiser(session.user.id);
+    return checkIns;
+  } else if (session.role === "STAFF") {
+    const checkIns = getCheckInByOrganiser(organiserId);
+    return checkIns;
   }
   return [];
 };

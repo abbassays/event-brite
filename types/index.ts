@@ -132,6 +132,22 @@ export interface AdminType {
   name: string;
 }
 
+export interface CheckInType {
+  id: string;
+  // details about check in
+  date: string;
+  quantity: number;
+  customerName: string;
+  customerEmail: string;
+
+  // details about ticket
+  ticketId: string;
+  organiserId: string;
+  organiserName: string;
+  eventId: string;
+  eventName: string;
+}
+
 export interface CustomerType {
   id: string;
   name: string;

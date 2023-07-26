@@ -24,7 +24,7 @@ const SaleCard = ({
       className="rounded lg:rounded-xl bg-white px-6 lg:py-6 py-2 shadow 
     grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 place-items-center"
     >
-      <div className="font-medium gap-2 flex items-baseline justify-center w-fit lg:justify-start order-1 sm:place-self-start lg:place-self-center">
+      <div className="font-medium gap-2 flex items-baseline justify-center w-fit lg:justify-start order-1 sm:place-self-start">
         <p>{eventName}</p>
         <p className="text-sm text-gray-500">by</p>
         <p className="">{organiserName}</p>

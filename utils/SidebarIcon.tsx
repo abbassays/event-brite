@@ -1,7 +1,8 @@
+import { IoLocationSharp } from "react-icons/io5";
 import { CgProfile, CgPassword, CgHome, CgList } from "react-icons/cg";
 import { GiTicket, GiPartyFlags } from "react-icons/gi";
 import { PiUsersThree, PiUser } from "react-icons/pi";
-import { TbHomeStats,TbSettingsDollar } from "react-icons/tb";
+import { TbHomeStats, TbSettingsDollar } from "react-icons/tb";
 import { FaStripeS } from "react-icons/fa";
 import { BiSolidDollarCircle } from "react-icons/bi";
 
@@ -19,6 +20,7 @@ export const SidebarIcon = ({ item }: { item: string }) => {
   if (item === "Organisers") return <PiUser />;
   if (item === "Staff Members") return <PiUsersThree />;
   if (item === "Sales") return <BiSolidDollarCircle />;
+  if (item === "Check-Ins") return <IoLocationSharp />;
 
   return null;
 };

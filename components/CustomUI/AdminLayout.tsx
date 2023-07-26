@@ -5,50 +5,12 @@ import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer";
 import DashboardSidebar from "./DashboardSidebar";
 import { useCustomSession } from "@/context/customSession";
+import { getDashboardSidebarItems } from "@/utils/GetListItems";
 
 type Props = {
   children?: ReactNode;
   title?: string;
 };
-
-const staffSideBar = [
-  {
-    name: "Dashboard",
-    route: "/dashboard",
-  },
-  {
-    name: "Events",
-    route: "/dashboard/events",
-  },
-  {
-    name: "Tickets",
-    route: "/dashboard/tickets",
-  },
-  {
-    name: "Sales",
-    route: "/dashboard/sales",
-  },
-];
-
-const adminSideBarItems = [
-  ...staffSideBar,
-  {
-    name: "Organisers",
-    route: "/dashboard/organisers",
-  },
-  {
-    name: "Staff Members",
-    route: "/dashboard/staff",
-  },
-];
-
-const organiserSideBar = [
-  ...staffSideBar,
-  {
-    name: "Staff Members",
-    route: "/dashboard/staff",
-  },
-];
 
 const AdminLayout = ({
   children,
@@ -66,13 +28,7 @@ const AdminLayout = ({
       <Navbar />
       <div className="flex justify-start">
         <DashboardSidebar
-          items={
-            customSession?.role === "ADMIN"
-              ? adminSideBarItems
-              : customSession?.role === "ORGANISER"
-              ? organiserSideBar
-              : staffSideBar
-          }
+          items={getDashboardSidebarItems(customSession?.role)}
         />
         <div className="min-h-screen w-full ">{children}</div>
       </div>

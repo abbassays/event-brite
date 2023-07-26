@@ -54,3 +54,53 @@ export const getNavbarItems = (role: string) => {
 
   return filteredNavbarItems;
 };
+
+export const getDashboardSidebarItems = (role: string) => {
+  if (!role) return [];
+
+  const sideBarItems = [
+    {
+      name: "Dashboard",
+      route: "/dashboard",
+    },
+    {
+      name: "Events",
+      route: "/dashboard/events",
+    },
+    {
+      name: "Tickets",
+      route: "/dashboard/tickets",
+    },
+    {
+      name: "Sales",
+      route: "/dashboard/sales",
+    },
+    {
+      //admin only
+      name: "Organisers",
+      route: "/dashboard/organisers",
+    },
+    {
+      //organiser and admin only
+      name: "Staff Members",
+      route: "/dashboard/staff",
+    },
+    {
+      name: "Check-Ins",
+      route: "/dashboard/check-ins",
+    },
+  ];
+
+  const filteredSidebarItems = sideBarItems.filter((item) => {
+    if (item.name === "Organisers" && role !== "ADMIN") return false;
+    if (
+      item.name === "Staff Members" &&
+      (role === "CUSTOMER" || role === "STAFF")
+    )
+      return false;
+
+    return true;
+  });
+
+  return filteredSidebarItems;
+};
