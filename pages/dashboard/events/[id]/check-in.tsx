@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { QrReader } from "react-qr-reader";
-import { MdPhotoCamera } from "react-icons/md";
+import { MdQrCodeScanner } from "react-icons/md";
 
 import allEvents from "../../../../utils/all_events.json";
 import { EventType } from "../../../../types";
 
 import Layout from "../../../../components/CustomUI/Layout";
 import Container from "../../../../components/CustomUI/Container";
+import PageLoader from "@/components/CustomUI/PageLoader";
 
 const CheckInPage = () => {
   const router = useRouter();
@@ -24,6 +25,10 @@ const CheckInPage = () => {
     fetchEvent();
   }, [router.query.id, allEvents]);
   const [data, setData] = useState<string>();
+
+  if (!event) {
+    return <PageLoader />;
+  }
 
   return (
     <Layout title="Check In">
@@ -46,12 +51,12 @@ const CheckInPage = () => {
             />
           ) : (
             <div className="w-full h-full flex flex-col justify-center items-center text-gray-500 border border-black rounded-lg">
-              <MdPhotoCamera
+              <MdQrCodeScanner
                 size={100}
                 onClick={() => setStartScan(true)}
                 className="cursor-pointer"
               />
-              <p className="">Press the Camera Icon to Check In</p>
+              <p className="">Press to Scan Event Qr Code</p>
             </div>
           )}
         </div>

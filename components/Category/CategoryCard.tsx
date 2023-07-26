@@ -11,11 +11,9 @@ const CategoryCard = ({ category, count, onClick }: CategoryType) => {
       // href={`/events?category=${category}`}
     >
       <div className="flex flex-row items-center justify-between md:space-x-4 w-full p-6 bg-white border border-gray-200 rounded-lg shadow">
-        <div className="mb-4">
-          <p className="text-blue-500">
-            <CategoryIcon category={category} />
-          </p>
-        </div>
+        <p className="text-blue-500 text-4xl">
+          <CategoryIcon category={category} />
+        </p>
 
         <div className="w-full text-center items-center">
           <h3 className="text-lg font-medium mb-2">{category}</h3>

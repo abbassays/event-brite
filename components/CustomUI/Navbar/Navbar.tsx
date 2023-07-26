@@ -30,27 +30,50 @@ function Navbar() {
 
   return (
     <nav className="bg-white shadow">
-      <div className="xl:max-w-7xl md:max-w-5xl sm:max-w-xl mx-auto px-2 sm:px-6 xl:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
-            <Image
-              className="block xl:hidden h-auto w-auto "
-              src="/images/logo.png"
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-            <Image
-              className="hidden xl:block h-auto w-auto "
-              src="/images/logo.png"
-              alt="Logo"
-              width={48}
-              height={48}
-            />
-          </div>
+      <div className="flex justify-between h-16 mx-auto px-2 sm:px-6 xl:px-8 ">
+        <div className="flex-shrink-0 flex items-center">
+          <Image
+            className="block xl:hidden h-auto w-auto "
+            src="/images/logo.png"
+            alt="Logo"
+            width={32}
+            height={32}
+          />
+          <Image
+            className="hidden xl:block h-auto w-auto "
+            src="/images/logo.png"
+            alt="Logo"
+            width={48}
+            height={48}
+          />
+        </div>
 
-          <div className="flex items-center w-full max-w-xs md:max-w-sm">
-            {customSession?.role === "CUSTOMER" && <SearchBar />}
+        <div className="flex items-center w-full max-w-xs md:max-w-sm">
+          {(customSession?.role === "CUSTOMER" || !customSession) && (
+            <SearchBar />
+          )}
+        </div>
+
+        <div className="hidden xl:ml-6 xl:flex xl:items-center">
+          {getNavbarItems(customSession?.role || "").map((item, index) => (
+            <p
+              key={index}
+              className={`px-6 py-2 text-lg transition-colors
+                  ${
+                    router.pathname === item.link
+                      ? "text-blue-600 font-bold underline underline-offset-4"
+                      : "text-blue-500 hover:text-blue-600"
+                  }
+                `}
+            >
+              <Link href={item.link}>{item.name}</Link>
+            </p>
+          ))}
+        </div>
+
+        {customSession && (
+          <div className="flex items-center gap-10">
+            <AccountManager />
 
             <button
               className="inline-flex items-center justify-center ml-4 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
@@ -59,49 +82,25 @@ function Navbar() {
               {menuOpen ? <ImCross /> : <GiHamburgerMenu />}
             </button>
           </div>
+        )}
 
-          <div className="hidden xl:ml-6 xl:flex xl:items-center">
-            {getNavbarItems(customSession?.role || "").map((item, index) => (
-              <p
-                key={index}
-                className={`px-6 py-2 text-lg transition-colors
-                  ${
-                    router.pathname === item.link
-                      ? "text-blue-600 font-bold underline underline-offset-4"
-                      : "text-blue-500 hover:text-blue-600"
-                  }
-                `}
-              >
-                <Link href={item.link}>{item.name}</Link>
-              </p>
-            ))}
+        {!customSession && (
+          <div className="xl:flex justify-between space-x-4 hidden">
+            <Button variant="primary" onClick={handleLogin}>
+              Login
+            </Button>
+
+            <Button variant="secondary" onClick={handleSignUp}>
+              Sign Up
+            </Button>
           </div>
-
-          {customSession && (
-            <div className="flex items-center">
-              <AccountManager />
-            </div>
-          )}
-
-          <div className=" xl:flex justify-between space-x-4 hidden ">
-            {!customSession && (
-              <>
-                <Button variant="primary" onClick={handleLogin}>
-                  Login
-                </Button>
-
-                <Button variant="secondary" onClick={handleSignUp}>
-                  Sign Up
-                </Button>
-              </>
-            )}
-          </div>
-        </div>
+        )}
       </div>
+
       <div
         className={`${
           menuOpen ? "absolute" : "hidden"
-        } xl:hidden border-t bg-white pr-10 right-6 rounded-b-lg z-40 shadow-lg`}
+        } xl:hidden border-t bg-white pr-10 right-2 sm:right-6 xl:right-8 rounded-b-lg z-40 shadow-lg`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {getNavbarItems(customSession?.role || "").map((item, index) => (

@@ -50,7 +50,7 @@ export const getNavbarItems = (role: string) => {
   ];
 
   const filteredNavbarItems =
-    role === "CUSTOMER" ? customerNavbarItems : staffNavbarItems;
+    role === "CUSTOMER" || !role ? customerNavbarItems : staffNavbarItems;
 
   return filteredNavbarItems;
 };
