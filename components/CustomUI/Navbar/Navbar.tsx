@@ -30,7 +30,7 @@ function Navbar() {
 
   return (
     <nav className="bg-white shadow">
-      <div className="flex justify-between h-16 mx-auto px-2 sm:px-6 xl:px-8 ">
+      <div className="flex justify-between h-16 mx-auto px-2 sm:px-6 xl:px-8 gap-2">
         <div className="flex-shrink-0 flex items-center">
           <Image
             className="block xl:hidden h-auto w-auto "
@@ -72,11 +72,11 @@ function Navbar() {
         </div>
 
         {customSession && (
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-2 xs:gap-4 md:gap-10">
             <AccountManager />
 
             <button
-              className="inline-flex items-center justify-center ml-4 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? <ImCross /> : <GiHamburgerMenu />}
