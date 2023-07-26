@@ -61,7 +61,8 @@ const AllStaffMembersPage = () => {
     const searchedWord = e.target.value?.toLowerCase();
     const searchedStaff = staffMembers.filter((staff) => {
       return (
-        staff.name.toLowerCase().includes(searchedWord) ||
+        staff.firstName.toLowerCase().includes(searchedWord) ||
+        staff.lastName.toLowerCase().includes(searchedWord) ||
         staff.organisations.some((org) =>
           org.name.toLowerCase().includes(searchedWord)
         )

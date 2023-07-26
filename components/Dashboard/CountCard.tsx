@@ -5,7 +5,7 @@ import AdminIcon from "../../utils/AdminIcon";
 import Link from "next/link";
 
 interface CountCardProps {
-  type: "Event" | "Ticket" | "Organiser" | "Staff Member"|'Sale';
+  type: "Event" | "Ticket" | "Organiser" | "Staff Member" | "Sale";
   count: number;
 }
 
@@ -16,7 +16,11 @@ const CountCard = ({ type, count }: CountCardProps) => {
         <div className=" p-2.5 lg:p-4 rounded-full lg:text-5xl text-4xl bg-slate-200 w-fit text-blue-600">
           <AdminIcon item={type} />
         </div>
-        <Link href={`/dashboard/${type.toLowerCase()}s`}>
+        <Link
+          href={`/dashboard/${
+            type === "Staff Member" ? "staff" : type.toLowerCase() + "s"
+          }`}
+        >
           <div className="flex justify-end text-blue-500 h-fit items-center hover:underline cursor-pointer font-semibold text-right">
             See More
             <MdChevronRight className="text-xl" />

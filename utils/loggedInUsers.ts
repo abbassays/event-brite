@@ -34,7 +34,8 @@ const staffMember1: SessionType = {
   role: "STAFF",
   user: {
     id: "28cde71c-a80b-4151-b2d8-875251c733a6",
-    name: "Staff Member 1",
+    firstName: "First 1",
+    lastName: "Last 1",
     image: "https://i.pravatar.cc/175",
     email: "staff@email.com",
     description: "Description for Staff Member 1.",
@@ -75,4 +76,11 @@ export const loggedInUsers = {
   staffMember1,
   admin1,
   customer1,
+};
+
+export const getUserName = (session: SessionType | null) => {
+  if (!session) return null;
+  return session.role === "STAFF"
+    ? session.user.firstName + " " + session.user.lastName
+    : session.user.name;
 };

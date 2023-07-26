@@ -31,12 +31,21 @@ const StaffForm = ({ staff }: { staff?: StaffMemberType }) => {
     <>
       <Input
         type="text"
-        label="Name"
-        placeholder="Staff Member Name"
-        name="name"
+        label="First Name"
+        placeholder="Staff Member First Name"
+        name="firstName"
         register={register}
         errors={errors}
-        rules={{ required: "Name is required" }}
+        rules={{ required: "First Name is required" }}
+      />
+      <Input
+        type="text"
+        label="Last Name"
+        placeholder="Staff Member Last Name"
+        name="lastName"
+        register={register}
+        errors={errors}
+        rules={{ required: "Last Name is required" }}
       />
       <Input
         type="text"

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 import { useCustomSession } from "@/context/customSession";
 import { SessionType } from "@/types";
-import { loggedInUsers } from "@/utils/loggedInUsers";
+import { getUserName, loggedInUsers } from "@/utils/loggedInUsers";
 
 import Button from "../Button";
 import { getOrganiserById } from "@/utils/json-database";
@@ -43,7 +43,7 @@ const AccountManager = () => {
             </div>
             <div className="pt-6">
               <h1 className="text-xl font-medium">
-                {customSession?.user?.name}
+                {getUserName(customSession)}
               </h1>
               {customSession?.role === "STAFF" && (
                 <p className="text-gray-400 font-light">{selectedOrg?.name}</p>
@@ -79,7 +79,7 @@ const AccountManager = () => {
                   }
                 }}
               >
-                <h1 className="text-xl font-medium">{session.user.name}</h1>
+                <h1 className="text-xl font-medium">{getUserName(session)}</h1>
                 {session.role === "STAFF" && (
                   <>
                     <h1 className="font-medium text-gray-400">Switch to:</h1>

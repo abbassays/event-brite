@@ -32,7 +32,8 @@ export interface OrganiserType {
 
 export interface StaffMemberType {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   description: string;
   image: string;
   email: string;

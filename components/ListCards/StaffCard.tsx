@@ -15,7 +15,8 @@ const StaffCard = ({
   id,
   image,
   organisations,
-  name,
+  lastName,
+  firstName,
   setSelectedId,
   setIsOpen,
 }: StaffCardProps) => {
@@ -41,7 +42,7 @@ const StaffCard = ({
 
       <div className="flex justify-between items-center w-full md:flex-row flex-col">
         <div className="flex flex-col">
-          <p className="text-xl font-medium">{name}</p>
+          <p className="text-xl font-medium">{firstName + " " + lastName}</p>
           <div className="flex gap-2 text-sm items-center">
             <p className="text-gray-700 text-base">Organisations:</p>
             {organisations

@@ -4,6 +4,7 @@ import Container from "@/components/CustomUI/Container";
 import Layout from "@/components/CustomUI/Layout";
 import { useCustomSession } from "@/context/customSession";
 import ChangePasswordForm from "@/components/Profile/ChangePasswordForm";
+import { getUserName } from "@/utils/loggedInUsers";
 
 type Props = {};
 
@@ -15,9 +16,11 @@ const WelcomePage = (props: Props) => {
       <Container>
         <div className="flex flex-col items-center text-center">
           <h1 className="text-3xl font-bold">
-            Welcome {customSession?.user?.name}
+            Welcome {getUserName(customSession)}
           </h1>
-          <p className="text-lg mt-3 text-gray-600">Set a New Password to Continue</p>
+          <p className="text-lg mt-3 text-gray-600">
+            Set a New Password to Continue
+          </p>
 
           <div className="max-w-2xl w-full text-left">
             <ChangePasswordForm isNew />

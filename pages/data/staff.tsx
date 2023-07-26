@@ -33,7 +33,8 @@ const generateRandomData = () => {
   for (let i = 0; i < 100; i++) {
     const staffMember: StaffMemberType = {
       id: uuidv4(),
-      name: `Staff Member ${i + 1}`,
+      lastName: `Last Member ${i + 1}`,
+      firstName: `First ${i + 1}`,
       image: getRandomImageLink(),
       email: `staffmember${i + 1}@email.com`,
       description: `Description for Organiser ${i + 1}.`,
