@@ -21,7 +21,7 @@ const AdminLayout = ({
   return (
     <div>
       <Head>
-        <title>{"Website | " + title}</title>
+        <title>{"Events | " + title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -30,7 +30,7 @@ const AdminLayout = ({
         <DashboardSidebar
           items={getDashboardSidebarItems(customSession?.role)}
         />
-        <div className="min-h-screen w-full ">{children}</div>
+        <div className="w-full min-h-screen ">{children}</div>
       </div>
       <Footer />
     </div>
