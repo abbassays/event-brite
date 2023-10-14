@@ -12,6 +12,7 @@ import { getNavbarItems } from "@/utils/GetListItems";
 import Button from "../Button";
 import AccountManager from "./AccountManager";
 import SearchBar from "./SearchBar";
+import Logo from "../Logo";
 
 function Navbar() {
   const router = useRouter();
@@ -30,22 +31,9 @@ function Navbar() {
 
   return (
     <nav className="bg-white shadow">
-      <div className="flex justify-between h-16 mx-auto px-2 sm:px-6 xl:px-8 gap-2">
-        <div className="flex-shrink-0 flex items-center">
-          <Image
-            className="block xl:hidden h-auto w-auto "
-            src="/images/logo.png"
-            alt="Logo"
-            width={32}
-            height={32}
-          />
-          <Image
-            className="hidden xl:block h-auto w-auto "
-            src="/images/logo.png"
-            alt="Logo"
-            width={48}
-            height={48}
-          />
+      <div className="flex justify-between h-16 gap-2 px-2 mx-auto sm:px-6 xl:px-8">
+        <div className="flex items-center flex-shrink-0">
+          <Logo className="w-24 md:w-32" />
         </div>
 
         <div className="flex items-center w-full max-w-xs md:max-w-sm">
@@ -71,21 +59,18 @@ function Navbar() {
           ))}
         </div>
 
-        {customSession && (
-          <div className="flex items-center gap-2 xs:gap-4 md:gap-10">
-            <AccountManager />
-
-            <button
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? <ImCross /> : <GiHamburgerMenu />}
-            </button>
-          </div>
-        )}
+        <div className="flex items-center gap-2 xs:gap-4 md:gap-10">
+          {customSession && <AccountManager />}
+          <button
+            className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 xl:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <ImCross /> : <GiHamburgerMenu />}
+          </button>
+        </div>
 
         {!customSession && (
-          <div className="xl:flex justify-between space-x-4 hidden">
+          <div className="justify-between hidden space-x-4 xl:flex">
             <Button variant="primary" onClick={handleLogin}>
               Login
             </Button>
@@ -115,7 +100,7 @@ function Navbar() {
             <>
               <p
                 onClick={handleLogin}
-                className="block px-3 py-2 text-base border-t font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 text-base font-medium text-gray-700 border-t rounded-md hover:text-gray-900 hover:bg-gray-50"
               >
                 Login
               </p>

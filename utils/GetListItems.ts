@@ -18,7 +18,7 @@ export const getSettingsSidebarItems = (role: string) => {
   return filteredSidebarItems;
 };
 
-export const getNavbarItems = (role: string) => {
+export const getNavbarItems = (role?: string) => {
   const customerNavbarItems = [
     {
       name: "Home",
@@ -48,9 +48,9 @@ export const getNavbarItems = (role: string) => {
       link: "/dashboard",
     },
   ];
+  console.log("role is ", role);
 
-  const filteredNavbarItems =
-    role === "CUSTOMER" || !role ? customerNavbarItems : staffNavbarItems;
+  const filteredNavbarItems = !role ? customerNavbarItems : staffNavbarItems;
 
   return filteredNavbarItems;
 };
