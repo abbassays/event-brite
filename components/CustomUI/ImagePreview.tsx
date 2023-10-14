@@ -33,7 +33,7 @@ const ImagePreview = ({
     }
   };
   return (
-    <div className="max-w-md mx-auto w-full aspect-square relative rounded-lg overflow-hidden cursor-pointer">
+    <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg cursor-pointer aspect-square">
       <label htmlFor="avatar-upload">
         {uploadedImage || link ? (
           <div className="relative w-full h-full">
