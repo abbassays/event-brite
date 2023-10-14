@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaInstagram, FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import Logo from "./Logo";
 
 const Footer = () => {
   const socialIcons = [
@@ -80,13 +81,7 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">
-              {/* <Image
-                width={96}
-                height={96}
-                src="/images/logo.png"
-                className="w-auto h-8 mr-3"
-                alt="Logo"
-              /> */}
+              <Logo />
             </Link>
           </div>
 
